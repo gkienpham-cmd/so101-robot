@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Large media — keep only curated clips in git, if any
+videos/
+*.mp4
+*.mov
+
+# Dataset / model caches (live in ~/.cache/huggingface anyway)
+data/
+outputs/
+wandb/
+
+# Secrets
+.env
+*token*
