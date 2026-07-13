@@ -7,6 +7,9 @@
 | 2026-07-14 | Project repo = `~/Documents/so101-robot` (this folder); LeRobot clone kept outside at `~/robotics/lerobot` | CLAUDE.md + research docs already live here; external source tree stays out of project git. |
 | 2026-07-14 | wandb enabled for all training runs | User has account + API key; loss-curve monitoring is the cheap early-abort signal for bad runs. |
 | 2026-07-14 | torch 2.11.0, MPS verified available on M1 Pro | Inference target is `--policy.device=mps`; training stays on cloud GPUs per plan. |
+| 2026-07-14 | Sim recording uses `mjpython -m lerobot.rl.gym_manipulator --config_path configs/gym_hil_record.json` | v0.6.0 replaced the old il_sim record flow; keyboard env spawns a MuJoCo passive viewer which macOS requires `mjpython` for. Config schema verified against source (`GymManipulatorConfig`). |
+| 2026-07-14 | Reference dataset studied: `lerobot/svla_so101_pickplace` (50 eps, 8 s, 30 fps, 2×640×480 cams, v3.0 format) | Calibrates Week-2 collection: same resolution/fps, semantic camera names, single fixed task string. Full notes in `notes/dataset_study_svla_so101_pickplace.md`. |
+| 2026-07-14 | Cloud dry run pinned to `pip install lerobot==0.6.0` on a plain CUDA image, not an unverified prebuilt LeRobot image | Guarantees train-side version matches local install + dataset v3.0 format. Runbook: `configs/vastai_dryrun.md`. |
 
 ## Known issues (watch list)
 
