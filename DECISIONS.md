@@ -11,6 +11,9 @@
 | 2026-07-14 | Reference dataset studied: `lerobot/svla_so101_pickplace` (50 eps, 8 s, 30 fps, 2×640×480 cams, v3.0 format) | Calibrates Week-2 collection: same resolution/fps, semantic camera names, single fixed task string. Full notes in `notes/dataset_study_svla_so101_pickplace.md`. |
 | 2026-07-14 | Cloud dry run pinned to `pip install lerobot==0.6.0` on a plain CUDA image, not an unverified prebuilt LeRobot image | Guarantees train-side version matches local install + dataset v3.0 format. Runbook: `configs/vastai_dryrun.md`. |
 
+| 2026-07-14 | Patched local LeRobot (`rl/gym_manipulator.py:759`): `save_episode(parallel_encoding=False)` | Parallel per-camera encoder processes abort on macOS under the cv2/av duplicate-libavdevice collision (BrokenProcessPool on first save). Serial encoding of 2×128×128 sim videos costs ~1 s/episode — negligible. Local patch to pinned editable install; revisit if upstream fixes the dylib conflict. |
+
 ## Known issues (watch list)
 
-- **Duplicate libavdevice dylibs** (`cv2` vs `av` both bundle ffmpeg 61.3.100) → objc class-collision warning at import. Documented macOS annoyance; may cause spurious crashes during camera capture. Do nothing unless camera capture actually crashes; then swap to `opencv-python-headless` or align ffmpeg versions.
+- **Duplicate libavdevice dylibs** (`cv2` vs `av` both bundle ffmpeg 61.3.100) → objc class-collision warning at import. CONFIRMED harmful 2026-07-14: crashed parallel video encoding during sim recording (see patch above). Watch for the same crash in real-arm recording (2 cameras) — same workaround applies via `save_episode(parallel_encoding=False)` in whatever record path we use, or fix the env by aligning cv2/av ffmpeg builds.
+- **macOS Accessibility/Input Monitoring**: pynput prints "This process is not trusted!" and keyboard control silently does nothing. Terminal must be added under BOTH Privacy & Security → Accessibility AND → Input Monitoring, then fully quit (⌘Q) and reopened.
