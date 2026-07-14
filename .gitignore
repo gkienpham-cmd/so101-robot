@@ -17,3 +17,7 @@ wandb/
 # Secrets
 .env
 *token*
+
+# Personal / application-strategy documents — never publish
+private/
+CLAUDE.md
