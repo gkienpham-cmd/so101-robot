@@ -18,7 +18,7 @@ Cost math: 5k steps ACT ≈ 20–40 min + setup ≈ 1–1.5 hr total ≈ **$0.50
 
 ```bash
 # --- setup (~5 min) ---
-pip install "lerobot[act,dataset,training]==0.6.0" wandb
+pip install "lerobot[dataset,training]==0.6.0" wandb   # ACT is in the base package; no [act] extra exists
 huggingface-cli login    # paste WRITE token
 wandb login              # paste API key
 
