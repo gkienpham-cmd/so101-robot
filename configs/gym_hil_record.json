@@ -24,7 +24,7 @@
     }
   },
   "dataset": {
-    "repo_id": "YOUR_HF_USERNAME/sim_practice_dataset",
+    "repo_id": "gkienpham/sim_practice_dataset",
     "root": null,
     "task": "pick_cube",
     "num_episodes_to_record": 10,

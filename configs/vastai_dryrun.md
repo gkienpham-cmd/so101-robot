@@ -35,7 +35,7 @@ lerobot-train \
   --steps=5000 \
   --batch_size=8 \
   --save_freq=5000 \
-  --policy.repo_id=YOUR_HF_USERNAME/act_dryrun \
+  --policy.repo_id=gkienpham/act_dryrun \
   --policy.push_to_hub=true \
   --job_name=act_dryrun \
   --output_dir=outputs/act_dryrun
@@ -46,7 +46,7 @@ lerobot-train \
 ## 3. What "success" looks like
 
 - wandb `train/loss` drops steeply in the first ~500 steps, then keeps declining. Exact final value doesn't matter — **slope** does.
-- Checkpoint appears at `huggingface.co/YOUR_HF_USERNAME/act_dryrun` after step 5000.
+- Checkpoint appears at `huggingface.co/gkienpham/act_dryrun` after step 5000.
 - If loss is flat or NaN by step 1000: kill the run, save the log, we debug locally for free.
 
 ## 4. Shutdown discipline

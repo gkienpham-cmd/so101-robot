@@ -5,7 +5,7 @@ pass on MPS. This is a plumbing test, NOT the latency profile — proper
 roofline-style timing with warmup and repeated trials is the Week-4 task.
 
 Usage (from the lerobot venv):
-    python src/inference_smoke_test.py YOUR_HF_USERNAME/act_dryrun
+    python src/inference_smoke_test.py gkienpham/act_dryrun
 """
 
 import argparse
