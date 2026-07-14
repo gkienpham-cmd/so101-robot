@@ -24,3 +24,7 @@ Rule: justify every GPU run before launching; prefer 5k-step validation runs bef
 ## Hardware spend (reference — already committed)
 
 See SO-101 Plan.md Part 1F for the full BOM. Log actual landed costs (incl. VN customs) here when the kit arrives.
+
+| Date | Item | Seller | Cost (VND) | Cost (~$) | Notes |
+|------|------|--------|-----------|-----------|-------|
+| 2026-07-15 | Logitech C920 Pro (overhead cam) + C270 (wrist cam), one Shopee checkout | LOGITECH OFFICIAL STORE (Mall) / Trọng Ân Audio Tp.HCM | 2,289,000 (after voucher; 2,637,376 list) — PAID 2026-07-15 | ~$88 | Recommended-tier pair from CAMERA-RESEARCH-REPORT.md. C270 needs lens refocus mod before wrist mounting; lock C920 AF in Logi Tune. |

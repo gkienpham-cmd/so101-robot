@@ -12,6 +12,7 @@
 | 2026-07-14 | Cloud dry run pinned to `pip install lerobot==0.6.0` on a plain CUDA image, not an unverified prebuilt LeRobot image | Guarantees train-side version matches local install + dataset v3.0 format. Runbook: `configs/vastai_dryrun.md`. |
 
 | 2026-07-14 | Patched local LeRobot (`rl/gym_manipulator.py:759`): `save_episode(parallel_encoding=False)` | Parallel per-camera encoder processes abort on macOS under the cv2/av duplicate-libavdevice collision (BrokenProcessPool on first save). Serial encoding of 2×128×128 sim videos costs ~1 s/episode — negligible. Local patch to pinned editable install; revisit if upstream fixes the dylib conflict. |
+| 2026-07-14 | Camera plan: **C920 overhead + C270 wrist (2 cams now, 3rd fixed inspection cam deferred to coffee phase)**; C270 needs the lens un-glue refocus mod for <40 cm wrist duty; force MJPEG (`fourcc="MJPG"`); buy C270 at Phong Vũ 399k (verified), C920 at Logitech Official Store Shopee ~1.53–1.9M (verify in-app) | Deep-research workflow (29 agents, 3-vote adversarial panel). Panel REFUTED "C270 sharp at 20–40cm" (stock focus starts ~40cm) — mod is mandatory, not optional. C270 has the only verified community SO-101 wrist STL (Thingiverse thing:7246089); C920 AF locks via Logi Tune. Full report: `CAMERA-RESEARCH-REPORT.md`. |
 
 ## Known issues (watch list)
 
