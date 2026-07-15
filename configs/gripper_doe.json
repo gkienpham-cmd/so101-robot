@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "beansight-gripper-v1",
+  "variants": [
+    "stock",
+    "high_friction_tape",
+    "compliant_tapered"
+  ],
+  "orientations": [
+    "longitudinal",
+    "transverse",
+    "diagonal"
+  ],
+  "trials_per_cell": 10,
+  "randomize_order": true,
+  "same_bean_set_per_variant": true,
+  "fixed_nest_and_trajectory": true,
+  "record": [
+    "grasp_success",
+    "transfer_success",
+    "dropped",
+    "cycle_ms",
+    "servo_peak_temperature_c",
+    "servo_peak_load"
+  ]
+}

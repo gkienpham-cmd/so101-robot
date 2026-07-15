@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "controller_armed": false,
+  "image_key": "observation.images.top",
+  "reject_threshold": 0.8,
+  "acceptable_action": "no_motion",
+  "reject_action": "act_policy_rollout",
+  "verification": {
+    "required": true,
+    "timeout_s": 15
+  },
+  "safety": {
+    "human_supervision_required": true,
+    "reachable_power_cutoff_required": true,
+    "max_one_reject_motion_per_trigger": true
+  }
+}

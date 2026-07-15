@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "beansight-v1-frozen",
+  "reject_trials": 30,
+  "acceptable_no_motion_trials": 20,
+  "blind_ground_truth": true,
+  "report_wilson_95": true,
+  "latencies": [
+    "perception_ms",
+    "policy_ms",
+    "cycle_ms"
+  ],
+  "failure_codes": [
+    "perception_false_accept",
+    "perception_false_reject",
+    "localization_trigger_error",
+    "approach_error",
+    "grasp_miss",
+    "drop",
+    "placement_miss",
+    "human_intervention",
+    "safety_stop",
+    "other"
+  ]
+}

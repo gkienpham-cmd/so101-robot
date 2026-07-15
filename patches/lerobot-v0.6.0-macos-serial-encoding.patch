@@ -1,0 +1,10 @@
+diff --git a/src/lerobot/rl/gym_manipulator.py b/src/lerobot/rl/gym_manipulator.py
+index 03f7b4ee..6c5cb4f1 100644
+--- a/src/lerobot/rl/gym_manipulator.py
++++ b/src/lerobot/rl/gym_manipulator.py
+@@ -758,2 +758,4 @@ def control_loop(
+                         logging.info(f"Saving episode {episode_idx}")
+-                        dataset.save_episode()
++                        # macOS: parallel encoding forks worker processes that abort under
++                        # the cv2/av duplicate-libavdevice objc collision (BrokenProcessPool).
++                        dataset.save_episode(parallel_encoding=False)

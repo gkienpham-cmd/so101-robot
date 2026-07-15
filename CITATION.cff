@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use BeanSight VN, please cite this software and the dataset release used in your experiment."
+title: "BeanSight VN: A Low-Cost Robotic Coffee Defect Rejection Workcell"
+type: software
+authors:
+  - family-names: Pham
+    given-names: Kien
+version: 0.1.0
+date-released: 2026-07-15
+license: Apache-2.0
+repository-code: "https://github.com/gkienpham-cmd/so101-robot"
+keywords:
+  - robotics
+  - coffee
+  - Vietnam
+  - SO-101
+  - LeRobot

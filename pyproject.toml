@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "beansight-vn"
+version = "0.1.0"
+description = "Evaluation-first tooling for a low-cost Vietnamese coffee defect rejection workcell"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE" }
+authors = [{ name = "Kien Pham" }]
+dependencies = ["numpy>=1.26,<3"]
+
+[project.optional-dependencies]
+camera = ["opencv-python>=4.10,<5"]
+perception = ["pillow>=10,<12", "torch>=2.7,<3", "torchvision>=0.22,<1"]
+dev = ["pytest>=8,<9", "ruff>=0.12,<1"]
+
+[project.scripts]
+beansight-camera-preflight = "beansight_vn.camera_preflight:main"
+beansight-dataset-qa = "beansight_vn.dataset_validation:main"
+beansight-build-record-config = "beansight_vn.lerobot_config:main"
+beansight-compare = "beansight_vn.comparison:main"
+beansight-gripper-summary = "beansight_vn.gripper_doe:main"
+beansight-train-perception = "beansight_vn.train_perception:main"
+beansight-trial-summary = "beansight_vn.trial_log:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/beansight_vn"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]

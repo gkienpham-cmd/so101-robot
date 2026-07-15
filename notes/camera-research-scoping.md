@@ -1,7 +1,7 @@
 # Camera & Applications Research — Scoping Document (Fable 5 Plan agent, 2026-07-14)
 
-> Produced by the Fable 5 Plan agent before the deep-research workflow launch. This is the
-> decision framework the research report is built on. Resume state: see `RESEARCH-RESUME.md`.
+> Produced by the Fable 5 Plan agent before the completed deep-research workflow. This is the
+> decision framework behind `CAMERA-RESEARCH-REPORT.md`.
 
 ## A. Camera Requirements Spec
 
