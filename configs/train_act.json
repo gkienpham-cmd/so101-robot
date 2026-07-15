@@ -1,0 +1,36 @@
+{
+  "dataset": {
+    "repo_id": "gkienpham/beansight-vn-coffee-v1",
+    "revision": "REPLACE_WITH_IMMUTABLE_DATASET_REVISION",
+    "eval_split": 0.1,
+    "return_uint8": true
+  },
+  "policy": {
+    "type": "act",
+    "device": "cuda",
+    "push_to_hub": true,
+    "repo_id": "gkienpham/beansight-vn-act-v1",
+    "private": true,
+    "license": "apache-2.0",
+    "input_features": null,
+    "output_features": null,
+    "chunk_size": 100,
+    "n_action_steps": 100
+  },
+  "output_dir": "outputs/train/beansight_act_v1",
+  "job_name": "beansight_act_v1",
+  "seed": 1000,
+  "num_workers": 4,
+  "batch_size": 8,
+  "steps": 7500,
+  "log_freq": 100,
+  "eval_steps": 500,
+  "max_eval_samples": 1000,
+  "save_checkpoint": true,
+  "save_freq": 1500,
+  "wandb": {
+    "enable": true,
+    "project": "beansight-vn",
+    "notes": "Five-epoch target; replace steps after dataset QA reports the final frame count."
+  }
+}

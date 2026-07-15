@@ -1,0 +1,12 @@
+{
+  "top_match": "C920",
+  "wrist_match": "C270",
+  "width": 640,
+  "height": 480,
+  "fps": 30,
+  "fourcc": "MJPG",
+  "duration_s": 1800,
+  "min_effective_fps": 27.0,
+  "max_failed_read_rate": 0.01,
+  "max_estimated_dropped_rate": 0.1
+}

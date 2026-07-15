@@ -1,0 +1,41 @@
+{
+  "experiment_id": "beansight-v1-YYYYMMDD",
+  "git_sha": "REPLACE_WITH_GIT_SHA",
+  "lerobot_revision": "30da8e687a6dfc617fcd94afc367ac7071c376ce",
+  "protocol_id": "beansight-v1-frozen",
+  "dataset_revision": "REPLACE_WITH_HF_COMMIT",
+  "policy_revision": "REPLACE_WITH_HF_COMMIT",
+  "config_paths": {
+    "record": "configs/generated/record_coffee.json",
+    "perception": "configs/perception.json",
+    "policy": "configs/train_act.json",
+    "rollout": "configs/rollout.json",
+    "evaluation": "configs/evaluation.json"
+  },
+  "calibration_ids": {
+    "follower": "beansight_follower",
+    "leader": "beansight_leader"
+  },
+  "cameras": {
+    "top": {
+      "model": "Logitech C920",
+      "resolution": "640x480",
+      "fps": 30,
+      "settings_locked": true
+    },
+    "wrist": {
+      "model": "Logitech C270",
+      "resolution": "640x480",
+      "fps": 30
+    }
+  },
+  "seed": 1000,
+  "hardware": {
+    "robot": "WitMotion Pro DIY SO-101",
+    "host": "Apple M1"
+  },
+  "gpu": null,
+  "wandb_run": null,
+  "hf_artifacts": [],
+  "cost_usd": 0.0
+}

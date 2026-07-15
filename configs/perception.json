@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "image_key": "observation.images.top",
+  "color_order": "RGB",
+  "roi": {
+    "x": 160,
+    "y": 80,
+    "width": 320,
+    "height": 320
+  },
+  "reject_threshold": 0.8,
+  "baseline": {
+    "type": "dark_pixel_fraction",
+    "luminance_threshold": 55,
+    "reject_fraction": 0.18,
+    "status": "placeholder_until_calibrated_under_fixed_lighting"
+  },
+  "transfer_model": {
+    "architecture": "resnet18",
+    "image_size": 224,
+    "classes": [
+      "acceptable",
+      "visible_reject"
+    ]
+  }
+}

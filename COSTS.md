@@ -1,6 +1,6 @@
 # COSTS.md — Cloud & Hardware Spend Tracker
 
-Budget target (cloud): **$8–40 total**. vast.ai balance at project start: **$9.00**.
+Budget target for additional BeanSight cloud work: **about $10 unless a measured result justifies more**. vast.ai balance at project start: **$9.00**.
 Rule: justify every GPU run before launching; prefer 5k-step validation runs before full runs; DESTROY (not pause) vast.ai instances when done.
 
 ## Cloud spend log
@@ -14,9 +14,9 @@ Rule: justify every GPU run before launching; prefer 5k-step validation runs bef
 | Week | Item | Est. cost |
 |------|------|-----------|
 | 1 | ~~ACT dry run~~ DONE: $0.22 actual (4090, ~40 min incl. setup) — estimates below likely similarly padded | $2–3 est |
-| 3 | ACT full training on own dataset (~3 hrs, 5090) | $2–3 |
+| 3 | ACT full training on own dataset (4090, ~five data epochs) | $2–3 |
 | 3 | Retrain after targeted data iteration | $2–3 |
-| 4 | SmolVLA fine-tune (~4 hrs, A100 or 5090) | $3–5 |
+| 4 | Optional SmolVLA fine-tune (4090, batch 4, ~20k steps; only after the ACT gate) | $3–5 |
 | — | **Total projected** | **$9–14** |
 
 ⚠️ $9 balance covers Week 1 + roughly one more run. Top up ~$10 before Week 3 training.
