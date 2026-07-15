@@ -26,6 +26,8 @@ def test_record_config_preserves_semantic_keys_and_safety_limit():
     assert config["robot"]["max_relative_target"] == 10.0
     assert config["dataset"]["push_to_hub"] is False
     assert config["dataset"]["private"] is True
+    assert config["dataset"]["streaming_encoding"] is True
+    assert config["dataset"]["encoder_threads"] == 2
 
 
 def test_failed_camera_report_cannot_create_recording_config():

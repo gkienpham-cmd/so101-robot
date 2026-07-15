@@ -54,13 +54,15 @@ is in [docs/evaluation_protocol.md](docs/evaluation_protocol.md).
   trial logging, and summaries
 - `configs/`: camera, perception, ACT, optional SmolVLA, rollout, and evaluation contracts
 - `patches/`: the pinned LeRobot v0.6.0 macOS encoding workaround
-- `docs/`: five maintained guides for hardware/safety, data/labels, execution/portfolio, evaluation,
-  and the end-to-end experiment
+- `docs/`: the maintained hardware, data, execution, evaluation, runbook, and Vietnam-opportunity
+  guides
 - `tests/`: deterministic tests that do not require the arm or cameras
 - `results/`: small hardware-generated summaries and figures; never invented placeholder results
 
 The older research notes and the proven simulation-to-Hugging-Face/Vast.ai pipeline remain in
-[RETRO.md](RETRO.md). They explain the path to this project, but the flagship work is BeanSight VN.
+[RETRO.md](RETRO.md). The wider idea bank is preserved in
+[docs/vietnam_applications.md](docs/vietnam_applications.md). They explain the path and alternatives,
+but the flagship work is BeanSight VN.
 
 ## Install and verify
 

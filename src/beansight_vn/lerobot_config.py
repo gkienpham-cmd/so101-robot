@@ -67,7 +67,10 @@ def build_record_config(
             "num_image_writer_processes": 0,
             "num_image_writer_threads_per_camera": 4,
             "video_encoding_batch_size": 1,
-            "streaming_encoding": False,
+            # Avoid the post-episode multi-camera process pool that collides
+            # with duplicate cv2/av libavdevice builds on this macOS setup.
+            "streaming_encoding": True,
+            "encoder_threads": 2,
         },
         "display_data": True,
         "display_mode": "rerun",

@@ -72,8 +72,10 @@ controller, voltage, current, barrel, and polarity records agree.
 
 ## 4. Resolve cameras and serial ports
 
-Grant the terminal Camera, Accessibility, and Input Monitoring permissions in macOS System Settings.
-Keep the C920 and C270 on separate physical Mac ports where possible.
+Grant the terminal Camera permission in macOS System Settings. Accessibility and Input Monitoring may
+also be needed for pynput-based simulation controls; the v0.6 terminal fallback only needs the
+launching terminal to stay focused. Keep the C920 and C270 on separate physical Mac ports where
+possible.
 
 Run the semantic camera soak from the BeanSight environment:
 
@@ -134,10 +136,16 @@ cd ~/robotics/lerobot
 lerobot-record --config_path=/ABSOLUTE/PATH/TO/configs/generated/record_coffee.json
 ```
 
-The generator refuses a failed camera report and preserves semantic `top`/`wrist` keys. Record 50
-block episodes over the five-position grid, then pass the 20-grasp bean gate in
+The generator refuses a failed camera report, preserves semantic `top`/`wrist` keys, and enables
+streaming video encoding with two encoder threads to bypass the crash-prone post-episode process pool.
+Record five smoke-test episodes and inspect the first completed save. Then record 50 block episodes
+over the five-position grid and pass the 20-grasp bean gate in
 [evaluation_protocol.md](evaluation_protocol.md). Collect 50–75 real-bean demonstrations with the
 exact task string from the generated config.
+
+LeRobot v0.6 stamps a new non-resume dataset ID with `_YYYYMMDD_HHMMSS`. Copy the actual ID from the
+recording log and use that immutable name for QA, replay, upload, and training. To continue an
+interrupted local dataset, pass `--resume=true`, the stamped repo ID, and its explicit local root.
 
 ## 7. Gate and publish the dataset
 
@@ -213,7 +221,8 @@ specific measured result justifies more. Destroy Vast.ai instances after use and
 
 - No camera: check the data cable and terminal Camera permission.
 - Black frame: check lens, privacy shutter, exposure, and permission before changing code.
-- Recording hotkeys fail: grant Accessibility and Input Monitoring, then fully restart the terminal.
+- Recording hotkeys fail: focus the launching terminal and use `n`, `r`, or `q`; grant Accessibility
+  and Input Monitoring only if the active input backend still requires them.
 - Incorrect status packet or missing motor model: inspect the USB cable, adapter jumpers, power, and
   current port. Do not try a different supply by guesswork.
 - cv2/av Objective-C collision warning: retain the versioned patch and watch the real recording path

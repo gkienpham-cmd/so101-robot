@@ -37,6 +37,27 @@ Ask separately for permission to publish anonymized labels, bean photographs, th
 interview quotations. A yes to one is not a yes to the others. Contact details and signed permission
 remain outside the public repository.
 
+### Vietnamese phone opener
+
+> Chào anh/chị, em là Kiên, sinh viên ngành kỹ thuật. Em đang làm một đồ án robot và thị giác máy
+> tính: camera nhận diện hạt cà phê nhân bị lỗi rõ ràng như hạt đen hoặc hạt vỡ, rồi một cánh tay robot
+> nhỏ gắp hạt lỗi ra. Đây là dự án học tập, quy mô để bàn. Em muốn mua một lượng nhỏ cà phê nhân xanh
+> robusta và đặc biệt là hạt được loại ra trong khâu lựa tay. Bên mình có thể hỗ trợ em không ạ?
+
+If there is no separated defect lot, ask for `nhân xanh chưa phân loại / chưa bắn màu` (unsorted,
+not color-sorted). Also ask for origin, screen size, minimum quantity, and whether an experienced
+sorter can review approximately 100 beans for a fee.
+
+| Available sample | Buy | Experimental use |
+|---|---|---|
+| Separated defect lot | 1 kg good Robusta plus 0.5–1 kg rejects | Balanced capture and clearly labeled examples |
+| Unsorted or low-grade Robusta | About 2 kg | Realistic defect prevalence; blind hand labeling required |
+| Sorted clean beans only | 1 kg clean plus a supplier referral | Acceptable class; do not manufacture black-defect labels |
+
+Useful terms: `cà phê nhân xanh` (green coffee), `cà phê vối` (Robusta), `hạt lỗi / hàng loại`
+(rejects), `hạt đen` (black), `hạt vỡ` (broken), `lựa tay` (hand sorting), `chưa phân loại`
+(unsorted), `sàng` (screen size), and `độ ẩm` (moisture).
+
 ## Image capture
 
 Use the final C920 mount, fixed lamp, matte surface, and inspection nest. Lock focus, exposure, and

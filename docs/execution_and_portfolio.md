@@ -3,6 +3,14 @@
 Each day ends with an artifact: a signed inventory, soak report, drawing, manifest, QA report,
 immutable revision, trial log, figure, or video. “Worked on training” is not a deliverable.
 
+## What pre-arrival training can prove
+
+No manipulation checkpoint trained before arrival will drive this particular arm: calibration,
+camera geometry, gripper mechanics, and the real workcell are missing. Public SO-101 datasets may
+smoke-test loaders and configs, but they are not deployment data. Before arrival, spend model time on
+the coffee perception baseline and use the already-proven simulation→Hub→4090→W&B→M1 pipeline in
+`RETRO.md` as the infrastructure check.
+
 ## Before arrival: days −5 to −1
 
 - **−5:** repository and LeRobot patch frozen; electrical inventory ready; seller asked to confirm

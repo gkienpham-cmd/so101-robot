@@ -17,6 +17,23 @@ document is the single arrival and power-up gate.
 
 The visible Shopee accessories total 3,435,151₫, excluding the arm.
 
+## Unboxing and kit identity
+
+Film one continuous unboxing before confirming receipt. Photograph the shipping label, sealed box,
+every tray, and every component count so a missing-part claim has evidence.
+
+The expected full Pro DIY kit contains:
+
+- 12 servos: six follower units and six leader units
+- a mixed-ratio leader set: three 1/147, two 1/191, and one 1/345, subject to the actual invoice
+- six identical follower servos whose voltage and gear ratio must match the ordered Pro variant
+- two bus-servo controller boards, two USB-C data cables, both labeled supplies, clamps, printed
+  structural parts, screws, and enough three-wire daisy-chain leads
+
+Read every servo and supply label rather than inferring identity from resistance or connector fit.
+Inspect thin gripper pieces for cracks and count parts against the seller's packing list before the
+buyer-protection window closes.
+
 ## Add before the arm arrives
 
 - USB-C 5 V/3 A hub supply and cable if absent
@@ -54,6 +71,22 @@ does not authorize power-up; the physical labels and polarity must agree first.
 Once confirmed, put a different permanent color on each arm, supply, barrel connector, and USB
 cable. Never swap them. Connect only one servo while assigning IDs.
 
+## Motor IDs and assembly order
+
+Before assembling either arm:
+
+1. Sort and label the six leader and six follower motors by printed model and intended joint.
+2. Check the controller's required bus-channel jumper position against its documentation.
+3. Connect one motor only, assign its ID, disconnect it, and continue. Never flash a daisy chain.
+4. Use the stable joint mapping: shoulder pan 1, shoulder lift 2, elbow flex 3, wrist flex 4,
+   wrist roll 5, gripper 6.
+5. After all six IDs pass individually, connect the chain and verify that each motor responds once.
+6. Assemble without forcing printed threads or sharply bending a three-wire lead. Do not remove
+   internal servo gears unless the exact kit instructions explicitly require it.
+
+The follower and leader use different motors and supplies. Never substitute one arm's servo because
+the housing looks the same.
+
 ## Workcell layout
 
 Record dimensions in millimetres and photograph a ruler in the scene:
@@ -74,6 +107,9 @@ If any mark moves, start a new session ID. Do not quietly combine the data.
 - Route the wrist cable with a slack loop and strain relief. Check the full reachable range by hand
   before enabling torque.
 - Start with a low relative-target limit, slow motions, and an empty workspace.
+- Start autonomous work from a low pose over a soft surface: torque disable or disconnect may let the
+  arm fall.
+- Never force a joint by hand while torque is enabled.
 - Keep fingers, hair, jewelry, and loose clothing outside the reachable volume while torque is on.
 - One person operates; observers stay outside the marked boundary.
 - Never run unattended. A safety stop ends the trial and receives the `safety_stop` code.

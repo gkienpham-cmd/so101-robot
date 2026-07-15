@@ -27,4 +27,8 @@ See SO-101 Plan.md Part 1F for the full BOM. Log actual landed costs (incl. VN c
 
 | Date | Item | Seller | Cost (VND) | Cost (~$) | Notes |
 |------|------|--------|-----------|-----------|-------|
-| 2026-07-15 | Logitech C920 Pro (overhead cam) + C270 (wrist cam), one Shopee checkout | LOGITECH OFFICIAL STORE (Mall) / Trọng Ân Audio Tp.HCM | 2,289,000 (after voucher; 2,637,376 list) — PAID 2026-07-15 | ~$88 | Recommended-tier pair from CAMERA-RESEARCH-REPORT.md. C270 needs lens refocus mod before wrist mounting; lock C920 AF in Logi Tune. |
+| 2026-07-15 | Logitech C920 Pro (overhead cam) + C270 (wrist cam), one Shopee checkout | LOGITECH OFFICIAL STORE (Mall) / Trọng Ân Audio Tp.HCM | 2,288,736 (C920 1,830,360 + C270 458,376, after vouchers) — PAID, in transit | ~$88 | Recommended-tier pair from CAMERA-RESEARCH-REPORT.md. Test C270 focus at the mounted wrist distance and refocus only if it fails; lock C920 settings. |
+| 2026-07-15 | ULANZI LS08 clamp boom arm (overhead cam mount, 1/4-20) | Ulanzi_Việt Nam (Shopee) | 742,000 — PAID, ETA Jul 16–17 | ~$29 | Rigid lockable arm; set-once framing for the overhead C920. |
+| 2026-07-15 | Orico PW7U 7-port USB 3.0 powered hub (USB-C 100cm host cable) | Orico Official Mall.VN (Shopee Mall) | 296,415 — PAID, ETA ≤Jul 20 | ~$11 | Hosts 2 cams + 2 servo adapters. ON ARRIVAL: confirm AC adapter in box + no dropouts with all 4 devices live. |
+| 2026-07-15 | 25× wooden color blocks, 3 cm | Đồ Chơi Gỗ Việt Nam KEN (Shopee) | 108,000 — PAID, ETA Jul 16–17 | ~$4 | Month-1 task objects (25–40 mm target ✓). |
+| — | **Peripherals subtotal** | — | **3,435,151** | **~$132** | Within report estimate (3.2–3.6M). Still open: white tray + bowl/reject cups (~50k), M3×10/12 spare screws (~20k), high-CRI lamp (deferred to coffee phase), spare follower servos (optional, ProE 790k ea). |
