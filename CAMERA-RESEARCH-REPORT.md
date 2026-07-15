@@ -158,3 +158,38 @@ Three-vote adversarial panel on load-bearing claims, plus per-angle source check
 7. **Camera order discipline** — fix and document overhead-vs-wrist config order before recording demo #1; inference order must match training order (issue #1763).
 8. **Colored cubes & gooseneck mount** — both were unresolved on VN marketplaces; run the in-app search strings (`khối gỗ màu 30mm`, `giá đỡ camera gooseneck kẹp bàn ren 1/4`) and accept substitutes (painted wood cubes; generic clamp arm).
 9. **Semester-2 decision point** — before buying the inspection camera, re-test whether the C920 (focus-locked, moved to ~15 cm over the tray) already hits ≥8 px/mm sharp — it may make the third camera purchase cheaper or unnecessary.
+
+---
+
+## 9. Gap analysis — what §6 neglects (added 2026-07-15)
+
+Critical re-read of the eight verdicts. The verdicts stand, but five gaps sit between "GO" and "working," concentrated in the flagship. Ordered by how much each hurts if discovered late.
+
+### Gap 1 — The detector→policy handoff is hand-waved
+§6.1's thesis is "decouple discrimination from the policy," but it never specifies *how the policy learns which bean to pick*. An IL policy consumes images and emits joint actions — it cannot be handed coordinates. Three workable architectures:
+
+- **V1 — salient target, single destination.** Train "pick the dark bean into the fixed reject cup" with sparse good beans as distractors. Skirts the 0–10% color-sort collapse because that benchmark failure mode is *branching* (destination varies by color); here the target is visually salient and the destination fixed. Closest to existing red-cube-among-green community demos. **Recommended v1.**
+- **V2 — singulated inspection zone.** Beans presented one at a time in a fixed zone; detector rules defect/good; one policy ("zone → reject cup") runs only on defects. Zero discrimination anywhere near the policy — the most faithful version of the decoupling thesis.
+- **V3 — coordinate-conditioned classical reach.** Detector outputs bean XY; camera-to-robot calibration maps to scripted IK reach + grasp; no IL in the pick. Fastest demo, weakest portfolio narrative.
+
+Decide before collecting a single coffee demo; document the choice either way.
+
+### Gap 2 — No end-effector plan for 8–12 mm beans
+Stock SO-101 gripper jaws are cube-sized. Month-friendly fix: **printed/silicone fingertip inserts** (v0: heat-shrink or silicone tape over stock fingers). Stretch goal: **micro suction end-effector** — mini diaphragm pump + tubing + needle tip, ~200,000–400,000 VND on Shopee — beans are an ideally suction-friendly object class. This is the *only* place a microcontroller enters the project (Arduino Nano/ESP32, ~50,000–150,000 VND, driving pump/valve — actuation only, never vision; the M1 Pro runs all perception).
+
+### Gap 3 — Singulation
+Real sorters present beans one at a time (vibratory feeders); §5 has trays but no presentation mechanism. V1: manual sparse scatter (free). V2: 3D-printed inclined chute with a single-bean pocket — a weekend design on the same print service as the arm parts, and a hardware-software co-design detail that reads well to robotics labs.
+
+### Gap 4 — The dataset contribution vanished
+The use-case research named an open-source Vietnamese agricultural manipulation dataset as the flagship narrative; this report dropped it. The cited public coffee-defect datasets (USK-Coffee etc.) are overwhelmingly **arabica**; Vietnam is the #1 **robusta** exporter, and a controlled-lighting robusta defect image dataset barely exists. It can be started in month-1 buffer days with only the C920 + lamp + 1 kg of beans — no arm required, publishable on HF Hub standalone, and it de-risks the detector early.
+
+### Gap 5 — Metrics decomposition
+One success band (55–75%) is not publication-grade. Required split: **detector precision/recall per defect class** (black/sour/broken; likely de-scope insect damage per the §2 sub-pixel caveat) × **grasp success on flagged beans** = system rate; plus beans/minute vs. a human baseline, and an explicit scripted-retry policy for failed grasps (benchmark recovery is only 3.2–30.8%, so miss-handling is not a detail).
+
+### Smaller per-idea notes
+- **Pharmacy (6.2):** blister foil is specular — same lighting discipline as beans; test glare early.
+- **Desk organization (6.3):** choose non-rolling objects (markers with clips, not round pens).
+- **STEM (6.4):** the neglected asset is *Vietnamese-language* curriculum material — ties to the builder's teaching history; nobody else is writing it.
+
+### Cross-cutting — geography flips the purchase timing
+"Semester 2" happens in **Boston**, not HCMC. Items the report deferred that must instead be bought **before mid-August departure**: green robusta beans (store for months, fly fine in checked luggage, near-unobtainable with natural defects in Massachusetts) and plausibly the OV5693 module (950,000 VND same-week at ProE vs. a ~$40 ELP AliExpress import with US shipping friction later). The high-CRI lamp can be bought anywhere and stays deferred.
