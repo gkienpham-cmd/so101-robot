@@ -6,18 +6,18 @@
         "reported_fps": 30.00003,
         "width": 640
       },
-      "attempted_reads": 8410,
+      "attempted_reads": 53837,
       "device_name": "HD Pro Webcam C920",
-      "duration_s": 1800.8753933329135,
-      "effective_fps": 3.8059268427868154,
-      "estimated_dropped_frames": 47172.261799987406,
-      "estimated_dropped_rate": 0.8731357719071061,
-      "failed_read_rate": 0.1850178359096314,
-      "failed_reads": 1556,
+      "duration_s": 1800.0236840420403,
+      "effective_fps": 29.909050907100518,
+      "estimated_dropped_frames": 163.71052126120776,
+      "estimated_dropped_rate": 0.0030316364299827407,
+      "failed_read_rate": 0.0,
+      "failed_reads": 0,
       "index": 0,
-      "longest_frame_gap_s": 0.17079741705674678,
-      "mean_brightness": 94.09743564290713,
-      "passed": false,
+      "longest_frame_gap_s": 0.17277770803775638,
+      "mean_brightness": 95.39347169757511,
+      "passed": true,
       "requested": {
         "fourcc": "MJPG",
         "fps": 30.0,
@@ -26,7 +26,7 @@
       },
       "sample_image": "results/camera_preflight/top.jpg",
       "semantic_name": "top",
-      "successful_reads": 6854
+      "successful_reads": 53837
     },
     "wrist": {
       "actual": {
@@ -34,18 +34,18 @@
         "reported_fps": 30.00003,
         "width": 640
       },
-      "attempted_reads": 4478,
+      "attempted_reads": 53974,
       "device_name": "C270 HD WEBCAM",
-      "duration_s": 1800.8079251669114,
-      "effective_fps": 1.5415303104814473,
-      "estimated_dropped_frames": 51248.23775500734,
-      "estimated_dropped_rate": 0.9486156563172851,
-      "failed_read_rate": 0.3800803930326038,
-      "failed_reads": 1702,
+      "duration_s": 1800.2239912919467,
+      "effective_fps": 29.98182462909245,
+      "estimated_dropped_frames": 32.719738758401945,
+      "estimated_dropped_rate": 0.0006058456969183473,
+      "failed_read_rate": 0.0,
+      "failed_reads": 0,
       "index": 1,
-      "longest_frame_gap_s": 0.10950429202057421,
-      "mean_brightness": 123.42093910845146,
-      "passed": false,
+      "longest_frame_gap_s": 0.3399415829917416,
+      "mean_brightness": 123.57392259819329,
+      "passed": true,
       "requested": {
         "fourcc": "MJPG",
         "fps": 30.0,
@@ -54,10 +54,10 @@
       },
       "sample_image": "results/camera_preflight/wrist.jpg",
       "semantic_name": "wrist",
-      "successful_reads": 2776
+      "successful_reads": 53974
     }
   },
-  "passed": false,
+  "passed": true,
   "schema_version": "1.0",
   "thresholds": {
     "max_estimated_dropped_rate": 0.1,

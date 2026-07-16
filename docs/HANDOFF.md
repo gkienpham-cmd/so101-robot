@@ -8,7 +8,7 @@ if it conflicts with [AGENTS.md](../AGENTS.md) on safety or evidence rules, AGEN
 
 | Workstream | Status |
 |---|---|
-| **A. BeanSight VN flagship** | **Active.** Software layer complete: typed records, confidence-gated routing, unarmed-by-default controller, camera preflight soak, dataset QA, record-config generator, ACT/SmolVLA training configs, frozen eval protocol, Wilson-CI metrics, trial logging/comparison, 11 deterministic test modules, green CI. **The physical arm has not arrived** (expected ~Jul 19–25, 2026). No physical success rate is claimed anywhere, deliberately. |
+| **A. BeanSight VN flagship** | **Active.** Software layer complete: typed records, confidence-gated routing, unarmed-by-default controller, camera preflight soak, dataset QA, record-config generator, ACT/SmolVLA training configs, frozen eval protocol, Wilson-CI metrics, trial logging/comparison, 11 deterministic test modules, green CI. The 30-minute C920+C270 direct-port soak passed on Jul 16. **The physical arm has not arrived** (expected ~Jul 19–25, 2026). No physical success rate is claimed anywhere, deliberately. |
 | **B. Camera & accessory sourcing** | **Complete.** C920 + C270 pair bought (~$88, in transit at handoff), Ulanzi LS08 boom arm, Orico PW7U powered hub, 25 wooden blocks. Peripherals ≈ 3,435,151₫ (~$132). Full research in [CAMERA-RESEARCH-REPORT.md](../CAMERA-RESEARCH-REPORT.md). Still open to buy: white tray + reject cups, spare M3 screws, high-CRI lamp (deferred to coffee phase). |
 | **C. Vietnam applications idea bank** | **Parked backlog.** 12 adversarially-scored SO-101 application concepts in [vietnam_applications.md](vietnam_applications.md). Not on the flagship schedule; the bottle-cap sorter is the designated optional post-flagship transfer test. |
 
@@ -26,11 +26,16 @@ Four failures were hit and fixed on the way (details in [RETRO.md](../RETRO.md))
 breakage, record-config schema drift (source is the spec), the macOS Accessibility silent-keyboard
 trap, and the parallel-encoding `BrokenProcessPool` crash (fix versioned in `patches/`).
 
+**Proven physical camera gate:** C920=`top` and C270=`wrist` ran concurrently on separate direct Mac
+ports for 30 minutes at 640×480/30 with zero failed reads. Effective rates were 29.91 and 29.98 fps;
+the canonical report is `results/camera_preflight/camera_preflight.json`. This qualifies the
+direct-port camera topology only.
+
 **Untested by design — sim cannot reach these (Week-2 carry-over risks):**
 
 - Real-arm calibration and one-at-a-time motor ID assignment.
 - macOS USB serial behavior with the real controller boards.
-- Two physical cameras at 640×480/30 through one powered hub (USB bandwidth).
+- Two physical cameras plus both controller boards through one powered hub (four-device USB load).
 - The parallel-encoding crash may resurface in the real-arm record path (workaround known).
 - Teleop latency/feel — no sim proxy for leader-follower mechanics.
 
@@ -41,8 +46,9 @@ pass before the next phase spends money or motion.
 
 ### Phase 1 — Pre-arrival (NOW, days until the kit lands)
 
-1. When the Shopee camera delivery lands: run the **30-minute dual-camera soak**
-   (`beansight-camera-preflight`, runbook §4). This is the only unfinished Week-1 item.
+1. **Complete Jul 16:** the 30-minute dual-camera direct-port soak passed
+   (`beansight-camera-preflight`, runbook §4). Re-resolve semantic identity after a replug/reboot and
+   validate the final mounted views before recording; do not repeat the pre-arrival soak now.
 2. Freeze workcell geometry: nest, lamp, cup, bins, five-position block grid, millimetre drawing.
 3. Roaster interview + obtain two Robusta lots with **blind labels** (≥50 visible rejects). Phone
    and in-store scripts are in [data_and_labeling.md](data_and_labeling.md).
