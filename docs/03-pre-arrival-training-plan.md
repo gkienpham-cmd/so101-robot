@@ -128,15 +128,15 @@ The order is the **Pro DIY Kit** (buyer-confirmed): 12 servos, 2 driver boards, 
 
 | Item | Where / price (VND) | USD | Notes |
 |---|---|---|---|
-| 2× 26 cm USB ring lights with stands (đèn livestream) | Shopee, ~200,000–400,000 each | $8–15 ea | Two small beat one big (kill shadows from both sides). White mode, fixed brightness, **tape the dial**. Refs: https://www.binai.vn/products/ring-light-26cm |
+| 2× 26 cm USB ring lights with stands (đèn livestream) | ✅ **BOUGHT Jul 16** — 2× "Đèn 26cm + Chân Đèn 2m1" (Phụ Kiện Vu Phat, Shopee), 390,000 total after bundle discount | $15 total | USB, 3 color modes, dimmable, 2.1 m stands. On arrival: verify same model/batch, set both to white + same level, **tape the dials**. |
 | A2/A1 self-healing cutting mat or matte desk pad | Shopee, ~100,000–250,000 | $4–10 | Solid mid-tone; not pure white (auto-exposure clipping), not the object colors. |
-| Precision screwdriver set (PH0/PH1 for M2×6, PH1/PH2 for M3×6) | Shopee 24-in-1 ~50,000–150,000; Xiaomi electric ~350,000–450,000 | $2–6 / $14–17 | Small flathead doubles as support-material scraper. |
-| Masking tape (băng keo giấy) + colored electrical tape | ~10,000 + ~5,000–10,000/roll | <$1 | Start-zone markers + **PSU labels** (see §3.5). |
-| Zip ties 2.5×100 mm ×100 | ~10,000–20,000 | <$1 | Cable routing along the follower arm. |
+| Precision screwdriver set (PH0/PH1 for M2×6, PH1/PH2 for M3×6) | ✅ **COVERED** — 115-in-1 precision bit set already owned (109,000, Shopee) | $4 | Bit range covers PH0–PH2 + flathead (support scraper). Caveat: precision handle = low torque; drive the M3×6 screws patiently, don't cam out. |
+| Masking tape (băng keo giấy) + colored electrical tape | Electrical: ✅ **BOUGHT Jul 16** — 6-color multipack (29,760, Shopee). Masking tape: ⬜ still to buy, ~10,000 | <$2 | Electrical: red=12V FOLLOWER, blue/white=5V LEADER, yellow=object bands, green/white=camera-port flags. Masking: start-zone markers + light-dial tape (see §3.5). |
+| Zip ties 2.5×100 mm ×100 | ✅ **BOUGHT Jul 16** — 100× black (16,000, Shopee) | <$1 | Cable routing along the follower arm. |
 | Side cutters (kìm cắt) | ~30,000–60,000 | $1–2.50 | |
 | Digital kitchen scale | ~60,000–120,000 | $2.50–5 | Verify task objects stay under ~250 g payload. |
 | 4× C-clamps (kẹp chữ C) — optional backup | ~25,000–60,000 each | $1–2.50 ea | The Pro DIY Kit includes 4 clamps; skip unless yours arrive missing/flimsy. |
-| Short, decent USB cables for cameras (no extensions) | ~50,000–100,000 | $2–4 | A documented SO-101 dual-cam failure was a cheap extension cable, not software (https://hackaday.io/project/204187/log/243773-debugging-dual-camera-vision-system-for-so-101-robotic-manipulation-platform). |
+| ~~Short USB cables for cameras~~ → 2× USB-A(F)→USB-C(M) adapters (Ugreen/Baseus) | ⬜ ~30,000–80,000 each | $2–6 | NOT NEEDED as cables: the bought C920/C270 have captive 1.5 m USB-A cables. Buy the 2 adapters instead as the direct-port fallback if the Orico hub fails the dual-cam bandwidth test (§3.3). Never add extension cables — a documented SO-101 dual-cam failure was a cheap extension (https://hackaday.io/project/204187/log/243773-debugging-dual-camera-vision-system-for-so-101-robotic-manipulation-platform). |
 
 **Task objects (Bách hoá Xanh + Shopee):**
 
@@ -146,7 +146,9 @@ The order is the **Pro DIY Kit** (buyer-confirmed): 12 servos, 2 driver boards, 
 | 2× Mì ly Omachi xốt bò hầm 113g | ~17,000–20,000 VND | Level-2 object (heavier/taller). |
 | 500 ml PET bottles (Aquafina) | ~4,600–4,800 VND/bottle by the case | **Full = 500 g+ = over payload.** Fill to 150–200 ml; wrap a colored tape band (transparent PET is hard at 640×480). |
 | Bottle caps | free / craft bags ~15,000–30,000 per 50 | Precision-grasp drills (cap-in-cup, cap sorting) — matches the small gripper jaw. |
-| 3–5 cm foam cubes / khối gỗ (~30,000–80,000) + silicone muffin cups as drop targets (~20,000–40,000) | Shopee | Classic pick-place starter before the noodle cup. |
+| 3–5 cm foam cubes / khối gỗ + silicone muffin cups as drop targets (~20,000–40,000) | Blocks: ✅ **BOUGHT Jul 15** — 25× 3 cm wooden color blocks (108,000, Shopee). Muffin cups: ⬜ | Classic pick-place starter before the noodle cup. |
+
+**Purchase status (as of Jul 16):** ✅ ring lights ×2 + stands, electrical tape, zip ties, wooden blocks, screwdriver set (prior), C920+C270 cameras, ULANZI boom arm, Orico powered hub. ⬜ Still open: masking tape, matte mat, side cutters, kitchen scale, 2× USB-A→C adapters, muffin cups, mì ly cups + PET bottles + caps (BHX run), spare gripper servos + spare driver board (AliExpress — longest lead, order first).
 
 **Total: roughly 1.2–1.8M VND (~$46–70)** excluding the possible ~$260 servo kit.
 
