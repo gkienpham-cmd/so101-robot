@@ -118,8 +118,9 @@ agent can add the most value on:
 ## 6. Where everything lives
 
 - **This branch/main** — the flagship repo (you are here).
-- Git branch `bottle-cap-sorting-vision-eebb2c` — bottle-cap plastic-sorting deep research
-  (223 claims, 27 verdicts, its own handoff doc). Optional post-flagship material; not merged on purpose.
+- `research/bottle_cap_sorting/` (on main) — the salvaged bottle-cap plastic-sorting deep research
+  (223 claims, 27 verdicts, its own HANDOFF/RESUME docs). Optional post-flagship material; the
+  original working branch was `bottle-cap-sorting-vision-eebb2c`.
 - Git branch `so101-vietnam-applications-ad547b` — raw research state behind
   vietnam_applications.md (research-resume file, pre-arrival plan, arrival guide drafts).
 - Git branch `robotic-arm-camera-research-15819e` — camera research working branch
