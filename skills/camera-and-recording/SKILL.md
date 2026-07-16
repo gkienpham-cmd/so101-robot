@@ -77,8 +77,10 @@ lerobot-record --config_path=/ABSOLUTE/PATH/TO/configs/generated/record_coffee.j
 2. **`BrokenProcessPool` on first episode save**: cv2 and av bundle duplicate ffmpeg dylibs;
    parallel per-camera encoding aborts. Fix is serial encoding —
    `patches/lerobot-v0.6.0-macos-serial-encoding.patch` (i.e. `save_episode(parallel_encoding=False)`).
-   Verify with `git apply --check --unidiff-zero <patch>` on the pinned checkout. Watch for the
-   same crash in the real-arm record path.
+   On a clean checkout, verify applicability with `git apply --check --unidiff-zero <patch>`.
+   On an already-patched checkout, verify presence with
+   `git apply --reverse --check --unidiff-zero <patch>`. Finish with `git diff --check`. Watch for
+   the same crash in the real-arm record path.
 
 Other quick checks: no camera → data cable + Camera permission; black frame → lens/privacy
 shutter/exposure/permission before touching code.
