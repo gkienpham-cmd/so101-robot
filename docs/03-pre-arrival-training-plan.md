@@ -129,7 +129,7 @@ The order is the **Pro DIY Kit** (buyer-confirmed): 12 servos, 2 driver boards, 
 | Item | Where / price (VND) | USD | Notes |
 |---|---|---|---|
 | 2× 26 cm USB ring lights with stands (đèn livestream) | ✅ **BOUGHT Jul 16** — 2× "Đèn 26cm + Chân Đèn 2m1" (Phụ Kiện Vu Phat, Shopee), 390,000 total after bundle discount | $15 total | USB, 3 color modes, dimmable, 2.1 m stands. On arrival: verify same model/batch, set both to white + same level, **tape the dials**. |
-| A2/A1 self-healing cutting mat or matte desk pad | Shopee, ~100,000–250,000 | $4–10 | Solid mid-tone; not pure white (auto-exposure clipping), not the object colors. |
+| A1 self-healing cutting mat (matte, mid-tone) | ✅ **BOUGHT Jul 16** — A1 green 90×60 cm, 3 mm PVC (Ướt DIY, Shopee), 315,000, ETA Jul 19–20 | $12 | **Green, not black** — black drags webcam auto-exposure. Covers the full ~38 cm reach arc + bins on the 120×60 desk. Ships rolled: lie flat overnight. Tape corners so it can't creep; the mat IS the workspace, zone markers go on it, not the desk. |
 | Precision screwdriver set (PH0/PH1 for M2×6, PH1/PH2 for M3×6) | ✅ **COVERED** — 115-in-1 precision bit set already owned (109,000, Shopee) | $4 | Bit range covers PH0–PH2 + flathead (support scraper). Caveat: precision handle = low torque; drive the M3×6 screws patiently, don't cam out. |
 | Masking tape (băng keo giấy) + colored electrical tape | Electrical: ✅ **BOUGHT Jul 16** — 6-color multipack (29,760, Shopee). Masking tape: ⬜ still to buy, ~10,000 | <$2 | Electrical: red=12V FOLLOWER, blue/white=5V LEADER, yellow=object bands, green/white=camera-port flags. Masking: start-zone markers + light-dial tape (see §3.5). |
 | Zip ties 2.5×100 mm ×100 | ✅ **BOUGHT Jul 16** — 100× black (16,000, Shopee) | <$1 | Cable routing along the follower arm. |
@@ -148,7 +148,7 @@ The order is the **Pro DIY Kit** (buyer-confirmed): 12 servos, 2 driver boards, 
 | Bottle caps | free / craft bags ~15,000–30,000 per 50 | Precision-grasp drills (cap-in-cup, cap sorting) — matches the small gripper jaw. |
 | 3–5 cm foam cubes / khối gỗ + silicone muffin cups as drop targets (~20,000–40,000) | Blocks: ✅ **BOUGHT Jul 15** — 25× 3 cm wooden color blocks (108,000, Shopee). Muffin cups: ⬜ | Classic pick-place starter before the noodle cup. |
 
-**Purchase status (as of Jul 16):** ✅ ring lights ×2 + stands, electrical tape, zip ties, wooden blocks, screwdriver set (prior), C920+C270 cameras, ULANZI boom arm, Orico powered hub. ⬜ Still open: masking tape, matte mat, side cutters, kitchen scale, 2× USB-A→C adapters, muffin cups, mì ly cups + PET bottles + caps (BHX run), spare gripper servos + spare driver board (AliExpress — longest lead, order first).
+**Purchase status (as of Jul 16):** ✅ A1 green mat, ring lights ×2 + stands, electrical tape, zip ties, wooden blocks, screwdriver set (prior), C920+C270 cameras, ULANZI boom arm, Orico powered hub. ⬜ Still open, in priority order: **spare gripper servos + spare Waveshare driver board (AliExpress — 7–20 day lead, order FIRST)**; power strip (4–6 sockets + 2–3 USB — see §3.6); masking tape + marker; side cutters; kitchen scale; 2× USB-A→C adapters; muffin cups; mì ly cups + PET bottles + caps (BHX run). Landed peripherals spend so far: **4,294,911 VND (~$165)** before vouchers — see COSTS.md.
 
 **Total: roughly 1.2–1.8M VND (~$46–70)** excluding the possible ~$260 servo kit.
 
@@ -171,7 +171,23 @@ The order is the **Pro DIY Kit** (buyer-confirmed): 12 servos, 2 driver boards, 
 
 ### 3.5 PSU rule (standing safety rule — enforce with tape)
 
-Label both bricks and both DC barrel ends **the moment you unbox**: 5V → "LEADER", 12V → "FOLLOWER" (colored electrical tape). Leader servos are 7.4V variants — **plugging 12V into the leader bus can permanently burn them** (https://wiki.seeedstudio.com/lerobot_so100m_new/). Never swap.
+Label both bricks and both DC barrel ends **the moment you unbox**: 5V → "LEADER" (blue or white tape), 12V → "FOLLOWER" (red tape). Tape a matching band near each arm's power socket so the match is visual at both ends of the cable. Leader servos are 7.4V variants — **plugging 12V into the leader bus can permanently burn them** (https://wiki.seeedstudio.com/lerobot_so100m_new/). Never swap.
+
+Tape colour scheme (from the 6-roll multipack), fixed for the project: **red = 12V FOLLOWER**, **blue/white = 5V LEADER**, **yellow = object bands** (the PET bottles are near-invisible to a 640×480 camera without one — 2 wraps of 18 mm ≈ 36 mm band), **green/white = camera-cable/port flags** (macOS camera indices shuffle on replug; the flags make the port↔index mapping physical). Keep red and blue reserved for power — never reuse them as sorting-task colours near the workspace.
+
+### 3.6 Desk power budget
+
+The bench needs **4 AC sockets + 2 USB-A ports**:
+
+| Load | Needs |
+|---|---|
+| MacBook Pro charger | AC |
+| Orico PW7U powered hub adapter | AC |
+| 5V PSU (leader) | AC |
+| 12V PSU (follower) | AC |
+| 2× ring lights | 2× USB-A (5V) |
+
+**The ring lights must not draw from the Mac** — its ports are reserved for the cameras (§3.3). One ổ cắm điện (Điện Quang/Lioa, ~150,000–250,000) with 4–6 sockets and 2–3 USB ports covers both rows. Check the desk before buying.
 
 ---
 
