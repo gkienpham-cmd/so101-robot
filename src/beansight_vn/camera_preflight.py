@@ -111,7 +111,7 @@ def _probe_camera(
     attempted = 0
     successful = 0
     brightness_sum = 0.0
-    first_frame = None
+    sample_frame = None
     previous_frame_at: float | None = None
     longest_gap_s = 0.0
     while time.monotonic() < deadline:
@@ -122,8 +122,10 @@ def _probe_camera(
             continue
         successful += 1
         brightness_sum += float(frame.mean())
-        if first_frame is None:
-            first_frame = frame.copy()
+        # AVFoundation cameras can return a black startup frame before auto-exposure settles.
+        # Keep the latest successful frame so the saved visual evidence represents the end of the
+        # soak rather than device initialization.
+        sample_frame = frame
         if previous_frame_at is not None:
             longest_gap_s = max(longest_gap_s, now - previous_frame_at)
         previous_frame_at = now
@@ -137,9 +139,9 @@ def _probe_camera(
     cap.release()
 
     image_path: str | None = None
-    if first_frame is not None:
+    if sample_frame is not None:
         target = output_dir / f"{spec.semantic_name}.jpg"
-        cv2.imwrite(str(target), first_frame)
+        cv2.imwrite(str(target), sample_frame)
         image_path = str(target)
 
     effective_fps = successful / elapsed_s if elapsed_s else 0.0
