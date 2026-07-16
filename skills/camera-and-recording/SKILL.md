@@ -1,0 +1,84 @@
+---
+name: camera-and-recording
+description: Camera preflight soak, serial-port resolution, record-config generation, and episode recording for BeanSight VN on macOS — including the Accessibility/Input-Monitoring trap and the parallel-encoding crash patch. Use for any task involving cameras, lerobot-record, or teleoperated data collection.
+---
+
+# Cameras and recording (macOS)
+
+Full authority: `docs/runbook.md` §2, §4, §6. Environment: recording runs inside the pinned
+LeRobot checkout (`~/robotics/lerobot`, v0.6.0 commit `30da8e687a6dfc617fcd94afc367ac7071c376ce`)
+with `patches/lerobot-v0.6.0-macos-serial-encoding.patch` applied; the `beansight-*` CLIs run from
+this repo's venv.
+
+## Ground rules
+
+- Two DIFFERENT camera models on purpose: **C920 = top/inspection, C270 = wrist**. macOS swaps
+  numeric indexes of identical models after replug/reboot — **never reuse a numeric camera index
+  from an earlier session**; resolve identity semantically every launch.
+- Both cameras: 640×480 / 30 fps MJPG, ideally on separate physical Mac ports.
+- Grant the terminal Camera permission (System Settings) before anything opens a camera.
+
+## 1. Camera preflight soak (gate)
+
+```bash
+beansight-camera-preflight \
+  --top-match C920 --wrist-match C270 \
+  --duration 1800 \
+  --output results/camera_preflight
+```
+
+Inspect both saved frames + JSON; confirm `top` is really the C920 and `wrist` the C270. Re-run
+after any replug or reboot. A failed report **cannot** generate a recording config — that's by design.
+
+## 2. Serial ports
+
+```bash
+lerobot-find-port   # run before and after plugging each controller in
+```
+
+Ports appear as `/dev/tty.usbmodem*` and can change between launches; use the currently observed
+paths only.
+
+## 3. Generate the record config
+
+```bash
+beansight-build-record-config results/camera_preflight/camera_preflight.json \
+  --follower-port /dev/REPLACE_FOLLOWER \
+  --leader-port  /dev/REPLACE_LEADER \
+  --repo-id YOUR_HF_USER/beansight-vn-coffee-v1
+```
+
+Produces `configs/generated/record_coffee.json` with semantic `top`/`wrist` keys and streaming
+video encoding (two encoder threads) to bypass the crash-prone post-episode process pool.
+
+## 4. Record
+
+```bash
+cd ~/robotics/lerobot
+lerobot-record --config_path=/ABSOLUTE/PATH/TO/configs/generated/record_coffee.json
+```
+
+- Record **5 smoke episodes first** and inspect the first completed save before committing to a
+  session.
+- Then: 50 wooden-block episodes over the five-position grid (bring-up), later 50–75 real-bean
+  demos with the exact task string from the generated config and small controlled offsets.
+- LeRobot v0.6 stamps non-resume datasets `_YYYYMMDD_HHMMSS` — copy the actual stamped ID from the
+  log and use that immutable name for QA/replay/upload/training. To resume an interrupted local
+  dataset: `--resume=true` + stamped repo ID + explicit local root.
+- Lighting and fixture positions must match between collection and inference; if any mark moves,
+  start a new session ID — never silently mix sessions.
+
+## macOS traps (both have already bitten this project)
+
+1. **Silent keyboard**: pynput prints "This process is not trusted!" and hotkeys do nothing while
+   the recorder happily saves motionless episodes. Fix: add the terminal app under BOTH Privacy &
+   Security → Accessibility AND → Input Monitoring, then fully quit (⌘Q) and reopen. The v0.6
+   terminal fallback (`n`/`r`/`q`) only needs the launching terminal focused.
+2. **`BrokenProcessPool` on first episode save**: cv2 and av bundle duplicate ffmpeg dylibs;
+   parallel per-camera encoding aborts. Fix is serial encoding —
+   `patches/lerobot-v0.6.0-macos-serial-encoding.patch` (i.e. `save_episode(parallel_encoding=False)`).
+   Verify with `git apply --check --unidiff-zero <patch>` on the pinned checkout. Watch for the
+   same crash in the real-arm record path.
+
+Other quick checks: no camera → data cable + Camera permission; black frame → lens/privacy
+shutter/exposure/permission before touching code.

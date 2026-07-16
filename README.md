@@ -9,10 +9,14 @@ The aim is not to certify food, imitate an industrial sorter, or remove a person
 is to find out, honestly and quantitatively, how far a low-cost arm can assist a repetitive inspection
 step that matters to Vietnam's higher-value coffee processing.
 
-> **Current status, July 15, 2026:** the software contracts, safety gates, camera preflight, dataset
+> **Current status, July 16, 2026:** the software contracts, safety gates, camera preflight, dataset
 > QA, training configs, evaluation code, and test suite are implemented. The arm has not arrived, so
 > this repository does not yet claim a physical success rate. Hardware results will be added only
 > after the frozen evaluation is run.
+>
+> Day-to-day execution is continuing with an AI coding agent (OpenAI Codex). Agent instructions
+> live in [AGENTS.md](AGENTS.md); the consolidated status and roadmap of record is
+> [docs/HANDOFF.md](docs/HANDOFF.md); task playbooks are in [skills/](skills/README.md).
 
 ## What the cell does
 
@@ -54,8 +58,10 @@ is in [docs/evaluation_protocol.md](docs/evaluation_protocol.md).
   trial logging, and summaries
 - `configs/`: camera, perception, ACT, optional SmolVLA, rollout, and evaluation contracts
 - `patches/`: the pinned LeRobot v0.6.0 macOS encoding workaround
-- `docs/`: the maintained hardware, data, execution, evaluation, runbook, and Vietnam-opportunity
-  guides
+- `docs/`: the maintained hardware, data, execution, evaluation, runbook, handoff, and
+  Vietnam-opportunity guides
+- `skills/`: portable agent playbooks for hardware bring-up, recording, dataset QA, training,
+  evaluation, and reporting
 - `tests/`: deterministic tests that do not require the arm or cameras
 - `results/`: small hardware-generated summaries and figures; never invented placeholder results
 
