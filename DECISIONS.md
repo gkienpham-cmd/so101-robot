@@ -16,6 +16,8 @@
 | 2026-07-15 | ACT is required; SmolVLA is conditional on ACT >40% over 20 frozen trials and complete evaluation tooling | Another model does not repair calibration, presentation, grasping, or weak demonstrations. A gripper DOE, singulation fixture, and documentation have higher information value if ACT misses the gate. |
 | 2026-07-15 | Controller routes uncertainty to `no_motion` and starts unarmed | A classifier result cannot cause motion until an explicit reject callback is installed and the supervised controller is armed. This keeps perception and manipulation separate and avoids a second process opening the C920. |
 | 2026-07-16 | Execution handed to OpenAI Codex; `AGENTS.md` is the committed agent entry point, `docs/HANDOFF.md` the status/roadmap of record, `skills/` the task playbooks | The private CLAUDE.md doesn't travel via git; a sanitized AGENTS.md plus gitignored `AGENTS.local.md` (personal context) preserves the safety rules, gotchas, and evidence standard for any agent. |
+| 2026-07-16 | Arrival-day bring-up uses a dedicated printable checklist with signed no-power, motor-ID, mechanical, calibration-backup, and teleop gates | The safety document remains the authority while a public-safe worksheet makes skipped evidence and unsafe phase transitions visible on the bench. |
+| 2026-07-16 | Camera qualification will run separate 30-minute direct-port and powered-PW7U soaks; direct ports are the default if both pass | Two runs separate camera/device behavior from shared-hub contention. A camera-only hub pass does not qualify the later four-device load or the real-arm recording encoder path. |
 
 ## Known issues (watch list)
 

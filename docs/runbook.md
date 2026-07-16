@@ -67,8 +67,10 @@ it does not prove that every video failure has the same cause.
 ## 3. Inventory before power
 
 Complete every purchase, electrical, labeling, layout, and stop-condition item in
-[hardware_and_safety.md](hardware_and_safety.md). Do not connect a supply until the actual motor,
-controller, voltage, current, barrel, and polarity records agree.
+[hardware_and_safety.md](hardware_and_safety.md), using the printable
+[arrival-day bring-up checklist](arrival_day_checklist.md) for evidence references and sign-offs.
+Do not connect a supply until the actual motor, controller, voltage, current, barrel, and polarity
+records agree.
 
 ## 4. Resolve cameras and serial ports
 
