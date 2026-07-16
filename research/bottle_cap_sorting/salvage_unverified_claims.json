@@ -1,0 +1,1166 @@
+[
+ {
+  "claim": "AMP Robotics identifies recyclables using camera imaging of the conveyor belt plus deep learning perception (no NIR/hyperspectral sensing is described), and operators can reconfigure pick targets in software with a few clicks — implying vision-only classification of plastic categories is industrially viable.",
+  "quote": "deep learning, with enough data, can tackle this complexity ... they can configure what the robot will pick with just a few clicks",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's vision-sorted material categories include PET bottles, natural and colored HDPE (milk jugs), and polypropylene — i.e., the same resin-type separations (PET vs HDPE vs PP) targeted in the SO-101 project are distinguished by camera + deep learning in production MRFs.",
+  "quote": "Primary targets: aluminum cans, cardboard, PET bottles, HDPE milk jugs, colored HDPE, polypropylene.",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's end effector is a suction cup gripper with a passive spring for mechanical compliance to absorb variable material height — a design choice (suction over fingered grasping) directly relevant to bottle/cap grasp strategy on a low-payload hobby arm.",
+  "quote": "a suction cup gripper here and a beefy spring",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP robots achieve 80+ picks per minute (sometimes over 100) versus 30-50 for human sorters, with bale purity targets of about 85% for plastics and 97% for aluminum — benchmarks a hobby SO-101 arm cannot approach on throughput but can target on purity.",
+  "quote": "30 to 50 picks per minute ... 80 plus picks per minute ... 85% pure ... 97% pure",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's models require ongoing retraining because waste stream composition drifts over time, implying a custom bottle/cap classifier for the Vietnam waste stream would also need continuous data collection and model maintenance rather than one-time training.",
+  "quote": "our models need to evolve as the industry and materials change. Model maintenance is crucial.",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "NIR spectroscopy identifies plastic types because each polymer absorbs specific near-infrared wavelengths (700–2500 nm) corresponding to its molecular structure, producing a distinct spectral fingerprint that distinguishes PET, HDPE, PP, PS, etc.",
+  "quote": "When NIR radiation illuminates a plastic surface [the polymer] absorbs specific wavelengths corresponding to its molecular structure... a distinct spectral fingerprint based on its chemical composition.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Black plastics containing carbon black pigments strongly absorb NIR radiation across a broad spectral range, making them effectively undetectable ('spectrally invisible') to NIR sorters — a hard limit for NIR-based sorting of dark bottles/caps.",
+  "quote": "Many black plastics contain carbon black pigments, which strongly absorb NIR radiation across a broad spectral range... [causing them to appear] spectrally invisible.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Surface contamination — labels, adhesives, and dirt — alters the measured NIR spectrum and can degrade identification accuracy, which matters for real-world bottles with labels on.",
+  "quote": "[Labels, adhesives, and dirt] can influence the measured spectrum.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Multilayer packaging produces ambiguous NIR spectral signatures, preventing determination of the dominant polymer type.",
+  "quote": "[Multilayer packaging produces] ambiguous spectral signatures [and] inability to determine dominant polymer type.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Portable/handheld NIR spectrometers are used in practice for quality control and manual verification of plastic streams (relevant as a possible point-check add-on rather than inline sensing), though the article gives no pricing.",
+  "quote": "portable NIR spectrometers [used for] quality control [and] manual verification.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "AMP Robotics' AI sorting platform classifies recyclables using purely visual features captured by cameras — color, size, shape, opacity, and brand — rather than requiring NIR spectroscopy, implying RGB-vision-based plastic-type identification is viable at commercial scale and could transfer in principle to a cheap camera-only hobby arm.",
+  "quote": "The AI system can differentiate objects by \"color, size, shape, opacity, brand, and more.\"",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's machine-learning system can classify more than 100 different categories and characteristics of recyclables across single-stream recycling, e-scrap, and construction and demolition debris, far exceeding the handful of classes (PET/HDPE/PP bottles and caps) a hobby sorter would need.",
+  "quote": "classify more than 100 different categories and characteristics of recyclables across single-stream recycling, e-scrap, and construction and demolition debris",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's robotic sorters pick at upwards of 80 items per minute, more than twice the speed of human sorters — a throughput benchmark against which an SO-101 arm (realistically a few picks per minute) is orders of magnitude slower, bounding the economic comparison to manual ve chai sorting.",
+  "quote": "upwards of 80 items per minute—more than two times as fast as human sorters",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP demonstrated vision-based recovery of small-format polypropylene items (#5 plastic, e.g., K-Cup pods, yogurt containers, butter tubs) in partnership with Keurig Dr Pepper, showing that small PP objects — the same resin class as most bottle caps — can be visually identified and robotically sorted.",
+  "quote": "yogurt containers, butter tubs, and a whole host of other everyday products, including K-Cup pods",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's technology is deployed at commercial scale — roughly 200 deployments in more than 25 U.S. states processing more than 10 billion items annually — indicating the vision-based approach is production-proven, not experimental.",
+  "quote": "\"more than 10 billion items annually\" processed across approximately 200 deployments",
+  "importance": "tangential",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "TOMRA's commercial sorting machines rely on deep learning (artificial neural networks) as a core identification technology, not just spectroscopy — supporting the transferability of camera+neural-network classification to hobby-scale sorters.",
+  "quote": "TOMRA's deep learning technology is built on artificial neural networks",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "TOMRA's AUTOSORT platform uses a multi-sensor fusion approach combining several proprietary sensing technologies (SHARP EYE, GAINnext, DEEP LAISER, FLYING BEAM) rather than a single sensor modality to sort plastics.",
+  "quote": "Multifunctional sensor configuration",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The dedicated AUTOSORT BLACK product page no longer exists as a standalone page; the URL now serves TOMRA's general AUTOSORT overview, which provides no throughput, purity, or polymer-specific (PET/HDPE/PP) performance specifications.",
+  "quote": "Page Title: AUTOSORT: Automated Sorting Systems for Recycling | TOMRA ... No specific throughput rates (tonnes/hour), percentages, or millimeter sizes are provided on this page.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "As of mid-2021, AMP's vision system could classify more than 100 different categories and characteristics of recyclables across single-stream recycling, e-scrap, and construction/demolition streams.",
+  "quote": "The company can now classify more than 100 different categories and characteristics of recyclables",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "AMP's industrial sorting robots achieve pick speeds of up to 140 picks per minute on a single robot, with sustained rates of 120 picks per minute — roughly two picks per second, orders of magnitude beyond what an SO-101 hobby arm running ACT can achieve, so commercial throughput economics do not transfer to a $55 arm.",
+  "quote": "recording speeds of up to 140 picks per minute on a single robot and a sustained rate of 120 picks per minute",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "AMP's classification accuracy rests on data scale: its deployed fleet recognizes more than 10 billion items annually, forming what the company calls the largest known real-world dataset of recyclables for machine learning — a data advantage a hobby project cannot replicate, implying a custom fine-tuned classifier on a narrow bottle/cap domain is the realistic transfer path.",
+  "quote": "AMP has extended its object recognition run rate to more than 10 billion items annually.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Faster picking translated to a recovery increase of more than 50% on unevenly distributed material streams, indicating that in commercial MRF settings the binding constraint is pick throughput on messy streams, not classification.",
+  "quote": "This can translate to an increase of more than 50% in recovery for unevenly distributed material streams.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Training ACT on SO-101 with only 50 demonstrations collected from 5 fixed object positions produced a complete task failure: the policy learned to repeatedly peck at the table instead of grasping the block. This sets a lower bound on demo diversity needed for a bottle/cap pick task.",
+  "quote": "My SO-101 didn't learn to pick up the block, but rather, to _peck_ at the table over and over again…",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "With 50 training episodes covering 12 start poses per bin across 6 bins, the ACT policy achieved 60% in-distribution success but only 10% out-of-distribution success, showing ACT on SO-101 generalizes poorly beyond the demonstrated object placements.",
+  "quote": "in-distribution eval: 60% success rate (passing grade!). Average progress score 0.68. out-of-distribution eval: 10% success rate (ouch).",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Increasing coverage to 25 episodes per bin (~150 episodes) with added yaw rotation variations (-45 to +45 degrees) and stratified sampling raised performance to 90% in-distribution and 75% out-of-distribution success — evidence that a few hundred well-stratified demos can make an SO-101 ACT pick-and-place policy usable, relevant to scoping the bottle/cap sorting data-collection budget.",
+  "quote": "In distribution: 90% success rate. Average progress score 0.92. Out of distribution: 75% success rate!",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The author's working setup used two webcams, moved to a front-and-top placement to reduce occlusion during grasping — directly matching the 2x 640x480 camera configuration in the research question and suggesting front+top is the preferred layout.",
+  "quote": "Two webcams",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Identical USB webcams caused recorder crashes roughly every 5 episodes during data collection, and the fix was udev rules mapping USB ports to invariant properties — a concrete data-collection gotcha that would affect any SO-101 bottle-sorting training pipeline using two identical cheap cameras.",
+  "quote": "My cameras would disconnect every ~5 episodes and crash the recorder script... Camera & arm udev rules: This is the solution to the frequent camera disconnection!",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "A 135° V-shaped fingertip profile on a 3D-printed two-finger gripper achieved a 100% grasp success rate on rigid 66 mm PET bottles (24–71 mm diameter range), whereas a conventional 45° V-profile produced only unstable flat-surface contact and failed to securely grasp bottles of that size.",
+  "quote": "Physical tests confirmed reliable operation across objects ranging from 24 to 71 mm in diameter, with a 100% success rate on rigid 66 mm bottles and a 40% success rate on deformable items",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A single hobby-grade servomotor (Hitec HS-945MG, 1.079 N·m at 6.0 V) driving a four-bar parallel linkage in PLA is sufficient to grasp and retain waste objects up to 0.6 kg with an FEA-validated safety factor of 3.5, at an in-house material cost of USD 20–40 and about 10 hours of desktop 3D-printer time.",
+  "quote": "The proposed design offers significant advantages in terms of rapid prototyping (a print time of approximately 10 h), modularity, and low manufacturing cost (with an estimated in-house material cost of USD 20 to 40).",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Deformable waste items (plastic bags, crushed/soft objects) are substantially harder to grasp than rigid ones with a rigid parallel-jaw gripper: success dropped from 100% on rigid objects to 40–60% on deformables, implying crushed bottles will be a distinct failure mode versus intact ones.",
+  "quote": "The gripper achieved a 100% success rate for rigid objects and 60% for deformable items, such as plastic bags.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Widening the fingertip V-angle from 45° to 135° increased grasp contact area from 152 mm² to 380 mm², prevents rotational slip of cylindrical items like bottles and cans, and produces a self-centering effect that reduces sensitivity to positioning errors — useful for vision-only arms with no force sensing.",
+  "quote": "Compared to a 45° configuration, the 135° profile increased the contact area from 152 mm2 to 380 mm2, allowing secure grasping of larger cylindrical objects within the specified fingertip height.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "In lever-based parallel grippers, transmitted grip force is inversely related to jaw opening (max 35.97 N at the 24 mm minimum opening), and the authors identify the absence of sensory feedback as the key limitation for adaptability in cluttered environments — both directly relevant to sizing an SO-101 gripper for caps (~30 mm) vs bottles (~66 mm).",
+  "quote": "First, the absence of sensory feedback currently limits adaptability in dynamic or cluttered environments.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Objects too flat to grasp directly (e.g., large flat boxes, analogous to crushed bottles) can be made graspable without force sensing by pushing them against a fixed support surface and pivot-lifting one side, using a model-free DRL policy that relies only on RGB vision and proprioception.",
+  "quote": "The robot arm learns to first push the object towards a support surface and establishes a pivot to lift up one side of the object, thus creating a clearance between the object and the table for possible grasping solutions.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The method deliberately uses only a cheap RGB camera for external sensing (no force-torque sensor), in contrast to prior pregrasp work (Hou et al.) that required an FT sensor and precise table-shape knowledge.",
+  "quote": "Our work strikes a good balance between cheap and expressive external sensing (RGB camera) and generality of the target object (any rigid object).",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Training compute is hobbyist-feasible: the SAC pregrasp policy converges in about one hour on a desktop CPU without a GPU, and transfers directly sim-to-real via domain randomization of mass, friction, and positions.",
+  "quote": "The policy is trained on i7-8700K without GPU, and converges towards a robust pregrasp policy after 250,000 samples which takes around one hour.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Real-world state estimation was done with a trivially cheap CV pipeline — HSV color segmentation of a red-paper marker plus an OpenCV bounding box from a single RGB camera — rather than learned perception, showing decoupled simple perception can feed a learned manipulation policy.",
+  "quote": "We first transfer RGB space into HSV space and use an upper and lower bound to segment the side which has already been pasted with a piece of red paper.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Real-world validation used two 7-DoF Franka Emika Panda arms (one as pusher, one as support/gripper) with object masses of 0.08-0.23 kg, so the demonstrated object weights fall inside an SO-101's 0.2-0.3 kg payload class but the platform is far more rigid and precise than a $55 hobby arm, and the method required a second arm or wall as support surface.",
+  "quote": "The experiments were conducted on the platform Panda Robotic Arms developed by Franka Emika with 7 Degrees of Freedom.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A hybrid gripper combining rigid proximal links with soft passive pneumatic distal joints achieved a 90% success rate grasping sheets of paper when soft-joint pressure was raised to 110 kPa, independent of approach angle.",
+  "quote": "at a higher pressure of 110 kPa, the success rate of grasping the paper reaches 90%",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Finger compliance dramatically relaxes positioning-precision requirements: the hybrid gripper needed only 5 mm of finger travel to reach a 90% grasp success rate, versus about 40 mm for an equivalent rigid gripper — an up-to-eightfold reduction in gripping distance.",
+  "quote": "the proposed hybrid gripper only needs to move 5 mm to achieve a 90% success rate, while the rigid gripper requires a movement of about 40 mm",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The gripper was validated on household objects including a PET bottle, with success rates over 80% for several test objects at 100 kPa input pressure.",
+  "quote": "over 80% for the toilet paper roll, plastic box, and charger at an input pressure of 100 kPa",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Despite the word 'passive' in the title, the design requires active pneumatic infrastructure (an SMC ITV1030 electro-pneumatic regulator and a Nema17 stepper motor), so it is not directly transferable to a $55 SO-101 arm without significant added hardware and cost.",
+  "quote": "Pneumatic pressure is applied to the cavity",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Measured normal grasping forces in comparative paper-grasping tests ranged from roughly 6 to 14 N, an order of magnitude above the sub-Newton fingertip forces typical of hobby-servo grippers, indicating the results were obtained on much stronger hardware than an SO-101.",
+  "quote": "with normal forces (N₁) ranging from 6–14 N in comparative tests",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Grasp points for ungraspable objects can be identified from visual observations alone (using force closure and friction constraints), without force/tactile sensing — relevant to camera-only manipulation on the SO-101 which has no force sensing.",
+  "quote": "From visual observations, our method first identifies optimal grasp points based on force closure and friction constraints.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Bimanual nonprehensile manipulation achieved a 90% pick success rate over 102 trials in uncluttered scenes and 67% over 45 trials in cluttered scenes in a replica grocery store — establishing that clutter roughly cuts success by a quarter even with a well-engineered two-arm system, a baseline the single SO-101 arm will underperform.",
+  "quote": "In our replica grocery store, we achieved a 90% success rate over 102 trials in uncluttered scenes, and a 67% success rate over 45 trials in cluttered scenes.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The method targets objects that are bulky, heavy, or irregularly shaped and thus ungraspable by suction or parallel-jaw grippers — a different regime from water bottles and caps, which are conventionally graspable; the paper does not address bottles, caps, low-payload arms, or imitation learning.",
+  "quote": "many objects in such settings are bulky, heavy, or irregularly shaped, making them ungraspable by conventional end effectors like suction grippers and parallel jaw grippers (PJGs)",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "When grasp points are occluded, nonprehensile nudging motions can clear obstructions before grasping — a technique (pre-grasp object repositioning by pushing) that could transfer to a hobby arm for singulating piled bottles/caps before picking.",
+  "quote": "If the grasp points are occluded, a series of nonprehensile nudging motions are performed to clear the obstruction.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A HCMC scrap dealer publicly quotes PET plastic scrap at 16,000-22,000 VND/kg, which directly contradicts the 4,000-7,000 VND/kg PET assumption in the project's existing Vietnam docs; however, this is a dealer marketing page whose headline prices likely represent best-case clean industrial lots, not ve chai street-collected bottles.",
+  "quote": "Nhựa PET | 16,000 – 22,000đ ... Giá nhựa phế liệu hôm nay【17/07/2026】dao động từ 9.000 đồng/kg đến 39.000 vnđ/kg",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "PP scrap (the resin of most bottle caps) is quoted at 13,000-30,000 VND/kg, roughly consistent with the research question's premise that cap-grade PP/HDPE fetches ~20-35k VND/kg and is worth separating from bottle bodies.",
+  "quote": "Nhựa PP | 13,000 – 30,000đ",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The dealer's price table has no separate line item for bottle caps (nắp chai) and no distinct HDPE price (PE is grouped generically), suggesting cap-level or resin-level granularity beyond broad categories is not standard in public dealer quotes and cap value must be negotiated as sorted PP/PE.",
+  "quote": "Nắp chai / nắp nhựa (bottle caps): Not listed on this page ... The page groups PE plastics generically as \"Nhựa PE\" without specific HDPE pricing.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The dealer states purchase prices depend on plastic type, quality, and market fluctuations, but publishes no explicit premium schedule for sorted vs. mixed, clean vs. contaminated, or minimum quantities — so the marginal VND/kg gain from robotic sorting cannot be derived from this page alone.",
+  "quote": "Phụ thuộc vào từng loại phế liệu nhựa khác nhau, mà chất lượng, cũng như sự biến đổi của thị trường để định chính xác với giá thu mua",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The page's displayed price date is auto-generated (it shows 17/07/2026, one day ahead of the actual current date of 16/07/2026), indicating the 'today's price' framing is a template/SEO artifact rather than a genuinely updated daily market quote, which lowers confidence in the specific numbers.",
+  "quote": "Giá nhựa phế liệu hôm nay【17/07/2026】dao động từ 9.000 đồng/kg đến 39.000 vnđ/kg",
+  "importance": "tangential",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "A Vietnamese scrap dealer's current buy-price list pays only 5,000–8,000 VND/kg for PP plastic scrap — the low end of the price table — which undercuts the assumption that PP bottle caps fetch 20,000–35,000 VND/kg at ve chai/dealer level.",
+  "quote": "Giá phế liệu nhựa PP ... 5.000 – 8.000 [VND/Kg]",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The same dealer pays 12,000–19,800 VND/kg for PE plastic scrap (the family that includes HDPE), roughly 2–4x the PP price, meaning separating PE/HDPE items from PP does add real value at the dealer level.",
+  "quote": "Giá phế liệu nhựa PE ... 12.000 – 19.800 [VND/Kg]",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The dealer's price table lists no line item at all for PET bottles, even though the page acknowledges PET as the material of water bottles — consistent with the skeptic finding that PET bottle scrap is low-value/commodity and not separately itemized by this buyer.",
+  "quote": "Nhựa PET thường được dùng trong sinh hoạt như chai nước, bình đựng nước, vật dụng đựng thức ăn. [No PET price row appears in the price table.]",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The dealer identifies ABS as the highest-priced plastic scrap category (13,500–16,000 VND/kg), though its own table lists 'nhựa HI' at 20,500–28,000 VND/kg — an internal inconsistency that flags the page's price data as loose marketing copy rather than audited quotes.",
+  "quote": "Nhựa ABS có khả năng chịu được nhiệt và lực cao. Đây là loại phế liệu có giá thu mua cao nhất",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Scrap prices vary with market supply/demand and material quality, so cleanliness/sorting quality (not just resin type) affects what a load pays — relevant to whether robot-sorted output actually earns the top of a price range.",
+  "quote": "Tùy theo xu hướng và cung ứng thị trường, chất lượng loại phế liệu khác nhau gây ảnh hưởng đến mức giá thu mua.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The reported accuracies were obtained under highly controlled lab conditions — samples measured inside a sealed matte-black box at a fixed 50 mm sensor-to-sample distance — so real-world performance on a tabletop arm with ambient light and varying standoff would likely be worse.",
+  "quote": "a custom-built sealed wood-based box with dimensions of 406 mm × 206 mm × 200 mm...The plastic sample holder is mounted at a 50 mm distance from the sensor",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The authors themselves concede the low-cost sensor's accuracy is below that of expensive spectroscopy systems, positioning it as an affordable/portable trade-off rather than a replacement for industrial NIR sorting.",
+  "quote": "Even though the accuracy achieved is not as high as the accuracy reported by expensive spectroscopy sensors, this work offers a reliable, affordable and portable solution",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "PET beverage bottles in Vietnam already have a relatively high collection-for-recycling rate (45-65%; PET packaging overall ~50%, the highest of all resins), meaning intact PET bottles are already efficiently captured by existing collection — a hobby sorter adds little value on the bottle-identification step itself.",
+  "quote": "The CFR rate for PET packaging (including bottles, sheets, and films) is estimated to be a median of 50 percent (based on the mid-point average of the 35 to 65 percent range)... The recycling rate for PET beverage bottles is estimated to be 45 to 65 percent.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Separating caps and sleeves (made of HDPE and PP) from PET bottles is an established, necessary step in Vietnam's PET recycling chain — the study's PET recycling figures are computed only after these other-resin contaminants are removed, confirming cap/bottle separation is a real value-adding operation.",
+  "quote": "the CFR rate of PET is determined after contaminants like dirt metals and other plastics (sleeves and caps from other materials such as HDPE and PP) have been removed.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Roughly 90% of PET bottles collected for recycling in Vietnam are handled by the informal sector (ve chai pickers, junk shops, aggregators), and HCMC's PET bottle collection rate (62%) is far higher than Hanoi's (39%) — so in HCMC a robot competes directly with an efficient, low-cost informal workforce of ~6,200 collectors.",
+  "quote": "Previous research by the study team found the CFR rate for PET bottles to be 62 percent in Ho Chi Minh City and 39 percent in Hanoi. According to an estimate, 90 percent of these PET bottles, collected for recycling, are handled by the informal sector... the informal waste collector workforce comprises 6,200 people, i.e., 2,000 street material pickers and 4,200 independent waste pickers.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "PP and HDPE have much lower and more uncertain collection rates than PET bottles (each estimated 20-50%, with only easily-separable rigid HDPE at the high end and films/composite applications much lower), indicating the under-collected value pool is in non-PET rigids — which supports focusing a sorter on caps/PP/HDPE rather than PET bottles.",
+  "quote": "The CFR rate for PP is estimated to be 20 to 50 percent... The CFR rate for HDPE is estimated to be 20 to 50 percent... rate for easily separable rigid HDPE (e.g., for shampoo [bottles is higher]; for other HDPE applications (e.g., films, plastic bags, and so forth), it is estimated to be much lower.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Vietnam recycled only ~33% of key plastic resins in 2019 (1.28 of 3.90 million tonnes of PET/HDPE/LDPE/PP), losing US$2.2-2.9 billion per year in material value, and informal collection is price-elastic — collectors stop collecting when recycled-resin prices fall — so recovered-material prices (not identification technology) are the binding constraint on what separations pay.",
+  "quote": "As much as 3.90 million tonnes per year (TPY) of PET, LDPE, HDPE, and PP are consumed in Vietnam. Of this, 1.28 million TPY (33 percent) gets recycled... It is common practice for the informal sector to curb operations when buying prices drop for recycled plastics.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "One-shot/few-shot metric learning (Siamese and triplet-loss networks) is proposed specifically to cope with small plastic-waste datasets, since pair generation from n images yields n^2 training instances — a directly transferable technique for a hobbyist with limited bottle/cap data.",
+  "quote": "from a data set of size n, a total of n² training instances are generated, which is useful if the size of the data set is small",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Simple color-histogram-based classification of plastics is computationally cheap but the authors judge its accuracy too low for industrial sorting standards, arguing against pure color/heuristic-only pipelines for resin identification.",
+  "quote": "computationally efficient compared to deep neural networks, the accuracy of classification is low for industrial standards",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A PRISMA-guided systematic review identified 112 articles published between 2015 and 2025 on AI-based plastic waste classification and sorting, indicating a substantial and recent evidence base for CV-based plastic-type identification.",
+  "quote": "This systematic review, following the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) guidelines, identified 112 articles published between 2015 and 2025 on AI-based plastic waste classification and sorting.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A Pi0.5 flow-matching policy fine-tuned via LeRobot on only 100 teleoperated demonstrations achieved an 87-93% success rate (13/15 clean grasp-and-lift, 1 partial) picking a red bottle with an SO-101 Pro arm, with no simulation or domain randomization.",
+  "quote": "Counting the one grasped-but-incomplete trial as partial successes, the effective success rate is 87–93%. For a first policy trained on 100 episodes with no domain randomization, no simulation pre-training, and a low-cost arm, this is an encouraging baseline.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The reported success rate holds only within a narrow operational envelope (single object, single approximate position, controlled lighting, restricted servo angles) and collapses outside it — the policy was never tested with a second object.",
+  "quote": "Move the bottle outside that servos envelope and the number drops sharply. Add a second object and the policy has not been tested at all.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The SO-101's STS3215 servos exhibit tracking errors of up to 7 degrees under load on the first three joints, and raising the P gain to reduce this error introduces arm shaking that corrupts the wrist-camera image at the critical pre-grasp moment — a tradeoff the hardware cannot fully resolve via PID tuning.",
+  "quote": "The first three joints exhibited tracking errors of up to 7 degrees under the current PID values. Increasing the P gain for various D values reduced tracking error but introduced arm shaking — most visibly in the wrist camera during the hold position just before the grasp approach.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "A wrist-mounted camera is functionally necessary for reliable grasping with this pipeline: substituting it with dynamically-extracted high-resolution 'foveal crops' from fixed overhead cameras failed to produce reliable grasp behavior because the crops lack a stable egocentric reference frame.",
+  "quote": "The policy trained on foveal crops failed to develop reliable grasp behavior, and the experiment was abandoned in favor of returning to the physical wrist camera.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Recovery-demonstration data collected by starting episodes from failed arm positions made policy performance worse; the effective method was embedding small lateral corrections within otherwise complete successful trajectories, near the object, and about 30% of the training data included such corrections.",
+  "quote": "An early attempt at collecting recovery data by starting episodes directly from failed arm positions made performance worse — the arm got stuck in unusual configurations and it had no learned path out of.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "ACT on SO-101 needs roughly 50+ teleoperated demonstrations per task for good performance, using a two-camera (wrist + front) setup — matching the user's 2x camera hardware.",
+  "quote": "50+ training examples for good performance",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "A trained ACT policy generalizes poorly beyond the demonstrated object positions, so a bottle/cap sorting task would need demonstrations covering the full range of placements.",
+  "quote": "Limited generalization to new cube positions",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "ACT policy performance is brittle to distribution shift: it only performs reliably when deployment conditions (lighting, positions, objects) match the training demonstrations.",
+  "quote": "Works best when test conditions match training examples",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Recommended ACT hyperparameters for SO-101: chunk size 50 (~1.66 s horizon), 15 action steps executed, batch size 4-32, about 7,500 training steps for ~3,000 frames.",
+  "quote": "Chunk size: 50 steps (~1.66 seconds prediction horizon)",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "ACT training for SO-101 is feasible on modest hardware, including a Mac CPU or a CUDA GPU, so no expensive compute is required for a hobby-scale sorting project.",
+  "quote": "Training possible on Mac (CPU) or GPU via CUDA",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "PET bottle bodies and HDPE caps are already separable by a passive float/sink water bath after grinding (PET flakes sink, HDPE cap flakes float), meaning cap-vs-bottle plastic-type separation does not require vision or spectroscopy at the flake stage — a robotic pre-sort of intact caps competes against this near-zero-cost downstream step.",
+  "quote": "Caps attached to bottles are made of different plastics (e.g. PET bottle flakes (sinks) vs HDPE caps flakes (float)).",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Clear PET commands a higher price than colored or opaque PET in Vietnam, so a color-based (plain RGB camera) clear/colored PET split is a value-adding separation feasible on cheap hardware; rPET grades in Vietnam price at roughly $1,200/ton (high), $1,000/ton (medium), $830/ton (low).",
+  "quote": "Clear PET has greater value than colored or opaque PET",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Vietnam's informal sector (ve chai / waste pickers) collects about half of PET plastic packaging waste nationally, and up to ~90% of PET bottles in major cities, with individual collectors handling roughly 1–6 tons of plastic scrap per month (about 2 tons/month per collector in Ho Chi Minh City) — so any hobby-arm sorter operates inside an already-efficient manual collection chain.",
+  "quote": "collecting 1–6 tons of plastic scrap and waste per month",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Informal-sector rPET sells for $500–$900 per ton versus $800–$1,200 per ton in the formal sector in Vietnam, implying the margin capturable by better sorting/aggregation at the informal level is on the order of a few hundred USD per ton (roughly 7,500–12,500 VND/kg range at collector level).",
+  "quote": "$500–$900 per ton",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "In 2024 Vietnam generated 487,714 tons of PET packaging waste with a collection-for-recycling rate of 45%–65% for beverage bottles, 56% (275,559 tons) going unrecycled, ~13% of collected-for-recycling material lost mainly to contamination, and more than 50% of recycled PET sold as fiber to textile industries rather than bottle-to-bottle.",
+  "quote": "45%–65% for beverage bottles",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "An ACT policy trained on an SO-101 with 49 episodes (~39k frames, two camera views) for 100k steps at batch size 1 can complete training with decreasing loss yet produce a robot that stays static or moves unpredictably at deployment — training-loss convergence does not guarantee usable grasping behavior.",
+  "quote": "robot stays static or moves unpredictably ... loss decreases slowly",
+  "importance": "central",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "Batch size 1 is a primary cause of ACT failure; ACT reportedly requires a batch size of at least 8 for stable gradient estimates.",
+  "quote": "Batch size 1 is your main problem — ACT needs at least 8 for stable gradients.",
+  "importance": "central",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "Downscaling camera inputs to 480x480 (the resolution used in the original ACT work) incurs no quality loss for tabletop manipulation tasks, implying 640x480 webcams are sufficient for ACT on bottle/cap sorting.",
+  "quote": "Downscale your cameras to 480×480 (original ACT used this, no quality loss for tabletop tasks).",
+  "importance": "central",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "Datasets dominated by idle/static frames bias an ACT policy toward predicting zero actions, which is a common cause of the robot not moving; trimming static frames from demonstrations mitigates this.",
+  "quote": "idle/static frames dominating the dataset, biasing the policy toward zero-action predictions.",
+  "importance": "supporting",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "Even a reasonably-sized ACT run (60 episodes, 200k steps, batch size 32) yields only ~60% success on a fixed-target directional task and ~20% on a moving target, while the same dataset gives 100%/60% on a grasping task — task type strongly affects achievable success rates.",
+  "quote": "Success rates: 60% (fixed target), 20% (moving target). ... Same dataset achieves 100% and 60% success on grasping task.",
+  "importance": "supporting",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "On the low-cost SO-101, execution instability (grasp instability and repetition loops) — not semantic misunderstanding — is the dominant failure source across all policies, driven by hardware limits such as actuator noise, joint backlash, and imperfect camera-to-action calibration.",
+  "quote": "The platform introduces stochasticity into the perception-action loop through actuator noise, joint backlash, control latency, trajectory jitter, limited positional repeatability, and imperfect calibration between visual observations and executed actions.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "ACT has very poor failure-recovery ability on SO-101 (6.45% recovery rate vs 30.77% for pi-0.5), meaning an ACT-based sorter will rarely self-correct after a failed grasp — favoring architectures where an external perception/retry loop handles errors rather than relying on the policy.",
+  "quote": "ACT (6.45%) and SmolVLA (3.23%) exhibit substantially lower recovery rates, indicating limited ability to self-correct once execution failures occur.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The benchmark's training recipe is concrete and replicable on hobby hardware: 100 human teleoperated demonstrations per task collected directly on the physical SO-101 with RGB observations, fine-tuning each policy, and evaluating 20 real-world episodes per model-task pair; the demonstration datasets are publicly released.",
+  "quote": "For each task, 100 teleoperated demonstrations are collected. ... Each model-task pair is evaluated over 20 independent hardware trials to assess task success, failure behavior, and recovery capability. ... All collected demonstration datasets have been publicly released to support reproducible research.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A robotic waste sorter can sort recyclables using decoupled perception (an SSD object detector trained on autonomously collected images) plus scripted manipulation primitives, rather than end-to-end imitation learning — supporting the 'classifier picks bin, policy/primitive does grasp' architecture for the SO-101 project.",
+  "quote": "Second, we provide a robotic system that can automatically collect object images to quickly train a deep neural-network model.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The system classifies waste only at the material-category level (aluminum can, glass bottle, plastic bottle) and does NOT distinguish plastic resin types (PET vs HDPE vs PP) from RGB vision — evidence that even academic RGB-based sorters treat 'plastic bottle' as a single class, and resin-level sorting needs priors or other sensing.",
+  "quote": "the proposed methods enable quick collection of the training image sets for three classes of waste items (i.e., aluminum can, glass bottle, and plastic bottle)",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Training data for the waste detector can be collected quickly and cheaply via robot-automated image capture: 59,400 images (120 orientations x 5 viewpoints x 99 objects), with ~12.3 s per 100 images, claimed ~99% faster than prior manual methods — a transferable data-collection strategy for a hobby arm with 640x480 cameras.",
+  "quote": "59,400 (120 object-orientation patterns × 5 viewpoint patterns × 99 objects) images ... 12.3 s [for 100 images], representing 99.1% faster than prior methods",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Graspless 'push-and-drop' manipulation (pushing the item off the surface into a bin) achieves a faster cycle time (avg 3.3 s) than pick-and-release with a soft five-finger gripper (avg 5.2 s) — directly relevant to a low-payload SO-101 handling crushed/intact bottles, since pushing avoids grasp-force and payload limits entirely.",
+  "quote": "Push-and-drop: Gripper pushes object in straight line toward bin without grasping; average cycle time of 3.3 s ... Pick-and-release: Soft gripper with five fingers grasps object; average cycle time of 5.2 s",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Domain gap between the dataset-collection scene and the deployment scene (illumination, background, scale) materially degrades detector performance, and mitigation via object scaling, histogram matching/equalization, and background synthesis raised mean F-scores to ~79% (aluminum can 72%, glass bottle 89%, plastic bottle 75%) — a caution for training YOLO on home-collected bottle images and deploying in a Vietnamese ve chai setting.",
+  "quote": "We address differences in illumination and background by applying object scaling, histogram matching with histogram equalization, and background synthesis to the source target-object images.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "High classification performance was achieved via transfer learning from ImageNet-pretrained CNN and Vision Transformer architectures (ResNet, ResNeXt, RegNet, Swin Transformer), implying a custom bottle/cap RGB classifier can be fine-tuned from pretrained backbones rather than trained from scratch — a workflow feasible on hobby-scale data and compute.",
+  "quote": "Advanced Convolutional Neural Network and Vision Transformer-based models, including ResNet, ResNeXt, RegNet, and Swin Transformer, are trained and evaluated on this dataset.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The paper uses knowledge distillation from a large Swin Transformer teacher into lightweight MobileNetV3 student models explicitly targeted at edge-device deployment, indicating resin-type classification can run on cheap/embedded compute of the kind available in a low-budget SO-101 setup.",
+  "quote": "Knowledge Distillation from a large, computationally intensive, and accurate model to enhance the accuracy of fast and compact models specifically designed for deployment on edge devices, using the output class probabilities of the Swin Transformer model to enhance the accuracy of the lightweight MobileNetV3 models.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The work is motivated by the economics of mixed waste going to landfill because sorting is perceived as financially impractical — a motivation parallel to the ve chai/HCMC context, though the study's setting is Australian construction waste, not municipal bottle streams.",
+  "quote": "The perceived financial impracticality of sorting and separating waste, coupled with the simplicity of landfilling processes often contribute to mixed material loads sent directly to landfills.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "PET has the highest scrap value among common plastic waste types, which is why plastic-sorting research and deployments prioritize PET identification — relevant to deciding which separations add value in the SO-101 sorting task.",
+  "quote": "Polyethylene Terephthalate(PET) plastic stands out as valuable, with the highest scrap value among various plastic waste types.",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "Deep learning (CNN/transfer-learning) methods on ordinary camera imagery are an established, surveyed approach for identifying and sorting plastic waste types, supporting the feasibility of an RGB-vision classifier on cheap hardware.",
+  "quote": "explores diverse deep learning(DL) strategies for identifying and sorting plastics",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "Public datasets exist for training vision-based waste/plastic classifiers — the survey's references cite TrashNet, TACO, DeepTrash, and Kaggle garbage/plastic classification datasets — usable as pretraining/fine-tuning starting points for a custom bottle/cap dataset.",
+  "quote": "Mention of datasets: TrashNet, TACO, DeepTrash, and Kaggle garbage/plastic classification datasets",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "The system can flag previously unseen plastic categories as outliers with up to 95% accuracy (LDA on embeddings), a mechanism for rejecting unknown/contaminant items rather than misclassifying them into a bin.",
+  "quote": "95% of new plastic correctly identified as outlier",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Results were obtained on the WaDaBa dataset (4,000 images: PET 2200, PE-HD 600, PP 640, PS 520, Other 40) with staged variation in lighting, damage and rotation, and the paper includes no conveyor-belt, robot, or real-world deployment validation — so the 99%+ numbers are lab-benchmark figures, not field performance for an SO-101 workcell.",
+  "quote": "different lighting conditions, various degrees of damages, and are rotated at different angles to simulate natural conditions ... [no] discussion of conveyor belts, robotic systems, or real-world deployment scenarios",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The system requires controlled geometry: the plastic sample must be held at a fixed 50 mm distance from the sensor so the field of view covers a 50 mm x 50 mm sample surface — a constraint that conflicts with variable object poses on a moving robot arm but could suit a fixed 'presentation station' where the arm holds each item at a set distance.",
+  "quote": "The plastic sample holder is mounted at a 50 mm distance from the sensor to allow the field-of-view divergence of the sensor to cover the whole surface of the sample with dimensions of 50 mm × 50 mm",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The training dataset was small and imbalanced (1200 sensor readings from 423 plastic waste samples, with only 15 PS and 8 PVC physical samples), and the authors position the sensor as suitable for integration into smart bins, conveyors, and handheld wands rather than demonstrating deployment-grade sorting.",
+  "quote": "small enough to mount it in lightweight and portable tools and devices such as smart bins, conveyors, wands and others",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "AMP Robotics' sorting robots achieve 80+ picks per minute routinely (sometimes over 100), versus 30-50 picks per minute for human sorters — a throughput bar a hobby SO-101 arm cannot approach, so a hobby build must compete on cost/niche rather than speed.",
+  "quote": "routinely hit 80 plus picks per minute ... we've seen them hit over a hundred",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP relies on deep learning trained on large datasets to handle the visual complexity of deformed, dirty, varied recyclables, rather than hand-coded rules — supporting the feasibility of vision-only (RGB) plastic identification given enough labeled data.",
+  "quote": "deep learning, with enough data, can tackle this complexity",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's flagship Cortex system uses a delta-style robot arm (Omron integration) with a pneumatic suction-cup gripper on a spring-loaded mechanism to handle variable material heights — suction, not finger grasping, is the industry-standard end effector for bottle picking.",
+  "quote": "Delta-style robot arm ... Pneumatic suction cup gripper with spring-loaded mechanism for variable material heights",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's vision system distinguishes commodity categories including PET bottles and HDPE milk jugs from camera imagery, demonstrating that camera-based (non-NIR) classification of PET vs HDPE containers is done in commercial practice.",
+  "quote": "The system identifies valuable commodities including aluminum cans, cardboard, PET bottles, and HDPE milk jugs.",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP runs inference on edge compute inside the facility because trash facilities have poor internet and the task needs real-time operation, and commercial purity targets are roughly 85% for plastic bales — a realistic accuracy benchmark for a downstream-value sorting task.",
+  "quote": "we opted for edge computing due to poor internet in trash facilities and the need for real-time operations",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "FTIR (mid-infrared) spectroscopy, which resolves characteristic molecular peaks, gave near-perfect classification of black plastics and maintained high accuracy on real-world samples — but FTIR/MIR instruments are lab-grade hardware, far beyond a $55-arm budget, implying dark-plastic ID must rely on non-spectral cues (shape, context, heuristics) in a hobby build.",
+  "quote": "With FTIR data featuring characteristic peaks, all three models achieved near-perfect classification accuracy... whereas models trained on FTIR data maintained high accuracy.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The study built a dataset of 49 types of black plastics for training and validating the classifiers, indicating that plastic-type diversity in real waste is much broader than the handful of resin classes a hobby sorter would target.",
+  "quote": "The study established a high-quality dataset containing 49 types of black plastics to identify plastics types.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Conventional NIR sorting fails on black plastics because carbon black pigment absorbs the NIR signal, so black items (e.g., many dark bottle caps) cannot be identified by polymer type with standard NIR — a key limit if the SO-101 build were to consider an NIR add-on.",
+  "quote": "Many black plastics contain carbon black pigments, which strongly absorb NIR radiation across a broad spectral range. Because the incident light is absorbed rather than reflected, the spectrometer receives insufficient signal to determine the material composition",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Paper labels, adhesives, inks, food residue, dirt and moisture on bottles can mask or distort the polymer's NIR spectrum, meaning even a working NIR sensor is unreliable on dirty/labeled ve chai bottles without cleaning or label removal.",
+  "quote": "These surface layers can influence the measured spectrum by: partially masking the polymer signal, introducing additional spectral features, reducing reflectance intensity.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "NIR spectroscopy is the dominant polymer-identification technology in industrial recycling plants (over color cameras, hyperspectral, X-ray), which is the practice used by commercial sorters like TOMRA that does NOT transfer to a $55 RGB-camera arm.",
+  "quote": "Among these, NIR spectroscopy is the most widely used method for polymer identification due to its ability to detect chemical differences between plastics in real time.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Separating PET from PE/PP is essential for downstream value because their melt temperatures differ widely and mixed polymers reprocess poorly — supporting the premise that cap (HDPE/PP) vs bottle (PET) separation adds value.",
+  "quote": "PET melts around 250–260 °C; PE and PP melt around 110–170 °C. ... Mixing incompatible polymers during reprocessing leads to poor mechanical properties, unstable melt behavior, and inconsistent product quality.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Industrial NIR sorting lines classify each object within tens of milliseconds on high-speed conveyors processing tons per hour — a throughput regime a hobby arm cannot approach, so per-item value rather than throughput must justify the hobby build.",
+  "quote": "The entire detection and classification process must occur within tens of milliseconds. ... Facilities may process several tons of plastic per hour, making automated identification technologies essential.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "TOMRA's standard AUTOSORT sensor suite cannot detect black polymers by default; black plastics are a 'traditionally undetectable' fraction that requires optional add-on technology (GAINnext) to sort — corroborating that NIR-based sorting fails on carbon-black plastics, a limit that would also apply to any hobby-grade optical approach.",
+  "quote": "Optional add-on technologies expand material identification capabilities for traditionally undetectable fractions like black polymers and ensure sorting performances that remain stable.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Industrial-grade polymer sorting (TOMRA AUTOSORT) relies on a multi-sensor configuration with proprietary optical technologies (SHARP EYE, FLYING BEAM, DEEP LAISER) plus continuous real-time sensor calibration — a sensing stack far beyond RGB cameras, implying resin-type discrimination at industrial accuracy does not transfer to a 2x 640x480 RGB setup.",
+  "quote": "Multifunctional sensor configuration ... Optional Integrated Calibration Technology for continuous real-time sensor calibration.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The AUTOSORT page provides no throughput, belt-speed, or per-resin (PET vs HDPE vs PP) accuracy specifications publicly, so quantitative performance comparisons against a hobby arm cannot be sourced from this page.",
+  "quote": "No throughput rates, belt speed, or capacity metrics are stated. ... provides no technical differentiation between PET, HDPE, and PP sorting capabilities.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "AMP Robotics' sorting system identifies plastics using AI on visual characteristics alone (color, size, shape, opacity, brand markings) rather than requiring spectroscopic sensing — directly supporting the feasibility of RGB-camera-based resin classification for a hobby arm.",
+  "quote": "can differentiate objects found in the waste stream by color, size, shape, opacity, brand, and more",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's robots achieve pick rates of about 80 items per minute, roughly twice human sorter speed — a throughput benchmark that a $55 SO-101 arm cannot approach, framing realistic scoping for hobby-scale sorting.",
+  "quote": "upwards of 80 items per minute—more than two times as fast as human sorters",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's AI platform classifies recyclables into more than 100 categories/characteristics, indicating that fine-grained resin- and form-factor-level distinction (e.g., PP K-Cups vs other plastics) is achievable with camera-based deep learning given sufficient training data.",
+  "quote": "more than 100 different categories and characteristics of recyclables",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's technology specifically handles small-format and non-uniformly shaped items such as polypropylene (#5) K-Cup pods, which is relevant to cap-scale (small object) sorting on the SO-101.",
+  "quote": "non-uniformly shaped items",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP Robotics has roughly 200 robotic systems deployed across North America, Europe, and Japan processing over 10 billion items annually, establishing that camera-based AI sorting is production-proven at MRF scale.",
+  "quote": "more than 10 billion items annually",
+  "importance": "tangential",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP Robotics identifies plastic resin types (No. 1 PET and No. 2 HDPE) using a deep-learning computer vision system trained on visible features — sizes, colors, logos, text, and reflectivity — rather than relying on NIR spectroscopy, implying RGB-camera-based plastic-type classification is industrially proven and in principle transfers to a cheap 640x480 camera setup.",
+  "quote": "We used it to teach systems to recognize No. 1 and No. 2 plastics such as milk jugs, sizes, colors, logos, text, and reflectivity — a whole set of features.",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's stated design premise is that any sorting distinction a human can make by sight can be replicated with cameras plus deep learning — supporting a vision-only (no force sensing, no spectroscopy) identification approach for the SO-101 build.",
+  "quote": "If a person can do it by sight, we should be able to do it with vision and deep learning.",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP uses custom suction (vacuum) grippers, not claw grippers, for picking recyclables, chosen for reliability and low maintenance with unconstrained vacuum power — a design choice that does NOT directly transfer to the SO-101's parallel-jaw claw and 0.2-0.3 kg payload, meaning grasp strategy for crushed/labeled bottles must be solved differently on the hobby arm.",
+  "quote": "We also developed specialized custom suction grippers, because they need to be highly reliable, low maintenance.",
+  "importance": "central",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "The dual-robot AMP Cortex picks 160 items per minute versus a peak human rate of ~80 and an industry-average human rate of ~40 picks per minute — setting the throughput benchmark against which any hobby-arm sorter (likely single-digit picks per minute) must be economically judged in a ve chai context.",
+  "quote": "The AMP Cortex can pick 160 pieces per minute ... People can also do 80 picks per minute, but they get tired, and the industry average is closer to 40.",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "AMP's classification accuracy depends on a very large proprietary training dataset of recyclables aggregated and continuously updated across many facilities, suggesting a hobby build fine-tuning YOLO/segmentation on a small custom bottle/cap dataset should expect a meaningful data-scale gap.",
+  "quote": "AMP Robotics amassed a massive data set of bottles, cans, and more ... They can learn from facilities across the country.",
+  "importance": "supporting",
+  "_sourceQuality": "secondary"
+ },
+ {
+  "claim": "The review's recommended future direction — lightweight models, multi-sensor fusion, and edge-AI deployment — aligns with (and lends academic support to) the proposed hybrid CV+cheap-sensor approach running on low-cost edge hardware for the SO-101 build.",
+  "quote": "suggests future research directions focusing on lightweight models, multi-sensor fusion, and edge-AI deployment",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "This is a PRISMA-guided systematic review covering 112 peer-reviewed articles on AI-based plastic waste classification and sorting published between 2015 and 2025, making it a consolidated performance-metrics source for the research question's part (a) and (c).",
+  "quote": "This systematic review, following the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-analyses) guidelines, identified 112 articles published between 2015 and 2025 on AI-based plastic waste classification and sorting.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "AMP Robotics' commercial recycling AI (Neuron) identifies recyclable materials using purely visual/RGB-observable attributes — color, texture, shape, size, pattern, and brand labels — rather than requiring spectroscopic (NIR) sensing, demonstrating that camera-based visual classification of recyclables is viable at commercial scale.",
+  "quote": "AMP Neuron™ AI platform continuously trains itself by recognizing different colors, textures, shapes, sizes, patterns, and even brand labels.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "As of mid-2021, AMP's vision system could classify more than 100 distinct categories and characteristics of recyclables across single-stream recycling, e-scrap, and C&D debris streams.",
+  "quote": "The company can now classify more than 100 different categories and characteristics of recyclables across single-stream recycling, e-scrap, and construction and demolition debris.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Commercial recycling robots (AMP's delta-style pickers) achieve peak speeds of 140 picks per minute and sustained rates of 120 picks per minute on a single robot — a throughput benchmark roughly 100x what a hobby arm like the SO-101 could achieve, framing the hobby arm as a demonstration/pre-sorting tool rather than a throughput competitor.",
+  "quote": "In June, AMP marked a breakthrough, recording speeds of up to 140 picks per minute on a single robot and a sustained rate of 120 picks per minute on many common picking layouts.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "AMP's classification performance rests on an extremely large proprietary training dataset — an object recognition run rate exceeding 10 billion items annually, claimed as the largest known real-world dataset of recyclable materials — implying that dataset scale (not exotic sensors) is the key ingredient commercial sorters rely on, and the main gap a hobbyist fine-tuning YOLO on custom bottle/cap data must work around.",
+  "quote": "AMP has extended its object recognition run rate to more than 10 billion items annually.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "This 2021 article does not state whether AMP's vision-only approach distinguishes resin types (PET vs HDPE vs PP); no sentence mentions specific plastic types or bottle/cap/lid containers, so vision-only resin discrimination cannot be sourced from this page alone.",
+  "quote": "The company can now classify more than 100 different categories and characteristics of recyclables across single-stream recycling, e-scrap, and construction and demolition debris.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "ACT on an SO-101 needs on the order of 50 or more teleoperated demonstration episodes per task to achieve good performance, and datasets can be incrementally extended by appending more episodes.",
+  "quote": "50+ training examples for good performance",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "An ACT policy trained this way exhibits limited generalization: it performs best only when test conditions closely match the training demonstrations, and fails to generalize to new object (cube) positions not covered in the data — a key constraint for a bottle/cap sorting task with variable item placement.",
+  "quote": "Works best when test conditions match training examples ... limited generalization to new cube positions.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The recommended ACT configuration for SO-101 uses a chunk size of 50 predicted steps (~1.66 s horizon) while executing only the first 15 actions (~0.5 s) before re-predicting, with batch size 4 for small datasets and roughly 7,500 training steps for ~3,000 frames.",
+  "quote": "Chunk size: 50 steps (approximately 1.66 seconds prediction horizon) ... Action steps: 15 (uses first 0.5 seconds of predictions) ... Training steps example: 7,500 steps for 3,000 frames",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The standard SO-101 ACT pipeline records two camera streams — a wrist-mounted camera and a static front camera — matching the 2x 640x480 camera setup assumed in the research question.",
+  "quote": "capturing \"both wrist camera and front camera views\"",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Reliable deployment requires keeping lighting and camera positions consistent between data collection and inference, with generalization tested only gradually from the exact training scenario outward — implying a sorting cell would need controlled, fixed lighting and rigid camera mounts.",
+  "quote": "gradually test generalization boundaries ... consistent lighting and camera positions",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "ACT on SO-101 for a block pick-and-place task required scaling from 10 to 25 demonstration episodes per bin location to move from 60% to 90% in-distribution success, and from 10% to 75% out-of-distribution success — implying a bottle/cap sorting task with more object variation will need substantially more than ~50 total demos.",
+  "quote": "\"90% success rate\" (in-distribution) and \"75% success rate\" (out-of-distribution) after increasing to 25 episodes per bin, versus \"60% success rate\" in-distribution and \"10% success rate\" out-of-distribution with 10 episodes per bin.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "A camera positioning shift between training and evaluation broke the trained ACT policy's performance, and arm calibration differences between training and testing sessions also degraded results — setup consistency is a hard requirement for ACT on SO-101.",
+  "quote": "\"Consistent setup is everything\" ... Camera positioning shift between training and evaluation broke performance; \"Arm calibration was different between training and testing\"",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "A 52M-parameter ACT model for SO-101 trains in roughly 4 hours on a single 12GB NVIDIA RTX 3080, so training compute is not a blocking cost for a hobby-budget sorting project.",
+  "quote": "52M parameter ACT model ... Training time: ~4 hours on 12GB NVIDIA RTX 3080",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "ACT policies trained this way exhibit no recovery behavior after a failed grasp and fail near workspace edges — relevant failure modes for grasping crushed/variable bottles where first-attempt grasps will often miss.",
+  "quote": "\"No recovery\" after initial grasp failures; \"Fragility close to bin edges\"; \"Overreaching or underreaching\" during grasping",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Demonstration data quality pitfalls directly transfer to policy failures: the operator watching the follower arm directly during teleop leaks information the robot's cameras never see, and inconsistent grasp points (top vs middle of object) degrade the learned policy.",
+  "quote": "\"I was looking over my shoulder at the follower arm while recording, getting information the robot would never have\"; \"Grasping at the top of the block instead of middle\" degraded performance",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "On the SO-101, language/vision-conditioned selective sorting is the hardest benchmark task: every evaluated policy (including ACT) scored only 0-10% success on Selective Color Sorting, with ACT itself at 0%, while simple pick-and-place (Pen Transfer) reached 70-95% across all policies. This directly supports decoupling perception (classifier picks the bin) from the grasp policy rather than relying on end-to-end ACT for sorting decisions.",
+  "quote": "Selective Color Sorting is consistently the most challenging benchmark, with all evaluated policies achieving very low success rates (0–10%). In contrast, Pen Transfer achieves consistently high success rates (70–95%) across all evaluated policies, indicating that simple pick-and-place manipulation is comparatively robust under the current benchmark setting.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "ACT, trained via behavior cloning on 100 real-world teleoperated demonstrations per task and evaluated over 20 trials per task on the physical SO-101, achieved 75% on pen transfer, 0% on color sorting, 10% on multi-object packing, 50% on precision placement (33.75% average) — a concrete data-budget and performance baseline for what ACT can do on this arm.",
+  "quote": "For each task, 100 teleoperated demonstrations are collected. ... Each model-task pair is evaluated over 20 independent hardware trials to assess task success, failure behavior, and recovery capability.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Execution instability (unstable grasps and repetition loops), not semantic misunderstanding alone, is the dominant failure source on SO-101-class hardware; among ACT's failed trials, 94.34% involved grasp instability and 92.45% repetition loops, implying a bottle/cap sorter needs grasp-retry and recovery logic, not just better perception.",
+  "quote": "Execution instability emerges as the dominant failure source, while recovery capability varies substantially across architectures. ... ACT exhibits extremely high rates of grasp instability, repetition loops, and state mismatch, indicating failures across both perception and action consistency.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The SO-101 platform imposes substantially stronger embodiment constraints than research-grade arms — actuator noise, joint backlash, control latency, trajectory jitter, limited positional repeatability, and lower payload — so small execution errors accumulate, especially in long-horizon or contact-rich tasks like handling many bottles/caps in sequence.",
+  "quote": "Compared with research-grade robotic systems such as Franka Panda [2] and WidowX [11], the SO-101 operates under substantially stronger embodiment constraints, including limited actuator precision, reduced control stability, lower payload capacity, and noisier motion execution.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Stronger pretrained VLA policies (pi-0.5 at 56.25% average, Wall-X at 51.25%) generally outperform the ACT imitation baseline (33.75%) on SO-101, but performance remains highly task-dependent — and even the best VLA managed only 10% on the sorting task, so no evaluated end-to-end policy solved selective sorting on this hardware.",
+  "quote": "Experimental results show that stronger pretrained VLA policies generally outperform the imitation learning baseline, although performance remains highly task-dependent under low-cost robotic deployment conditions.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "An SO-101 user trained ACT on 49 episodes (~39k frames, two 1080p cameras) for 100k steps with batch size 1 on an RTX 3060 (8GB) and got a policy that produced no useful behavior — the robot stayed static or moved unpredictably despite decreasing training loss.",
+  "quote": "49 episodes (~39k frames, two 1080p camera views)... robot stays static or moves unpredictably... the learned policy produces weak or unstable control outputs.",
+  "importance": "central",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "Even with a strong setup (60 episodes, 200k steps, batch size 32, RTX 5090), a commenter's ACT policy achieved only 60% success on a pointing task with a fixed target and dropped to 20% when the target was moved slightly — while a grasping task trained the same way reached 100% (fixed) and 60% (moved), showing ACT success is task-dependent and degrades sharply with object-position variation.",
+  "quote": "The success rate of pointing when the target is fixed is 60%, while the success rate of slightly moving the target position is only 20%... the same collection and execution of the grasping task performed very well, with success rates of 100% and 60% respectively",
+  "importance": "central",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "Practitioner advice in the thread holds that ACT requires batch size of at least 8 for stable gradients, that cameras should be downscaled to ~480px (as in the original ACT paper) to fit larger batches, that chunk_size/n_action_steps of 50 are too high (suggest 20/10), and that use_vae should be enabled to avoid averaging contradictory demonstrations — unverified peer advice, and the same comment promotes the commenter's own tool.",
+  "quote": "Batch size 1 is your main problem — ACT needs at least 8 for stable gradients. Downscale your cameras to 480×480... Try chunk_size=20, n_action_steps=10. And turn use_vae=true back on — without it, ACT averages contradictory demonstrations into mush.",
+  "importance": "supporting",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "A commenter claims a common cause of the 'robot not moving' failure mode is idle/static frames dominating the demonstration dataset, which biases the ACT policy toward predicting zero actions — implying dataset trimming/curation matters as much as model tuning (comment also promotes the commenter's own 'lerobot-doctor' tool).",
+  "quote": "A common cause of \"robot not moving\" is idle/static frames dominating the dataset, biasing the policy toward zero-action predictions.",
+  "importance": "supporting",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "LeRobot's ACT implementation defaults to chunk_size=100 and n_action_steps=100 (per a commenter reading configuration_act.py), meaning at 30 fps the policy predicts ~3.3 seconds ahead per inference, and LeRobot lets users disable the paper's per-timestep temporal ensembling — a configuration trap for SO-101 users copying defaults.",
+  "quote": "they have set chunk_size to a default 100, action_steps to a default 100... soo if fps is 30 a 100 chunk size would mean the policy have to predict next 100/30s = 3.33s at one timstep??",
+  "importance": "supporting",
+  "_sourceQuality": "forum"
+ },
+ {
+  "claim": "The study built a specialised dataset of real end-of-life plastic waste covering four resin types (ABS, HDPE, PS, PVC) and trained ImageNet-pretrained CNN and Vision Transformer models (ResNet, ResNeXt, RegNet, Swin Transformer) via transfer learning to classify them with high accuracy — but the class set does NOT include PET or PP, the key resins for the water-bottle/cap task, so transfer to PET-vs-PP-vs-HDPE discrimination is unproven by this paper.",
+  "quote": "This dataset comprises four commonly used plastic types in construction projects—ABS, HDPE, PS, PVC. Leveraging Transfer Learning pre-trained with ImageNet, highly accurate tailored classification models are developed",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Deep-learning resin classification models were developed as whole-image classifiers on segregated waste fragments (classification by resin type from RGB images), i.e., a decoupled perception approach where a classifier assigns the resin bin — consistent with the 'classifier picks bin, policy does grasp' architecture rather than end-to-end imitation learning.",
+  "quote": "This paper presents a comprehensive study on RGB images for classification by resin type. A large specialised dataset end-of-life plastic waste gathered.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The economic motivation is that manual sorting is perceived as financially impractical, so mixed plastic loads go to landfill — an Australian construction-and-demolition context whose economics differ substantially from Vietnam's ve chai informal collection system, where manual sorting labor is cheap and already occurs.",
+  "quote": "The perceived financial impracticality of sorting and separating waste, coupled with simplicity of landfilling processes often contribute to mixed material loads sent directly to landfills.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A waste-sorting robot distinguished aluminum cans, glass bottles, and plastic (PET) bottles using only RGB-D vision (no spectroscopy or material sensing), reaching a mean F-score of about 79% after augmenting domain-adapted synthetic training data with real-world images (vs ~46% with synthetic data alone). This supports the feasibility of coarse container-category sorting with cheap cameras, but note the system separated container types, not plastic resin types (no PET vs HDPE vs PP discrimination).",
+  "quote": "mean value of the F-score in the three object categories was about 79%",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The system used a decoupled architecture — a quickly-trainable object detector for perception plus scripted manipulation primitives (not end-to-end imitation learning) — and its training dataset of 59,400 images was collected in about 111 minutes using an automated green-screen setup with a rotating stage, hand-eye robot arm, and AR-marker auto-annotation (about 12.3 s per 100 images).",
+  "quote": "Total time required to collect the training set comprising 59,400 images captured with a green screen was about 111 min",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Measured manipulation performance on real waste items: pick-and-release grasping achieved a 70% mean success rate at ~5.2 s per object, while graspless push-and-drop achieved 57% at ~3.3 s per object; push-and-drop was preferred when feasible because it is ~1.9 s faster. These figures came from a KUKA LBR iiwa 14 industrial arm with a five-fingered soft gripper — far more capable hardware than an SO-101 — so they represent an optimistic upper bound for a hobby arm.",
+  "quote": "Push-and-drop is primary performed if possible because of its quickness.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Semi-transparent objects (i.e., clear plastic bottles) were an explicit failure mode of the RGB-D perception pipeline — a semi-transparent object caused misannotation despite depth sensing, and the authors state that future work needs non-optical sensing for such items. This directly bears on sorting clear PET bottles with cheap RGB cameras.",
+  "quote": "another method that does not rely exclusively on optical information",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The paper addresses robustness to dirty, deformed, or damaged waste objects as a design goal but provides no quantitative measurement of how much detection or grasp success degrades on crushed/deformed bottles, leaving the crushed-bottle case (common in real Vietnamese ve chai streams) empirically unvalidated even in this peer-reviewed system.",
+  "quote": "objects that are dirty on the surface or deformed and/or damaged",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A HCMC-area scrap buyer quotes PP plastic scrap at only 5,000-8,000 VND/kg, which is far below the 20-35k VND/kg figure assumed for PP/HDPE caps in the research framing — cap-vs-bottle price spread may be smaller than assumed and should be verified with actual ve chai buyers.",
+  "quote": "Nhựa PP (PP plastic) | 5,000 – 8,000 [VND/kg]",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "PE-family scrap (which includes HDPE, the other common cap material) is quoted at 12,000-19,800 VND/kg, roughly 2-3x the quoted PP price, meaning separating HDPE caps from PP caps could itself be a value-adding split — but only if buyers actually pay the differential.",
+  "quote": "Nhựa PE (PE plastic) | 12,000 – 19,800 [VND/kg]",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The buyer states ABS commands the highest purchase price among plastic scrap types (13,500-16,000 VND/kg per its own table), and that price is driven by resin type rather than form factor — supporting the premise that resin-type sorting is what buyers pay for.",
+  "quote": "Nhựa ABS có khả năng chịu được nhiệt và lực cao. Đây là loại phế liệu có giá thu mua cao nhất trong số các loại phế liệu nhựa",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The same lot of plastic scrap is priced differently purely by resin classification (ABS vs PP), confirming that resin-type identification/sorting directly changes the price a seller receives from Vietnamese scrap buyers.",
+  "quote": "Cùng một loại phế liệu nhựa nhưng giá mua nhựa ABS sẽ cao hơn nhựa PP",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The page's price table omits PET bottles entirely and its 'update' date matches the exact day of access (16/07/2026), indicating a programmatically-stamped SEO page whose specific VND/kg figures should be treated as indicative ranges, not verified market prices.",
+  "quote": "Bảng Giá Phế Liệu Nhựa cập nhật mới nhất ngày 16/07/2026",
+  "importance": "tangential",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "A single-servo, 3D-printed PLA two-finger gripper with a 135-degree V-shaped fingertip profile can be built for roughly USD 20-40 in material cost with about 10 hours of print time, making a purpose-built bottle-grasping end-effector feasible at hobby budgets comparable to the SO-101.",
+  "quote": "The proposed design offers significant advantages in terms of rapid prototyping (a print time of approximately 10 h), modularity, and low manufacturing cost (with an estimated in-house material cost of USD 20 to 40).",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A conventional 45-degree V-profile fingertip fundamentally fails to grasp 66 mm PET bottles (only flat-surface contact at max opening), whereas widening the V-cavity angle to 135 degrees enables secure grasping of cylinders up to 71.5 mm diameter at a 61.5 mm fingertip height — a direct, transferable design rule for SO-101 gripper fingers aimed at water bottles.",
+  "quote": "Preliminary analysis and geometric evaluation revealed that the conventional 45° V-profile is fundamentally unsuitable for grasping cylindrical objects such as 66 mm PET bottles... Incrementally increasing the angle to 135° enabled a maximum graspable diameter of 71.5 mm while maintaining a fingertip height of 61.5 mm",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "In physical trials, the V-profile gripper achieved a 100% grasp success rate on rigid 66 mm bottles but only 40-60% on deformable items (plastic bags, cups) — implying intact bottles are easy but crushed/deformable bottles are the hard case for a rigid two-finger gripper without force sensing.",
+  "quote": "Physical tests confirmed reliable operation across objects ranging from 24 to 71 mm in diameter, with a 100% success rate on rigid 66 mm bottles and a 40% success rate on deformable items",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A hobby-class Hitec HS-945MG servo (1.079 N·m at 6.0 V) driving a four-bar parallel linkage yields about 35.97 N of normal force per jaw and retains objects up to 0.6 kg without slippage — force and payload margins well above what a 20-30 g cap or a ~25 g empty PET bottle requires within the SO-101's 0.2-0.3 kg payload class.",
+  "quote": "Servo torque: τservo = 11.0 kg-cm = 1.079 N·m at 6.0 V... Available normal force per jaw: N = 35.97 N... The gripper successfully retained objects weighing up to 0.6 kg without observable slippage.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The 135-degree V-cavity increased fingertip contact area from 152 mm2 to 380 mm2 versus the 45-degree design and produces self-centering that tolerates positioning error and prevents rotational slip of cylinders — properties that reduce the precision demanded of a vision policy when grasping bottles.",
+  "quote": "Compared to a 45° configuration, the 135° profile increased the contact area from 152 mm2 to 380 mm2... The enhanced V-shaped contact geometry allows for stable object grasping by reducing sensitivity to positioning errors. This configuration also promotes a self-centering effect",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A HCMC scrap-buying company (Mua Phế Liệu 247) quotes dealer buy prices for PET scrap at 16,000–22,000 VND/kg — far above the 4,000–7,000 VND/kg street-level ve chai PET figure assumed in the research question, suggesting a large dealer-vs-collector price spread (or promotional inflation on this page).",
+  "quote": "Nhựa PET | 16,000 – 22,000 [VND/kg]",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "PP scrap (the main bottle-cap plastic) is quoted at 13,000–30,000 VND/kg by this dealer, roughly consistent with the question's premise that cap plastic (PP/HDPE) is worth several times more per kg than PET bottles at street level.",
+  "quote": "Nhựa PP | 13,000 – 30,000 [VND/kg]",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Prices differ sharply by resin type — ABS at 25,000–38,000 VND/kg is the highest-value listed plastic while PVC at 9,000–24,000 VND/kg is the lowest — implying resin-level separation materially changes revenue per kg.",
+  "quote": "Giá nhựa phế liệu hôm nay【17/07/2026】 dao động từ 9.000 đồng/kg đến 39.000 vnđ/kg",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The dealer's price table has no explicit HDPE line and no separate pricing for bottle caps (nắp chai) or bottles (vỏ chai) as items — pricing is by resin category, so a hobby sorter would need to map objects to resin classes to capture value, and the HDPE-cap price premium claimed in the question is not directly corroborated by this source.",
+  "quote": "The page lists \"Nhựa HI\" (HI plastic) but does not mention HDPE... no specific pricing is provided for bottles or caps.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Quoted prices are not firm: the dealer states payouts vary with the purchasing process and the quality of each scrap type, so table ranges should be treated as best-case negotiating anchors rather than guaranteed ve chai revenue.",
+  "quote": "hoa hồng có thể thay đổi tùy thuộc vào quá trình thu mua phế liệu cũng như chất lượng mỗi loại phế liệu đó",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "PET beverage bottle collection-for-recycling rates in Vietnam are already high — an estimated 45-65% nationally, with 62% in Ho Chi Minh City specifically — meaning most PET bottles in HCMC are already being captured by existing collection, which weakens the case that a hobby robot adds new PET recovery value.",
+  "quote": "The recycling rate for PET beverage bottles is estimated to be 45 to 65 percent. ... Previous research by the study team found the CFR rate for PET bottles to be 62 percent in Ho Chi Minh City and 39 percent in Hanoi.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Roughly 90% of collected PET bottles in Vietnam are handled by the informal sector (ve chai), and Ho Chi Minh City's informal collector workforce is about 6,200 people (2,000 street material pickers plus 4,200 independent waste pickers) — any robotic sorting proposition competes with or feeds this existing manual value chain.",
+  "quote": "According to an estimate, 90 percent of these PET bottles, collected for recycling, are handled by the informal sector. ... the informal waste collector workforce comprises 6,200 people, i.e., 2,000 street material pickers and 4,200 independent waste pickers.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "HDPE and PP caps and sleeves on PET bottles are treated as contamination that is already removed downstream during recyclers' sorting and cleaning processes — cap separation from bottles is an existing step in the value chain, not an unmet need at the collection stage.",
+  "quote": "the CFR rate of PET is determined after contaminants like dirt metals and other plastics (sleeves and caps from other materials such as HDPE and PP) have been removed.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Informal collection volumes in Vietnam are price-elastic: when recycled resin prices (rPET, rPP, rHDPE) drop, informal collectors and aggregators slow or stop collecting because it becomes unprofitable — so the economic viability of any sorting operation depends on volatile recycled-resin prices, not fixed per-kg values.",
+  "quote": "As rPET prices drop, these stakeholders slow down plastic waste collection and aggregation because recycling becomes less profitable. When rPET prices rise, the collection increases again as these stakeholders take advantage of the higher prices.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Vietnam recycles only about 33% of PET/PP/HDPE/LDPE with a 77% value yield, unlocking just 25% of potential material value (US$872M/yr) and losing US$2.2-2.9 billion per year; CFR rates for PP and HDPE are only 20-50%, with easily separable rigid items (e.g., caps, shampoo bottles) at the high end and films/flexibles at the low end — the recovery gap is concentrated in films and contaminated flexibles, not rigid bottles and caps.",
+  "quote": "Currently, only 25 percent of the total material value of plastics, or US$872 million per year is unlocked, based on a 33 percent recycling rate and 77 percent value yield from plastic recycling. This results in the loss of US$2.2 billion to US$2.9 billion per year ... The CFR rate for HDPE is estimated to be 20 to 50 percent. ... The recycling rate for easily separable rigid HDPE (e.g., for shampoo containers) is estimated to be at the higher end while for other HDPE applications (e.g., films, plastic bags, and so forth), it is estimated to be much lower.",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Industrial recyclers in Vietnam separate PET bottle material from cap material using density (float/sink) in water tanks, because PET flakes sink while HDPE cap flakes float — meaning a hobby robot does not need to identify cap resin optically; a water bath after shredding (or simple float test) is the established cheap separation method for PET-vs-HDPE/PP.",
+  "quote": "Separation of different types of plastic flakes in large water tank Some plastics float and some sink (e.g. caps attached to bottles are made of different plastics (e.g. PET bottle flakes (sinks) vs HDPE caps flakes (float)).",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The separation that adds the most value in the Vietnam PET chain is clear+clean PET vs colored/opaque PET: high-quality rPET made from clear, clean PET bottles sells for about VND 25,000–30,000/kg, so a sorter that isolates clear PET (a color/transparency task feasible with RGB cameras) targets the highest-value output stream.",
+  "quote": "rPET produced to higher quality requires clean, high-quality feedstock (clear and clean PET plastic bottles). Higher-quality rPET can be sold for about VND25,000–VND30,000/kilogram (kg). ... Clear PET has greater value than colored or opaque PET, which can disrupt the recycling process.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "The informal sector (ve chai) collects roughly half of Vietnam's PET packaging waste, and in Ho Chi Minh City the collected-for-recycling rate for PET bottles is 62% with about 90% of those bottles handled by the informal sector — so a hobby sorting arm would sit inside an already-efficient informal collection chain rather than filling a collection gap.",
+  "quote": "The informal sector is estimated to collect about 50% of PET plastic packaging waste, with a higher share for PET bottles in large cities. ... Reported CFRs for PET bottles were 62% in Ho Chi Minh City and in 39% in Ha Noi, with about 90% of these bottles handled by the informal sector.",
+  "importance": "central",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Commercial material recovery operations sort recyclables into aluminium, paper, and plastic types (PET vs HDPE vs PP) using optical sorters programmed to detect a specific resin — the industrial baseline a camera-only hobby arm would be approximating.",
+  "quote": "Sort through all the recyclables into categories: aluminium, paper, and different types of plastic (i.e. PET, HDPE and PP, using optical sorters).",
+  "importance": "supporting",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "Vietnam's PET packaging waste generation in 2024 is estimated at 487,714 tons, indicating a large feedstock base for any downstream sorting/processing improvement.",
+  "quote": "PET packaging waste generation in 2024 is estimated at 487,714 tons.",
+  "importance": "tangential",
+  "_sourceQuality": "primary"
+ },
+ {
+  "claim": "A Pi0.5 flow-matching policy trained on only 100 teleoperated demonstrations on an SO-101 Pro achieved 87-93% success (13/15 clean grasp-and-lift, 1 partial, 1 positional miss) on a single red-bottle pick task with no simulation or domain randomization.",
+  "quote": "Counting the one grasped-but-incomplete trial as partial successes, the effective success rate is 87–93%. For a first policy trained on 100 episodes with no domain randomization, no simulation pre-training, and a low-cost arm, this is an encouraging baseline.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The SO-101's STS3215 servos exhibit up to 7 degrees of joint tracking error under load, and raising PID gains to fix it induces arm shaking that corrupts the wrist-camera image at exactly the pre-grasp moment — a hardware ceiling on grasp precision independent of the learned policy.",
+  "quote": "The first three joints exhibited tracking errors of up to 7 degrees under the current PID values. Increasing the P gain for various D values reduced tracking error but introduced arm shaking",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "The reported success rate holds only inside a narrow operational envelope (one object, one approximate position range, controlled lighting, restricted servo angles); moving the bottle outside that envelope sharply degrades performance and multi-object behavior is untested.",
+  "quote": "Move the bottle outside that servos envelope and the number drops sharply. Add a second object and the policy has not been tested at all.",
+  "importance": "central",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "SmolVLA fine-tuned on the identical 100-episode dataset performed significantly worse than Pi0.5 and failed to produce reliable grasps, suggesting 100 episodes is insufficient for smaller-backbone VLA models to bootstrap manipulation on this hardware.",
+  "quote": "Performance was significantly worse than Pi0.5 and the approach did not produce reliable grasps... 100 episodes may simply be insufficient for SmolVLA to bootstrap reliable manipulation behavior on this task.",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ },
+ {
+  "claim": "Recovery demonstrations that start from failure states degraded policy performance; corrections work only when embedded as small lateral adjustments inside otherwise complete successful trajectories, and a wrist camera cannot be substituted by software foveal crops from fixed overhead cameras.",
+  "quote": "An early attempt at collecting recovery data by starting episodes directly from failed arm positions made performance worse... The foveal crops lacked the stable egocentric reference frame that the wrist camera provides",
+  "importance": "supporting",
+  "_sourceQuality": "blog"
+ }
+]

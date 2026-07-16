@@ -71,6 +71,26 @@ does not authorize power-up; the physical labels and polarity must agree first.
 Once confirmed, put a different permanent color on each arm, supply, barrel connector, and USB
 cable. Never swap them. Connect only one servo while assigning IDs.
 
+The fixed tape colour scheme (from the six-roll multipack) is: **red = 12 V FOLLOWER**,
+**blue/white = 5 V LEADER**, yellow = object bands (a transparent PET bottle needs a ~36 mm band
+to be visible at 640×480), green/white = camera-cable and port flags (macOS camera indices shuffle
+on replug; the flags make the port-to-index mapping physical). Tape a matching band near each
+arm's power socket so the match is visual at both ends of the cable. Red and blue stay reserved
+for power — never reuse them as sorting-task colours near the workspace. The leader servos are
+7.4 V variants: plugging 12 V into the leader bus can permanently burn them
+([Seeed wiki](https://wiki.seeedstudio.com/lerobot_so100m_new/)).
+
+## Desk power budget
+
+The bench needs **four AC sockets plus two USB-A ports**: MacBook charger, Orico hub adapter, 5 V
+leader supply, and 12 V follower supply on AC; the two ring lights on USB-A. The ring lights must
+not draw from the Mac — its ports are reserved for the cameras. One power strip with 4–6 sockets
+and 2–3 USB ports covers both rows; check the desk layout before buying. Never use USB extension
+cables for the cameras — a documented SO-101 dual-camera failure traced to a cheap extension, not
+software ([debug log](https://hackaday.io/project/204187/log/243773-debugging-dual-camera-vision-system-for-so-101-robotic-manipulation-platform)).
+The bought C920/C270 have captive 1.5 m USB-A cables; two USB-A-to-C adapters are the direct-port
+fallback if the hub fails the dual-camera bandwidth test.
+
 ## Motor IDs and assembly order
 
 Before assembling either arm:
