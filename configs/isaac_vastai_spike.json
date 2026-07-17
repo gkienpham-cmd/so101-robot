@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.1",
+  "experiment_id": "so101-cap-isaac-spike-v1",
+  "enabled": false,
+  "prerequisite_evidence": {
+    "beansight_frozen_summary_path": null,
+    "real_cap_dataset_qa_path": null,
+    "real_cap_baseline_summary_path": null,
+    "hardware_measurements_path": null,
+    "modified_so101_asset_path": null,
+    "local_linux_rtx_inference_host_path": null,
+    "converted_sim_dataset_qa_path": null,
+    "converted_real_dataset_qa_path": null,
+    "vast_offer_quote_path": null
+  },
+  "artifact_revisions": {
+    "real_cap_dataset_repo_id": "REPLACE_WITH_REPO_ID",
+    "real_cap_dataset_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "real_cap_policy_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "modified_so101_asset_revision": "REPLACE_WITH_40_HEX_REVISION"
+  },
+  "required_hardware_measurements": [
+    "gear_ratios",
+    "joint_axes",
+    "joint_limits",
+    "zero_offsets",
+    "backlash",
+    "friction",
+    "gripper_geometry",
+    "camera_intrinsics",
+    "camera_extrinsics",
+    "cap_geometry",
+    "workcell_frame"
+  ],
+  "isolation": {
+    "separate_from_project_lerobot_environment": true,
+    "isaac_sim": "5.1.0",
+    "isaac_lab": "2.3.2",
+    "groot": "N1.6",
+    "workshop_repo_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "workshop_lerobot_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "groot_code_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "groot_model_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "container_image_digest": "sha256:REPLACE_WITH_64_HEX_DIGEST",
+    "beansight_lerobot_revision": "30da8e687a6dfc617fcd94afc367ac7071c376ce"
+  },
+  "dataset_bridge": {
+    "converter_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "output_schema": "lerobot_v3",
+    "action_dim": 6,
+    "camera_keys": [
+      "observation.images.top",
+      "observation.images.wrist"
+    ],
+    "qa_required": true,
+    "simulated_dataset_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "real_dataset_revision": "REPLACE_WITH_40_HEX_REVISION",
+    "exchange_only_explicitly_converted_datasets": true
+  },
+  "vast_host": {
+    "gpu": "RTX 4090",
+    "gpu_vram_gb_min": 24,
+    "host_ram_gb_min": 64,
+    "disk_gb_min": 100,
+    "reliability_min": 0.99,
+    "verified_host_required": true,
+    "instance_type": "on_demand",
+    "rt_cores_required": true,
+    "excluded_gpus": [
+      "A100",
+      "H100"
+    ],
+    "strong_network_bandwidth_required": true,
+    "mode": "headless",
+    "standard_docker_in_docker_allowed": false,
+    "execution_mode": "REPLACE_WITH_vast_vm_OR_prebuilt_flattened_image"
+  },
+  "budget": {
+    "total_gpu_cost_usd_max": 10,
+    "includes_infrastructure_and_custom_task": true,
+    "live_hourly_quote_required_before_each_launch": true,
+    "one_sentence_justification_required_before_each_launch": true,
+    "costs_md_update_required_after_each_run": true,
+    "destroy_instance_after_each_run": true
+  },
+  "infrastructure_gate": {
+    "paid_gpu_hours_max": 2,
+    "checks": [
+      "nvidia_smi",
+      "driver_ram_disk_vram",
+      "isaac_compatibility_checker",
+      "headless_boot",
+      "render_one_rgb_depth_observation",
+      "ten_minute_rollout",
+      "terminate_and_relaunch_isaac_application",
+      "second_clean_application_boot",
+      "preserve_logs_and_screenshot",
+      "destroy_instance"
+    ],
+    "required_evidence_files": [
+      "vast_offer_quote.json",
+      "host_specification.json",
+      "nvidia_smi.txt",
+      "isaac_compatibility.txt",
+      "version_and_digest_manifest.json",
+      "rgb_depth_render.png",
+      "ten_minute_rollout.log",
+      "first_boot.log",
+      "second_boot.log",
+      "gpu_hours_and_cost.json",
+      "destruction_confirmation.json"
+    ],
+    "evidence_output_dir": "outputs/isaac_spike/so101-cap-isaac-spike-v1",
+    "results_directory_allowed": false
+  },
+  "custom_task_gate": {
+    "engineering_days_max": 7,
+    "training_path": "workshop_native_groot_n1_6_cotraining",
+    "training_smoke_required_before_full_run": true,
+    "sim_demonstrations": 75,
+    "real_cotraining_episodes": 5,
+    "physical_trials_per_policy": 20
+  },
+  "comparison": {
+    "policies": [
+      "five_real_only_groot_control",
+      "seventy_five_sim_plus_five_real_groot",
+      "sixty_to_seventy_five_real_act_baseline"
+    ],
+    "immutable_start_manifest_path": null,
+    "reset_procedure_path": null,
+    "counterbalanced_policy_order": true,
+    "retention_logic": "all",
+    "min_success_delta_vs_five_real_control": 4,
+    "max_success_deficit_vs_full_real_act": 3,
+    "report_wilson_95_ci": true,
+    "failure_histogram_regression_allowed": false,
+    "interpretation": "pragmatic_sample_efficiency_screen_not_superiority_proof"
+  },
+  "safety": {
+    "physical_teleoperation_over_public_internet": false,
+    "cloud_use": "headless_simulation_and_training_only",
+    "physical_inference_local_only": true,
+    "local_linux_rtx_host_required_for_groot_physical_evaluation": true,
+    "controller_unarmed_by_default": true,
+    "explicit_arm_for_each_rollout": true,
+    "supervised_operation_only": true,
+    "switched_cutoff_within_reach": true,
+    "inventory_before_power": true,
+    "leader_supply_v": 5,
+    "follower_supply_v": 12,
+    "motor_ids_one_at_a_time": true
+  }
+}

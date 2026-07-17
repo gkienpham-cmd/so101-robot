@@ -23,39 +23,61 @@ M1 Pro — the Mac is for teleop, recording, calibration, and inference only.
 Budget state at handoff: $0.22 spent, balance $8.78, projected total $9–14. Top up ~$10 before the
 coffee-ACT week.
 
-## Proven environment recipe (from the successful dry run)
+## Pinned environment recipe
 
-Plain CUDA base image + pinned install — NOT an unverified prebuilt LeRobot image:
+The historical $0.22 dry run used the released `lerobot==0.6.0` package. For every new paid run,
+remove the remaining package-to-source ambiguity: use a plain CUDA image, clone the repository, and
+check out the exact project commit rather than using an unverified prebuilt LeRobot image:
 
 ```bash
-uv pip install 'lerobot[dataset,training]==0.6.0'
+git clone https://github.com/huggingface/lerobot.git /workspace/lerobot
+git -C /workspace/lerobot checkout 30da8e687a6dfc617fcd94afc367ac7071c376ce
+uv pip install -e '/workspace/lerobot[dataset,training]'
+git -C /workspace/lerobot rev-parse HEAD
 hf auth login      # write-scoped token
 wandb login        # project: so101
 ```
 
-This guarantees train-side compatibility with the local pinned checkout
-(commit `30da8e687a6dfc617fcd94afc367ac7071c376ce`) and the dataset v3.0 `codebase_version`.
+Save the `rev-parse` output with the generated config and provenance sidecar. It must be
+`30da8e687a6dfc617fcd94afc367ac7071c376ce`, matching local QA and the dataset v3.0
+`codebase_version`.
 
 ## ACT run
 
-Edit `configs/train_act.json`: dataset repo ID + **immutable revision**, policy repo ID, output
-dir, and steps. Sizing for ~5 data epochs at batch 8:
+Build the smoke and full configs from the pinned-revision QA report; do not hand-edit around the
+gate:
+
+```bash
+beansight-build-act-config results/dataset_qa_pinned.json \
+  --dataset-repo-id YOUR_HF_USER/TIMESTAMPED_DATASET \
+  --dataset-revision IMMUTABLE_HF_COMMIT \
+  --policy-repo-id YOUR_HF_USER/POLICY \
+  --job-name ACT_JOB \
+  --train-output-dir outputs/train/ACT_JOB \
+  --mode smoke
+```
+
+Repeat with `--mode full` only after the smoke loss is healthy. The builder uses the exact complete
+training episodes selected by pinned LeRobot's evaluation split. Sizing remains:
 
 ```text
 steps = ceil(training_frames / batch_size) × 5
 ```
 
 ```bash
-lerobot-train --config_path=/ABSOLUTE/PATH/TO/configs/train_act.json
+lerobot-train --config_path=/ABSOLUTE/PATH/TO/configs/generated/ACT_JOB_smoke.json
 ```
 
+Preserve the generated `.provenance.json` sidecar and verify its config hash before training.
+
 Watch W&B. **Abort criteria:** NaN/Inf at any point; loss flat after ~1,000 steps → stop paying
-and inspect the dataset/config instead. Evaluate a short checkpoint before extending toward ten
-epochs. Reference telemetry from the dry run: `updt_s:0.077` vs `data_s:0.003` (compute-bound at
+and inspect the dataset/config instead. Evaluate the smoke checkpoint before starting the generated
+five-epoch full config. Reference telemetry from the dry run: `updt_s:0.077` vs `data_s:0.003` (compute-bound at
 batch 8), 3.7/24 GB VRAM, ~100 samples/s, constant lr 1e-5 (ACT default has no schedule).
 
 After training: push the checkpoint (private) to the HF Hub, record the immutable policy revision
-in the manifest, verify it loads on the M1 (`src/inference_smoke_test.py`, `--policy.device=mps`).
+in the manifest, and verify it loads on the M1 with
+`python src/inference_smoke_test.py USER/POLICY --revision IMMUTABLE_POLICY_COMMIT --device mps`.
 
 ## Retrain and SmolVLA constraints
 

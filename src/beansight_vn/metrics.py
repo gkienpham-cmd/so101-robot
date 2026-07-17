@@ -130,5 +130,9 @@ def summarize_trials(records: Sequence[TrialRecord]) -> dict[str, object]:
         "reject_end_to_end": rate_summary(r.end_to_end_success for r in reject_ground_truth),
         "intervention": rate_summary(r.intervention for r in records),
         "latency": latencies,
-        "failures": dict(sorted(failure_counts.items())),
+        "failures": {
+            code.value: failure_counts.get(code.value, 0)
+            for code in FailureCode
+            if code is not FailureCode.NONE
+        },
     }

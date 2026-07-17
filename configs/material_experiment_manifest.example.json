@@ -1,0 +1,24 @@
+{
+  "experiment_id": "plastic-material-sensor-v1-YYYYMMDD",
+  "protocol_id": "plastic-material-sensor-v1",
+  "git_sha": "REPLACE_WITH_GIT_SHA",
+  "sensor_revision": "REPLACE_WITH_SENSOR_FIXTURE_REVISION",
+  "spectral_manifest_revision": "REPLACE_WITH_IMMUTABLE_REVISION",
+  "spectral_manifest_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "material_model_revision": "REPLACE_WITH_IMMUTABLE_REVISION",
+  "material_model_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "material_metrics_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "qualification_payload_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "routing_profile": "configs/route_profiles/REPLACE_WITH_DATED_PROFILE.json",
+  "routing_profile_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "manipulation_dataset_revision": null,
+  "manipulation_policy_revision": "waypoints-or-REPLACE_WITH_IMMUTABLE_POLICY_REVISION",
+  "lerobot_revision": "30da8e687a6dfc617fcd94afc367ac7071c376ce",
+  "hardware": {
+    "robot": "WitMotion Pro DIY SO-101",
+    "sensor": "Plastic Scanner DB2.3-derived enclosed fixture",
+    "host": "Apple M1 Pro"
+  },
+  "cost_usd": 0.0,
+  "created_at": "REPLACE_WITH_UTC_TIMESTAMP"
+}

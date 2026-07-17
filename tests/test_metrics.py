@@ -60,5 +60,9 @@ def test_summary_separates_classification_and_robot_outcomes():
     assert summary["classification"]["false_accept_rate"] == pytest.approx(0.5)
     assert summary["classification"]["false_reject_rate"] == 0.0
     assert summary["reject_end_to_end"]["rate"] == pytest.approx(0.5)
-    assert summary["failures"] == {"perception_false_accept": 1}
+    assert summary["failures"]["perception_false_accept"] == 1
+    assert summary["failures"]["safety_stop"] == 0
+    assert set(summary["failures"]) == {
+        code.value for code in FailureCode if code is not FailureCode.NONE
+    }
     assert summary["latency"]["cycle_ms"]["p95"] == pytest.approx(102.9)

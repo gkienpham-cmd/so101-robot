@@ -108,6 +108,8 @@ class TrialRecord:
                 raise ValueError(f"{name} must be non-negative")
         if self.end_to_end_success and self.failure_code is not FailureCode.NONE:
             raise ValueError("a successful trial cannot have a failure_code")
+        if not self.end_to_end_success and self.failure_code is FailureCode.NONE:
+            raise ValueError("a failed trial requires exactly one primary failure_code")
         if self.predicted_label is Label.ACCEPTABLE and self.decision is Decision.REJECT:
             raise ValueError("an acceptable prediction cannot request reject motion")
         if self.decision is Decision.NO_MOTION and (
@@ -131,6 +133,11 @@ class ExperimentManifest:
     protocol_id: str = "beansight-v1-frozen"
     dataset_revision: str | None = None
     policy_revision: str | None = None
+    dataset_fingerprint_sha256: str | None = None
+    qa_report_sha256: str | None = None
+    training_config_sha256: str | None = None
+    recording_patch_sha256: str | None = None
+    camera_attestation_sha256: str | None = None
     config_paths: dict[str, str] = field(default_factory=dict)
     calibration_ids: dict[str, str] = field(default_factory=dict)
     cameras: dict[str, dict[str, Any]] = field(default_factory=dict)
@@ -143,8 +150,28 @@ class ExperimentManifest:
     created_at: str = field(default_factory=utc_now)
 
     def __post_init__(self) -> None:
+        if not self.experiment_id.strip() or not self.protocol_id.strip():
+            raise ValueError("experiment_id and protocol_id must be non-empty")
         if self.cost_usd < 0:
             raise ValueError("cost_usd must be non-negative")
+        for name in ("git_sha", "lerobot_revision", "dataset_revision", "policy_revision"):
+            value = getattr(self, name)
+            if value is not None and (
+                len(value) != 40 or any(character not in "0123456789abcdef" for character in value)
+            ):
+                raise ValueError(f"{name} must be a 40-character lowercase hexadecimal commit")
+        for name in (
+            "dataset_fingerprint_sha256",
+            "qa_report_sha256",
+            "training_config_sha256",
+            "recording_patch_sha256",
+            "camera_attestation_sha256",
+        ):
+            value = getattr(self, name)
+            if value is not None and (
+                len(value) != 64 or any(character not in "0123456789abcdef" for character in value)
+            ):
+                raise ValueError(f"{name} must be 64 lowercase hex characters")
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

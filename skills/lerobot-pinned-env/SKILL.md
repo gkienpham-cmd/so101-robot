@@ -10,10 +10,12 @@ choices), and `RETRO.md` (observed failures). `AGENTS.md` wins for hardware safe
 
 ## Keep the two environments separate
 
-- This repo's venv runs `beansight-*`, pytest, Ruff, camera preflight, perception training, and
-  analysis.
+- This repo's venv runs pytest, Ruff, camera preflight, perception/material training, and analysis.
 - `~/robotics/lerobot` runs teleoperation, recording, calibration, and policy training against
   LeRobot v0.6.0 commit `30da8e687a6dfc617fcd94afc367ac7071c376ce`.
+- Pinned manipulation-dataset QA is the one bridge: install this project editable with `--no-deps`
+  into the LeRobot venv so `beansight-dataset-qa` sees the exact checkout. Do not install LeRobot
+  into the project venv.
 - Never use the M1 Pro for policy training; use it for teleop, recording, calibration, and inference.
 
 Before any hardware command: **leader = 5 V, follower = 12 V, never swap**; inventory before power;
@@ -32,10 +34,13 @@ git checkout 30da8e687a6dfc617fcd94afc367ac7071c376ce
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install -e '.[feetech,smolvla,dataset,training,viz,core_scripts]'
+uv pip install --no-deps -e /ABSOLUTE/PATH/TO/so101-robot
 ```
 
 Verify and preserve `python --version`, `python -c 'import lerobot; print(lerobot.__version__)'`,
-`git rev-parse HEAD`, LeRobot CLI help, and `ffmpeg -version`. The Git SHA must match exactly.
+`git rev-parse HEAD`, LeRobot CLI help, `beansight-dataset-qa --help`, and `ffmpeg -version`. The Git
+SHA must match exactly. The no-dependency project install exposes the QA command without allowing a
+resolver to change the pinned LeRobot stack.
 
 For this project venv, if pip or camera support is missing, use the documented recovery:
 

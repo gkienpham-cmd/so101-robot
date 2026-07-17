@@ -17,13 +17,20 @@ Rule: justify every GPU run before launching; prefer 5k-step validation runs bef
 | 3 | ACT full training on own dataset (4090, ~five data epochs) | $2–3 |
 | 3 | Retrain after targeted data iteration | $2–3 |
 | 4 | Optional SmolVLA fine-tune (4090, batch 4, ~20k steps; only after the ACT gate) | $3–5 |
-| — | **Total projected** | **$9–14** |
+| Post-flagship | Optional Isaac infrastructure + custom cap study, inclusive hard cap; disabled until its validator passes | **≤$10, separate from BeanSight total** |
+| — | **BeanSight total projected (excludes optional Isaac)** | **$9–14** |
 
 ⚠️ $9 balance covers Week 1 + roughly one more run. Top up ~$10 before Week 3 training.
 
 ## Hardware spend (reference — already committed)
 
 See SO-101 Plan.md Part 1F for the full BOM. Log actual landed costs (incl. VN customs) here when the kit arrives.
+
+### Pending checkout — not yet committed
+
+| Date | Item | Seller | Quoted total (VND) | Status | Notes |
+|------|------|--------|--------------------|--------|-------|
+| 2026-07-18 | 2× Feetech ST-3215-C018 spare follower servos (12 V, 1:345) | WitMotion Official Store (AliExpress) | 1,497,559 delivered | **AWAITING MANUAL CHECKOUT** | Cart is exactly 2× C018; no C001/C044/C046. Browser automation is blocked on the final AliExpress confirmation page, so verify the SKU, quantity, and ~1.50M₫ total before placing the order manually. Move this row into committed spend only after an order confirmation exists. |
 
 | Date | Item | Seller | Cost (VND) | Cost (~$) | Notes |
 |------|------|--------|-----------|-----------|-------|
@@ -36,6 +43,6 @@ See SO-101 Plan.md Part 1F for the full BOM. Log actual landed costs (incl. VN c
 | 2026-07-16 | 100× zip ties 100 mm, black | Diệp Tấn Phát (Shopee) | 16,000 — ORDERED | ~$0.60 | Cable routing along follower arm. |
 | 2026-07-16 | 115-in-1 precision screwdriver bit set | Shopee (bought earlier, logged now) | 109,000 — OWNED | ~$4 | Covers PH0–PH2 for M2×6/M3×6 kit screws; low-torque handle, drive M3 patiently. |
 | 2026-07-16 | A1 self-healing cutting mat, 90×60 cm, 3 mm PVC, **green** (Xanh) | Ướt DIY (Shopee) | 315,000 — ORDERED, ETA Jul 19–20 | ~$12 | Workspace background (docs/hardware_and_safety.md). Green over black: black drags webcam auto-exposure. Anti-slip PVC, still tape the corners. Lie flat overnight — ships rolled. Green wooden blocks = low contrast on this mat; use red/yellow/blue first. |
-| — | **Peripherals subtotal** | — | **4,294,911** | **~$165** | Prices as listed before platform vouchers/discounts. Still open: **spare gripper servos + spare Waveshare driver board (AliExpress, ~$40–50 — 7–20 day lead, order FIRST)**; power strip 4–6 sockets + 2–3 USB ports (~150–250k, see note below); masking tape + permanent marker (~20k); side cutters (~30–60k); kitchen scale (~60–120k); 2× USB-A→C adapters (~60–160k); muffin cups + white tray + bowl/reject cups (~70k); mì ly cups + PET bottles + caps (BHX, ~100k); M3×10/12 spare screws (~20k); high-CRI lamp (deferred to coffee phase). |
+| — | **Peripherals subtotal** | — | **4,294,911** | **~$165** | Prices as listed before platform vouchers/discounts; excludes the pending C018 checkout above. Still open: manual checkout for **2× exact C018 follower spares**; spare Waveshare driver board; power strip 4–6 sockets + 2–3 USB ports (~150–250k, see note below); masking tape + permanent marker (~20k); side cutters (~30–60k); kitchen scale (~60–120k); 2× USB-A→C adapters (~60–160k); muffin cups + white tray + bowl/reject cups (~70k); mì ly cups + PET bottles + caps (BHX, ~100k); M3×10/12 spare screws (~20k); high-CRI lamp (deferred to coffee phase). |
 
 **Desk power budget (identified 2026-07-16):** the bench needs **4 AC sockets** (Mac charger, Orico hub adapter, 5V leader PSU, 12V follower PSU) **+ 2 USB-A ports** for the ring lights. The lights must NOT draw from the Mac — those ports are reserved for the cameras. One ổ cắm điện (Điện Quang/Lioa) with 4–6 sockets and 2–3 USB ports covers both.

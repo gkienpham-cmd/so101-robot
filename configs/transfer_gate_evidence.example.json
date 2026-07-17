@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "bean_mechanical_gate": {
+    "passed": false,
+    "summary_path": "REPLACE_WITH_REAL_GRIPPER_SUMMARY_PATH",
+    "summary_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "beansight_frozen_evaluation": {
+    "completed": false,
+    "summary_path": "REPLACE_WITH_REAL_FROZEN_SUMMARY_PATH",
+    "summary_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "material_sensor_gate": {
+    "passed": false,
+    "metrics_path": "REPLACE_WITH_QUALIFIED_SENSOR_METRICS_PATH",
+    "metrics_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "bottle_waypoint_gate": {
+    "pose_variation_is_largest_failure": false,
+    "required_computed_branch": "collect_act_for_pose_variation",
+    "summary_path": "REPLACE_WITH_REAL_WAYPOINT_SUMMARY_PATH",
+    "summary_sha256": "REPLACE_WITH_64_HEX_SHA256"
+  }
+}

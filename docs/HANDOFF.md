@@ -1,6 +1,6 @@
 # HANDOFF.md — Project status and roadmap of record
 
-Written 2026-07-16 as the handoff point from Claude Code to OpenAI Codex. This is the single
+Written 2026-07-16 and updated 2026-07-18. This is the single
 "where are we and what happens next" document. If it conflicts with an older doc, this one wins;
 if it conflicts with [AGENTS.md](../AGENTS.md) on safety or evidence rules, AGENTS.md wins.
 
@@ -8,9 +8,10 @@ if it conflicts with [AGENTS.md](../AGENTS.md) on safety or evidence rules, AGEN
 
 | Workstream | Status |
 |---|---|
-| **A. BeanSight VN flagship** | **Active.** Software layer complete: typed records, confidence-gated routing, unarmed-by-default controller, camera preflight soak, dataset QA, record-config generator, ACT/SmolVLA training configs, frozen eval protocol, Wilson-CI metrics, trial logging/comparison, 11 deterministic test modules, green CI. The 30-minute C920+C270 direct-port soak passed on Jul 16. **The physical arm has not arrived** (expected ~Jul 19–25, 2026). No physical success rate is claimed anywhere, deliberately. |
+| **A. BeanSight VN flagship** | **Active.** Software layer complete: typed records, confidence-gated routing, unarmed-by-default controller, camera preflight/attestation, pinned dataset QA, gated ACT config generation, frozen eval protocol, Wilson-CI metrics, trial logging/comparison, 19 deterministic test modules, green CI. The 30-minute C920+C270 direct-port soak passed on Jul 16. **The physical arm has not arrived** (expected ~Jul 19–25, 2026). No physical success rate is claimed anywhere, deliberately. |
 | **B. Camera & accessory sourcing** | **Complete.** C920 + C270 pair bought (~$88, in transit at handoff), Ulanzi LS08 boom arm, Orico PW7U powered hub, 25 wooden blocks. Peripherals ≈ 3,435,151₫ (~$132). Full research in [CAMERA-RESEARCH-REPORT.md](../CAMERA-RESEARCH-REPORT.md). Still open to buy: white tray + reject cups, spare M3 screws, high-CRI lamp (deferred to coffee phase). |
-| **C. Vietnam applications idea bank** | **Parked backlog.** 12 adversarially-scored SO-101 application concepts in [vietnam_applications.md](vietnam_applications.md). Not on the flagship schedule; the bottle-cap sorter is the designated optional post-flagship transfer test. |
+| **C. Post-flagship caps and bottles** | **Software groundwork complete; physical work gated.** Named recording profiles, fail-still material routing/controller records, a grouped spectral-classifier evaluator, disabled local route profiles, ACT config gating, and a capped Isaac/Vast experiment contract are implemented. Execution starts only after the BeanSight frozen result. See [transfer_training_roadmap.md](transfer_training_roadmap.md). |
+| **D. Vietnam applications idea bank** | **Parked backlog.** 12 adversarially-scored concepts remain in [vietnam_applications.md](vietnam_applications.md). They do not alter the flagship schedule. |
 
 ## 2. What is proven vs. what is untested
 
@@ -25,6 +26,7 @@ sim teleop (gym-hil, mjpython) → LeRobot v3.0 dataset → HF Hub (gkienpham/si
 Four failures were hit and fixed on the way (details in [RETRO.md](../RETRO.md)): LeRobot extras
 breakage, record-config schema drift (source is the spec), the macOS Accessibility silent-keyboard
 trap, and the parallel-encoding `BrokenProcessPool` crash (fix versioned in `patches/`).
+This was a Franka/Panda `gym-hil` plumbing dry run, not an SO-101 dynamics or sim-to-real result.
 
 **Proven physical camera gate:** C920=`top` and C270=`wrist` ran concurrently on separate direct Mac
 ports for 30 minutes at 640×480/30 with zero failed reads. Effective rates were 29.91 and 29.98 fps;
@@ -90,12 +92,17 @@ pass before the next phase spends money or motion.
 4. If ACT <30%: fix calibration/geometry/demos/scope, not the model. If still <40% after the
    iteration: narrow the task and publish the negative result honestly.
 
-### Phase 5 — Portfolio week
+### Phase 5 — Portfolio, then gated transfer work
 
 1. Gripper fingertip DOE (`beansight-gripper-summary`) + publish singulation-fixture dimensions.
-2. Optional bottle-cap transfer test — **only after** the flagship eval is frozen.
-3. Optional SmolVLA — **only if** ACT >40% on the 20 frozen trials (configs/train_smolvla.json).
-4. Publish: tagged GitHub release → exact HF dataset/policy revisions, W&B run, experiment
+2. Optional upright-cap transfer test — **only after** the flagship eval is frozen. ACT learns
+   grasp-to-handoff; routing and bin transport remain separate.
+3. Standalone PET/HDPE/PP/unknown sensor gate — **before** any bottle motion is driven by a material
+   prediction. Failure remains a publishable sensing result and stops integration.
+4. Clean single-bottle transfer — waypoint baseline first; ACT only if measured pose variation is
+   the binding failure.
+5. Optional SmolVLA — **only if** ACT >40% on the 20 frozen trials (configs/train_smolvla.json).
+6. Publish: tagged GitHub release → exact HF dataset/policy revisions, W&B run, experiment
    manifest, aggregate JSON, hero video (60–90 s) + technical video (3–5 min), both including
    failures. Scripts and required visuals: [execution_and_portfolio.md](execution_and_portfolio.md).
 
@@ -113,6 +120,9 @@ agent can add the most value on:
    the most reusable artifact; card, license, and split design deserve real effort.
 5. **Metrics decomposition.** Keeping perception, grasp, placement, and end-to-end numbers cleanly
    separable in the published story.
+6. **Sub-$300 material sensing.** The DB2.3-derived fixture is an early prototype. Its parts,
+   stability, transparent/black-plastic behavior, and held-out PET/HDPE/PP performance remain
+   physically untested. The software gate deliberately allows this path to fail.
 
 ## 5. Budget state (2026-07-16)
 
@@ -127,6 +137,10 @@ agent can add the most value on:
 - `research/bottle_cap_sorting/` (on main) — the salvaged bottle-cap plastic-sorting deep research
   (223 claims, 27 verdicts, its own HANDOFF/RESUME docs). Optional post-flagship material; the
   original working branch was `bottle-cap-sorting-vision-eebb2c`.
+- `src/beansight_vn/material_*.py`, `configs/material_sensor.json`, and
+  `docs/material_sensing_protocol.md` — the post-flagship sensing and fail-still routing contracts.
+- `configs/isaac_vastai_spike.json` — disabled, capped cloud-simulation experiment; never part of
+  arrival-day bring-up.
 - Git branch `so101-vietnam-applications-ad547b` — raw research state behind
   vietnam_applications.md (research-resume file, pre-arrival plan, arrival guide drafts).
 - Git branch `robotic-arm-camera-research-15819e` — camera research working branch

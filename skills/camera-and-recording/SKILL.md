@@ -29,6 +29,18 @@ beansight-camera-preflight \
 
 Inspect both saved frames + JSON; confirm `top` is really the C920 and `wrist` the C270. Re-run
 after any replug or reboot. A failed report **cannot** generate a recording config — that's by design.
+The 30-minute run qualifies throughput once. Before every recording launch, run a 10-second probe
+under `results/camera_launch/current`, inspect the new frames, and record the view attestation:
+
+```bash
+beansight-camera-preflight \
+  --top-match C920 --wrist-match C270 --duration 10 \
+  --output results/camera_launch/current
+beansight-attest-cameras results/camera_launch/current/camera_preflight.json \
+  --reviewer YOUR_NAME \
+  --confirm-sample-images-reviewed --confirm-top-is-c920 --confirm-wrist-is-c270 \
+  --output results/camera_launch/current/attestation.json
+```
 
 ## 2. Serial ports
 
@@ -42,20 +54,22 @@ paths only.
 ## 3. Generate the record config
 
 ```bash
-beansight-build-record-config results/camera_preflight/camera_preflight.json \
+beansight-build-record-config results/camera_launch/current/camera_preflight.json \
+  --profile blocks \
+  --camera-attestation results/camera_launch/current/attestation.json \
   --follower-port /dev/REPLACE_FOLLOWER \
   --leader-port  /dev/REPLACE_LEADER \
-  --repo-id YOUR_HF_USER/beansight-vn-coffee-v1
+  --repo-id YOUR_HF_USER/beansight-blocks-v1
 ```
 
-Produces `configs/generated/record_coffee.json` with semantic `top`/`wrist` keys and streaming
+Produces `configs/generated/record_blocks.json` with semantic `top`/`wrist` keys and streaming
 video encoding (two encoder threads) to bypass the crash-prone post-episode process pool.
 
 ## 4. Record
 
 ```bash
 cd ~/robotics/lerobot
-lerobot-record --config_path=/ABSOLUTE/PATH/TO/configs/generated/record_coffee.json
+lerobot-record --config_path=/ABSOLUTE/PATH/TO/configs/generated/record_blocks.json
 ```
 
 - Record **5 smoke episodes first** and inspect the first completed save before committing to a

@@ -51,6 +51,7 @@ identity from housing shape, cable color, resistance, or connector fit.
 |---|---|---|---|
 | Follower servos | 6; identical ordered Pro variants | ____________________ | [ ] |
 | Leader servos | 6; three 1/147, two 1/191, one 1/345, subject to invoice | ____________________ | [ ] |
+| Separate follower spares | 2× **ST-3215-C018**, 12 V, 1:345; each printed label photographed | ____________________ | [ ] |
 | Bus-servo controller boards | 2; markings photographed | ____________________ | [ ] |
 | Controller USB-C data cables | 2 | ____________________ | [ ] |
 | Leader supply | Label expected 5 V, 3 A; verify actual label and polarity | ____________________ | [ ] |
@@ -81,7 +82,9 @@ Operator signature: ____________________  Date/time: ____________________
 
 Second review/sign-off: ____________________  Date/time: ____________________
 
-**Do not continue without both sign-offs.**
+The second reviewer may join by live video, but must be a named human who can read the photographed
+servo and power-supply labels back to the operator. An AI review or a second pass by the operator is
+not the second sign-off. **Do not continue without both sign-offs.**
 
 ## 3. Permanent identity labels — power remains off
 
@@ -89,6 +92,8 @@ Second review/sign-off: ____________________  Date/time: ____________________
   power-socket end.
 - [ ] Apply **blue/white** labels to the 5 V leader arm, supply, barrel, controller cable, and the
   arm's power-socket end.
+- [ ] Store each spare in a red-labeled bag marked **FOLLOWER ONLY — 12 V C018 — UNASSIGNED**;
+  keep it physically separate from every 5 V leader servo.
 - [ ] Reserve red and blue/white for power identity; do not reuse them as workspace class colors.
 - [ ] Apply green/white camera cable and physical-port flags.
 - [ ] Verify that both ends of every power path show the same arm identity before connection.

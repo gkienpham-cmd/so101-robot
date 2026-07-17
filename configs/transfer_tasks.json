@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "sequence": [
+    "beansight_v1_frozen_complete",
+    "cap_transfer",
+    "material_sensor_gate",
+    "bottle_sort"
+  ],
+  "cap_transfer": {
+    "record_profile": "caps",
+    "object": "upright_plastic_screw_cap",
+    "spawn_zone_mm": [
+      150,
+      150
+    ],
+    "workcell": {
+      "surface": "matte",
+      "lighting": "fixed_diffuse",
+      "bin_count": 3,
+      "bins": "wide_and_inside_measured_reach_envelope"
+    },
+    "items_per_episode": 1,
+    "episodes": 75,
+    "excluded": [
+      "crown_caps",
+      "piles",
+      "touching_caps",
+      "side_poses",
+      "attached_cap_removal"
+    ],
+    "policy_horizon": "approach_grasp_lift_to_safe_handoff",
+    "bin_transport": "scripted_supervised"
+  },
+  "bottle_sort": {
+    "record_profile": "bottles",
+    "input": "one_empty_dry_uncrushed_bottle_in_v_cradle",
+    "resins": [
+      "PET",
+      "HDPE",
+      "PP",
+      "unknown"
+    ],
+    "grasp": "neck_grasp",
+    "scripted_baseline_trials_per_geometry": 20,
+    "representative_geometry_count_min": 3,
+    "scripted_pass_count": 16,
+    "act_only_if_scripted_gate_fails_from_pose_variation": true,
+    "failure_branch_source": "beansight-material-trial-summary",
+    "act_required_computed_branch": "collect_act_for_pose_variation",
+    "conditional_act_episodes": 75,
+    "policy_horizon": "approach_grasp_lift_to_safe_handoff",
+    "bin_transport": "scripted_supervised",
+    "unknown_action": "no_motion_manual_review",
+    "excluded": [
+      "attached_cap_removal",
+      "crushed_bottles",
+      "mixed_piles",
+      "dirty_waste",
+      "automated_singulation",
+      "conveyor_operation"
+    ],
+    "mechanical_failure_action": "fix_fixture_fingertip_or_grasp_before_more_data"
+  }
+}

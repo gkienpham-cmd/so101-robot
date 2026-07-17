@@ -15,14 +15,20 @@ dependencies = ["numpy>=1.26,<3"]
 [project.optional-dependencies]
 camera = ["opencv-python>=4.10,<5"]
 perception = ["pillow>=10,<12", "torch>=2.7,<3", "torchvision>=0.22,<1"]
+materials = ["scikit-learn>=1.9,<2"]
 dev = ["pytest>=8,<9", "ruff>=0.12,<1"]
 
 [project.scripts]
 beansight-camera-preflight = "beansight_vn.camera_preflight:main"
+beansight-attest-cameras = "beansight_vn.camera_attestation:main"
 beansight-dataset-qa = "beansight_vn.dataset_validation:main"
 beansight-build-record-config = "beansight_vn.lerobot_config:main"
+beansight-build-act-config = "beansight_vn.act_training:main"
 beansight-compare = "beansight_vn.comparison:main"
 beansight-gripper-summary = "beansight_vn.gripper_doe:main"
+beansight-validate-isaac-spike = "beansight_vn.isaac_spike:main"
+beansight-material-trial-summary = "beansight_vn.material_trial_log:main"
+beansight-train-material-sensor = "beansight_vn.train_material_sensor:main"
 beansight-train-perception = "beansight_vn.train_perception:main"
 beansight-trial-summary = "beansight_vn.trial_log:main"
 

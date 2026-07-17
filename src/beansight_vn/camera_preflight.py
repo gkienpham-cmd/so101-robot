@@ -7,8 +7,10 @@ import subprocess
 import threading
 import time
 from dataclasses import asdict, dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 DEVICE_LINE = re.compile(r"\[(?P<index>\d+)\]\s+(?P<name>.+)$")
 
@@ -192,6 +194,8 @@ def run_preflight(
     if len(fourcc) != 4:
         raise ValueError("fourcc must contain exactly four characters")
     output_dir.mkdir(parents=True, exist_ok=True)
+    started_at = datetime.now(UTC).isoformat()
+    session_id = str(uuid4())
 
     reports: dict[str, dict[str, Any]] = {}
     errors: dict[str, BaseException] = {}
@@ -230,7 +234,10 @@ def run_preflight(
             and report["mean_brightness"] >= 5.0
         )
     result = {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
+        "session_id": session_id,
+        "started_at": started_at,
+        "completed_at": datetime.now(UTC).isoformat(),
         "passed": len(reports) == 2 and all(report["passed"] for report in reports.values()),
         "thresholds": {
             "min_effective_fps": min_effective_fps,

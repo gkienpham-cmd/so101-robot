@@ -7,8 +7,12 @@
   "policy_revision": "REPLACE_WITH_HF_COMMIT",
   "config_paths": {
     "record": "configs/generated/record_coffee.json",
+    "record_gate": "configs/generated/record_coffee.gate.json",
+    "camera_attestation": "results/camera_launch/REPLACE_SESSION/attestation.json",
+    "dataset_qa": "results/dataset_qa_pinned.json",
     "perception": "configs/perception.json",
-    "policy": "configs/train_act.json",
+    "policy": "configs/generated/beansight-act-v1_full.json",
+    "policy_provenance": "configs/generated/beansight-act-v1_full.provenance.json",
     "rollout": "configs/rollout.json",
     "evaluation": "configs/evaluation.json"
   },
@@ -37,5 +41,10 @@
   "gpu": null,
   "wandb_run": null,
   "hf_artifacts": [],
+  "dataset_fingerprint_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "qa_report_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "training_config_sha256": "REPLACE_WITH_64_HEX_SHA256",
+  "recording_patch_sha256": "8480712f0b3485968557e0a648f47a7cd54f0edebba8fd9981c5f88301bdb01f",
+  "camera_attestation_sha256": "REPLACE_WITH_64_HEX_SHA256",
   "cost_usd": 0.0
 }

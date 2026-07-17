@@ -1,0 +1,14 @@
+{
+  "profile_id": "boston-material-demo-REPLACE_DATE",
+  "location": "Boston supervised lab demonstration",
+  "effective_from": "2026-08-15",
+  "effective_until": null,
+  "enabled": false,
+  "bins": {
+    "PET": "pet_bin",
+    "HDPE": "hdpe_bin",
+    "PP": "pp_bin",
+    "unknown": "manual_review"
+  },
+  "activation_note": "Enable only after a dated local-route review and the material sensor gate pass. Keep this profile separate from HCMC rules."
+}

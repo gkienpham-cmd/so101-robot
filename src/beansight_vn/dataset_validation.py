@@ -1,8 +1,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import importlib.metadata
+import inspect
 import json
 import math
+import re
+import subprocess
 from collections import defaultdict
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
@@ -12,15 +17,32 @@ from typing import Any
 import numpy as np
 
 EXPECTED_CAMERAS = ("observation.images.top", "observation.images.wrist")
+EXPECTED_LEROBOT_VERSION = "0.6.0"
+EXPECTED_LEROBOT_REVISION = "30da8e687a6dfc617fcd94afc367ac7071c376ce"
+EXPECTED_RECORDING_PATCH_SHA256 = (
+    "8480712f0b3485968557e0a648f47a7cd54f0edebba8fd9981c5f88301bdb01f"
+)
+IMMUTABLE_REVISION = re.compile(r"[0-9a-f]{40}")
+DEFAULT_RECORDING_PATCH = (
+    Path(__file__).resolve().parents[2]
+    / "patches"
+    / "lerobot-v0.6.0-macos-serial-encoding.patch"
+)
 
 
 @dataclass(slots=True)
 class ValidationReport:
     dataset: str
+    revision: str | None = None
     frames_checked: int = 0
     camera_keys: list[str] = field(default_factory=list)
     action_std: list[float] = field(default_factory=list)
     episode_lengths: dict[str, int] = field(default_factory=dict)
+    episode_tasks: dict[str, int] = field(default_factory=dict)
+    dataset_fingerprint_sha256: str | None = None
+    lerobot_version: str | None = None
+    lerobot_revision: str | None = None
+    recording_patch_sha256: str | None = None
     errors: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
@@ -30,13 +52,19 @@ class ValidationReport:
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "schema_version": "1.0",
+            "schema_version": "1.1",
             "dataset": self.dataset,
+            "revision": self.revision,
             "passed": self.passed,
             "frames_checked": self.frames_checked,
             "camera_keys": self.camera_keys,
             "action_std": self.action_std,
             "episode_lengths": self.episode_lengths,
+            "episode_tasks": self.episode_tasks,
+            "dataset_fingerprint_sha256": self.dataset_fingerprint_sha256,
+            "lerobot_version": self.lerobot_version,
+            "lerobot_revision": self.lerobot_revision,
+            "recording_patch_sha256": self.recording_patch_sha256,
             "errors": self.errors,
             "warnings": self.warnings,
         }
@@ -53,6 +81,79 @@ def _scalar_int(value: Any) -> int:
     if array.size != 1:
         raise ValueError(f"expected scalar, got shape {array.shape}")
     return int(array.reshape(-1)[0])
+
+
+def dataset_fingerprint(path: str | Path) -> str:
+    root = Path(path)
+    if not root.is_dir():
+        raise ValueError(f"dataset root is not a directory: {root}")
+    files = sorted(
+        file for file in root.rglob("*") if file.is_file() and file.name != ".DS_Store"
+    )
+    if not files:
+        raise ValueError("dataset root contains no files to fingerprint")
+    digest = hashlib.sha256()
+    for file in files:
+        relative = file.relative_to(root).as_posix().encode()
+        digest.update(len(relative).to_bytes(8, "big"))
+        digest.update(relative)
+        digest.update(file.stat().st_size.to_bytes(8, "big"))
+        with file.open("rb") as handle:
+            for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(chunk)
+    return digest.hexdigest()
+
+
+def pinned_lerobot_provenance(patch_path: str | Path) -> dict[str, str]:
+    import lerobot
+
+    version = importlib.metadata.version("lerobot")
+    if version != EXPECTED_LEROBOT_VERSION:
+        raise RuntimeError(
+            f"LeRobot version is {version}; require exactly {EXPECTED_LEROBOT_VERSION}"
+        )
+    source = Path(inspect.getfile(lerobot)).resolve()
+    repo = next((parent for parent in source.parents if (parent / ".git").exists()), None)
+    if repo is None:
+        raise RuntimeError("LeRobot must be an editable checkout with readable Git provenance")
+    completed = subprocess.run(
+        ["git", "-C", str(repo), "rev-parse", "HEAD"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    revision = completed.stdout.strip()
+    if revision != EXPECTED_LEROBOT_REVISION:
+        raise RuntimeError(
+            f"LeRobot revision is {revision}; require exactly {EXPECTED_LEROBOT_REVISION}"
+        )
+    patch = Path(patch_path)
+    patch_digest = hashlib.sha256(patch.read_bytes()).hexdigest()
+    if patch_digest != EXPECTED_RECORDING_PATCH_SHA256:
+        raise RuntimeError("recording patch hash differs from the repository-approved patch")
+    try:
+        subprocess.run(
+            [
+                "git",
+                "-C",
+                str(repo),
+                "apply",
+                "--reverse",
+                "--check",
+                "--unidiff-zero",
+                str(patch.resolve()),
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        raise RuntimeError("repository-approved recording patch is not applied") from exc
+    return {
+        "lerobot_version": version,
+        "lerobot_revision": revision,
+        "recording_patch_sha256": patch_digest,
+    }
 
 
 def camera_feature_keys(features: Mapping[str, Any]) -> list[str]:
@@ -120,8 +221,9 @@ def validate_dataset(
     dead_joint_std: float = 1e-6,
     min_frame_gradient: float = 1e-5,
     max_frames: int | None = None,
+    dataset_revision: str | None = None,
 ) -> ValidationReport:
-    report = ValidationReport(dataset=dataset_name)
+    report = ValidationReport(dataset=dataset_name, revision=dataset_revision)
     features = getattr(dataset, "features", {})
     report.camera_keys = camera_feature_keys(features)
     if report.camera_keys != list(expected_cameras):
@@ -140,6 +242,7 @@ def validate_dataset(
 
     actions: list[np.ndarray] = []
     episode_frames: dict[int, list[int]] = defaultdict(list)
+    episode_tasks: dict[int, set[int]] = defaultdict(set)
     for index in indexes:
         try:
             item = dataset[index]
@@ -158,9 +261,10 @@ def validate_dataset(
             if action.shape == (action_dim,) and np.isfinite(action).all():
                 actions.append(action.astype(float))
         try:
-            episode_frames[_scalar_int(item["episode_index"])].append(
-                _scalar_int(item["frame_index"])
-            )
+            episode = _scalar_int(item["episode_index"])
+            episode_frames[episode].append(_scalar_int(item["frame_index"]))
+            if "task_index" in item:
+                episode_tasks[episode].add(_scalar_int(item["task_index"]))
         except (KeyError, ValueError) as exc:
             report.errors.append(f"frame {index}: malformed episode metadata: {exc}")
         report.frames_checked += 1
@@ -181,6 +285,11 @@ def validate_dataset(
                 f"episode {episode} frame_index is not contiguous from zero: "
                 f"first={ordered[0]}, last={ordered[-1]}, count={len(ordered)}"
             )
+        tasks = episode_tasks.get(episode, set())
+        if len(tasks) > 1:
+            report.errors.append(f"episode {episode} crosses task indexes: {sorted(tasks)}")
+        elif tasks:
+            report.episode_tasks[str(episode)] = next(iter(tasks))
     if max_frames is not None and max_frames < total:
         report.warnings.append(
             f"sampled {len(indexes)} of {total} frames; run without --max-frames before training"
@@ -202,11 +311,25 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--min-frame-gradient", type=float, default=1e-5)
     parser.add_argument("--max-frames", type=int)
     parser.add_argument("--output", type=Path, default=Path("results/dataset_qa.json"))
+    parser.add_argument(
+        "--recording-patch",
+        type=Path,
+        default=DEFAULT_RECORDING_PATCH,
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if args.revision:
+        if not IMMUTABLE_REVISION.fullmatch(args.revision):
+            parser.error("--revision must be a 40-character immutable commit hash")
+        if args.root is None:
+            parser.error("pinned Hub QA requires a fresh, explicit --root snapshot path")
+        if args.root.exists() and any(args.root.iterdir()):
+            parser.error("pinned Hub QA --root must be new or empty; refusing cached local bytes")
+    provenance = pinned_lerobot_provenance(args.recording_patch)
     try:
         from lerobot.datasets.lerobot_dataset import LeRobotDataset
     except ImportError as exc:
@@ -219,7 +342,16 @@ def main(argv: list[str] | None = None) -> int:
         dead_joint_std=args.dead_joint_std,
         min_frame_gradient=args.min_frame_gradient,
         max_frames=args.max_frames,
+        dataset_revision=args.revision,
     )
+    resolved_root_value = getattr(dataset, "root", None) or args.root
+    if resolved_root_value is None:
+        raise RuntimeError("LeRobot dataset did not expose a root for content fingerprinting")
+    resolved_root = Path(resolved_root_value)
+    report.dataset_fingerprint_sha256 = dataset_fingerprint(resolved_root)
+    report.lerobot_version = provenance["lerobot_version"]
+    report.lerobot_revision = provenance["lerobot_revision"]
+    report.recording_patch_sha256 = provenance["recording_patch_sha256"]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(report.to_dict(), indent=2, sort_keys=True) + "\n", encoding="utf-8"

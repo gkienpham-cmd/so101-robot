@@ -41,4 +41,28 @@ $0.22 of the $8–40 cloud budget (RTX 4090 @ ~$0.31/hr, ~40 min including setup
 - Teleop latency/feel — no sim proxy for leader-follower mechanics.
 - **Standing safety rules: 5V = leader, 12V = follower; never swap. IDs one servo at a time.**
 
+### Jul 18 transfer-roadmap implementation
+
+- Added named block, coffee, cap, and bottle recording profiles. Cap and bottle policies stop at a
+  safe handoff pose; semantic routing and bin transport stay outside ACT.
+- Added a paid-run ACT config builder that refuses failed/sampled QA, mutable or mismatched dataset
+  revisions, cached Hub snapshots, and wrong LeRobot/patch provenance. It calculates five-epoch
+  steps from the exact episode-level train split and writes a hashed provenance sidecar.
+- Added typed material/routing/manipulation records and a sorter controller that consumes one-shot
+  authorization on every decision. Unknown, low confidence, disabled routes, and manual review
+  cannot cause motion; trial records preserve motion, supervision, safety, stages, route hash, and
+  exactly one primary failure code.
+- Bottle waypoint summaries now compute the next branch from the fixed failure taxonomy. The ACT
+  recording profile verifies the hashed summary and qualified sensor metrics rather than trusting
+  self-entered pass/cause flags.
+- Added the standalone DB2.3-derived material-sensor evaluator: dark/white referencing, SNV,
+  item-level medians, SKU-grouped nested CV, RBF-SVM, nearest-centroid baseline, five-scan runtime
+  decisions, abstention, Wilson intervals, and a frozen integration gate. Failed candidates are
+  marked unqualified and cannot be loaded for routing.
+- Added current-launch camera attestations, hashed sequence gates for coffee/cap/bottle recording,
+  and a disabled Isaac/Vast validator. The optional GR00T physical comparison remains impossible on
+  the M1 alone and now requires evidence for a local Linux RTX inference host.
+- No sensor was purchased, no policy was trained, and no physical result was created. The largest
+  unresolved risk is still hardware: the cheap sensor may not separate PET/HDPE/PP well enough.
+
 ## Week 2 — (pending hardware arrival ~Jul 19)

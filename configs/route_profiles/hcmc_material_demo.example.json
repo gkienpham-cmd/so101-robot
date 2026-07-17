@@ -1,0 +1,14 @@
+{
+  "profile_id": "hcmc-material-demo-REPLACE_DATE",
+  "location": "HCMC supervised lab demonstration",
+  "effective_from": "2026-07-18",
+  "effective_until": null,
+  "enabled": false,
+  "bins": {
+    "PET": "pet_bin",
+    "HDPE": "hdpe_bin",
+    "PP": "pp_bin",
+    "unknown": "manual_review"
+  },
+  "activation_note": "Enable only after a dated local-route review and the material sensor gate pass. Resin identity is not a universal recyclability claim."
+}

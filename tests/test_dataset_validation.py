@@ -1,6 +1,6 @@
 import numpy as np
 
-from beansight_vn.dataset_validation import validate_dataset, validate_frame
+from beansight_vn.dataset_validation import dataset_fingerprint, validate_dataset, validate_frame
 
 
 def frame(episode, frame_index, action):
@@ -12,6 +12,7 @@ def frame(episode, frame_index, action):
         "action": np.asarray(action, dtype=float),
         "episode_index": episode,
         "frame_index": frame_index,
+        "task_index": 0,
     }
 
 
@@ -34,8 +35,12 @@ class FakeDataset:
 
 def test_valid_dataset_passes():
     items = [frame(0, index, [index + joint for joint in range(6)]) for index in range(3)]
-    report = validate_dataset(FakeDataset(items), dataset_name="fake")
+    report = validate_dataset(
+        FakeDataset(items), dataset_name="fake", dataset_revision="a" * 40
+    )
     assert report.passed
+    assert report.to_dict()["revision"] == "a" * 40
+    assert report.episode_tasks == {"0": 0}
     assert report.action_std == [np.std([0, 1, 2])] * 6
 
 
@@ -66,3 +71,11 @@ def test_frame_rejects_dead_camera_image():
     item = frame(0, 0, range(6))
     item["observation.images.top"] = np.zeros((8, 8, 3))
     assert "constant camera frame observation.images.top" in validate_frame(item)
+
+
+def test_dataset_fingerprint_changes_with_content(tmp_path):
+    file = tmp_path / "meta.json"
+    file.write_text("one", encoding="utf-8")
+    first = dataset_fingerprint(tmp_path)
+    file.write_text("two", encoding="utf-8")
+    assert dataset_fingerprint(tmp_path) != first

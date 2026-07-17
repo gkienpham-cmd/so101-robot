@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "plastic-material-sensor-v1",
+  "claim": "PET, HDPE, PP, or explicit unknown under the fixed enclosed sensor fixture",
+  "budget_usd_cap": 300,
+  "bringup_time_cap_days": 7,
+  "sensor": {
+    "design": "Plastic Scanner DB2.3-derived fixed fixture",
+    "revision": "REPLACE_WITH_SENSOR_FIXTURE_REVISION",
+    "wavelengths_nm": [
+      855,
+      940,
+      1050,
+      1200,
+      1300,
+      1450,
+      1550,
+      1650
+    ],
+    "enclosed_emitters_required": true,
+    "dark_and_white_reference_required": true
+  },
+  "dataset": {
+    "classes": [
+      "PET",
+      "HDPE",
+      "PP",
+      "unknown"
+    ],
+    "items_per_class": 30,
+    "exact_items_per_class": true,
+    "scans_per_item": 10,
+    "exact_scans_per_item": true,
+    "sessions_per_item": 3,
+    "parent_sku_groups_per_class_min": 7,
+    "split_group": "parent_sku",
+    "traceable_target_ground_truth_required": true
+  },
+  "preprocessing": {
+    "dark_subtraction": true,
+    "white_reference_normalization": true,
+    "standard_normal_variate": true,
+    "item_aggregate": "median",
+    "repeats_per_decision": 5
+  },
+  "evaluation": {
+    "seed": 1000,
+    "outer_folds": 5,
+    "inner_folds": 5,
+    "c_values": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "gamma_values": [
+      "scale",
+      0.1,
+      1.0
+    ],
+    "temperature_values": [
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0
+    ],
+    "threshold_values": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.85,
+      0.9,
+      0.95,
+      0.975,
+      0.99
+    ],
+    "threshold_target_correctness": 0.95,
+    "threshold_min_target_coverage": 0.6666666666666666,
+    "threshold_unknown_false_rate": 0.03333333333333333,
+    "gates": {
+      "min_accepted_per_target": 20,
+      "min_accepted_correctness": 0.95,
+      "max_unknown_false_accepts": 1
+    }
+  },
+  "failure_policy": {
+    "failed_gate_action": "stop_before_arm_integration",
+    "rgb_substitution_allowed": false,
+    "unknown_action": "no_motion_manual_review"
+  }
+}

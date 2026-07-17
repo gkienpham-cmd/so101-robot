@@ -1,6 +1,13 @@
 import pytest
 
-from beansight_vn.models import Decision, FailureCode, Label, PerceptionResult, TrialRecord
+from beansight_vn.models import (
+    Decision,
+    ExperimentManifest,
+    FailureCode,
+    Label,
+    PerceptionResult,
+    TrialRecord,
+)
 
 
 def make_trial(**overrides):
@@ -42,6 +49,25 @@ def test_success_cannot_have_failure_code():
         make_trial(failure_code=FailureCode.DROP)
 
 
+def test_failure_requires_a_primary_failure_code():
+    with pytest.raises(ValueError, match="primary failure_code"):
+        make_trial(end_to_end_success=False, pick_success=False, place_success=False)
+
+
 def test_no_motion_cannot_report_grasp_results():
     with pytest.raises(ValueError, match="no-motion"):
         make_trial(decision=Decision.NO_MOTION)
+
+
+def test_experiment_manifest_rejects_placeholder_provenance_hashes():
+    required = {
+        "experiment_id": "experiment-1",
+        "git_sha": "a" * 40,
+        "lerobot_revision": "30da8e687a6dfc617fcd94afc367ac7071c376ce",
+    }
+    with pytest.raises(ValueError, match="qa_report_sha256"):
+        ExperimentManifest(**required, qa_report_sha256="REPLACE_WITH_SHA256")
+    with pytest.raises(ValueError, match="policy_revision"):
+        ExperimentManifest(**required, policy_revision="main")
+    manifest = ExperimentManifest(**required, qa_report_sha256="b" * 64)
+    assert manifest.qa_report_sha256 == "b" * 64

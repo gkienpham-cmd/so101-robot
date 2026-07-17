@@ -9,10 +9,11 @@ The aim is not to certify food, imitate an industrial sorter, or remove a person
 is to find out, honestly and quantitatively, how far a low-cost arm can assist a repetitive inspection
 step that matters to Vietnam's higher-value coffee processing.
 
-> **Current status, July 16, 2026:** the software contracts, safety gates, camera preflight, dataset
-> QA, training configs, evaluation code, and test suite are implemented. The arm has not arrived, so
-> this repository does not yet claim a physical success rate. Hardware results will be added only
-> after the frozen evaluation is run.
+> **Current status, July 18, 2026:** the BeanSight software contracts, safety gates, camera
+> preflight, dataset QA, training configs, and frozen evaluation code are implemented. The
+> post-flagship cap and plastic-bottle path now has typed fail-still routing, a leakage-safe spectral
+> evaluation tool, and disabled experiment configs. The arm has not arrived, so none of this is a
+> physical success claim.
 >
 > Day-to-day execution is continuing with an AI coding agent (OpenAI Codex). Agent instructions
 > live in [AGENTS.md](AGENTS.md); the consolidated status and roadmap of record is
@@ -55,7 +56,7 @@ is in [docs/evaluation_protocol.md](docs/evaluation_protocol.md).
 ## Repository map
 
 - `src/beansight_vn/`: typed records, classifier routing, camera soak testing, dataset QA, training,
-  trial logging, and summaries
+  material-sensor evaluation, trial logging, and summaries
 - `configs/`: camera, perception, ACT, optional SmolVLA, rollout, and evaluation contracts
 - `patches/`: the pinned LeRobot v0.6.0 macOS encoding workaround
 - `docs/`: the maintained hardware, data, execution, evaluation, runbook, handoff, and
@@ -85,6 +86,12 @@ ruff check .
 Perception training also needs the `perception` extra. Arm recording and policy training should run
 inside the pinned LeRobot environment in [docs/runbook.md](docs/runbook.md).
 
+The later plastic-material study uses a separate optional dependency:
+
+```bash
+pip install -e '.[dev,materials]'
+```
+
 ## Arrival-day gate
 
 Do not power either arm until the motor models, controller boards, connectors, voltage, current, and
@@ -105,31 +112,72 @@ beansight-camera-preflight \
 The command resolves model names afresh, opens both cameras together at 640×480/30 MJPG, and writes
 sample frames plus `camera_preflight.json`. A failed report cannot generate a recording config.
 
+The 30-minute soak qualifies the topology. Before each recording launch, run a short fresh semantic
+probe to a launch-specific directory, inspect both saved views, and attest them:
+
+```bash
+beansight-camera-preflight --top-match C920 --wrist-match C270 --duration 10 \
+  --output results/camera_launch/current
+beansight-attest-cameras results/camera_launch/current/camera_preflight.json \
+  --reviewer YOUR_NAME \
+  --confirm-sample-images-reviewed --confirm-top-is-c920 --confirm-wrist-is-c270 \
+  --output results/camera_launch/current/attestation.json
+```
+
 Once the leader and follower ports are known:
 
 ```bash
-beansight-build-record-config results/camera_preflight/camera_preflight.json \
+beansight-build-record-config results/camera_launch/current/camera_preflight.json \
+  --profile blocks \
+  --camera-attestation results/camera_launch/current/attestation.json \
+  --episodes 5 \
   --follower-port /dev/REPLACE_FOLLOWER \
   --leader-port /dev/REPLACE_LEADER \
-  --repo-id YOUR_HF_USER/beansight-vn-coffee-v1
+  --repo-id YOUR_HF_USER/beansight-blocks-smoke-v1 \
+  --output configs/generated/record_blocks_smoke.json
 ```
 
-That produces `configs/generated/record_coffee.json` with stable semantic camera keys. Follow the
+That produces `configs/generated/record_blocks_smoke.json` with stable semantic camera keys. Coffee, cap,
+and bottle profiles additionally require a copied, filled gate-evidence JSON; the committed example
+is deliberately failing. Follow the
 commands and physical gates in [docs/runbook.md](docs/runbook.md); do not skip directly to recording.
 
 ## Training gates
 
-Before any paid GPU run:
+Before any paid GPU run, activate the pinned LeRobot venv with the no-dependency BeanSight CLI
+bridge described in the runbook, then run:
 
 ```bash
 beansight-dataset-qa YOUR_HF_USER/beansight-vn-coffee-v1 \
   --revision IMMUTABLE_HF_COMMIT \
+  --root /ABSOLUTE/FRESH/QA_SNAPSHOTS/IMMUTABLE_HF_COMMIT \
   --output results/dataset_qa.json
 ```
 
-QA rejects swapped cameras, missing or unreadable frames, malformed episode metadata, action shape
-errors, NaN/Inf, and constant action dimensions. ACT is the required policy. SmolVLA remains optional
-and is only attempted after ACT exceeds 40% on 20 frozen trials and the evaluation tooling is complete.
+QA rejects missing or misordered semantic camera keys, unreadable frames, malformed episode
+metadata, action-shape errors, NaN/Inf, and constant action dimensions. Pixels cannot prove camera
+identity, so the operator must still watch the pinned episodes and confirm that `top` is the C920
+view and `wrist` is the C270 view. Pinned QA uses a fresh snapshot and records content/runtime
+provenance. ACT is the required policy. SmolVLA remains optional and is only attempted after ACT
+exceeds 40% on 20 frozen trials and the evaluation tooling is complete.
+
+## Post-flagship transfer work
+
+The maintained order is BeanSight, loose upright screw caps, standalone PET/HDPE/PP sensing, then
+one clean bottle at a time. [The transfer roadmap](docs/transfer_training_roadmap.md) contains the
+recording profiles, ACT/Vast gate, MuJoCo boundary, and optional Isaac comparison.
+
+The material tool evaluates a fixed discrete-NIR fixture with grouped nested cross-validation:
+
+```bash
+beansight-train-material-sensor data/materials/manifest.csv \
+  --config configs/material_sensor.json \
+  --output-dir outputs/material_sensor/db23_r1
+```
+
+It writes research artifacts under `outputs/` and exits nonzero if the predeclared integration gate
+fails. Unknown material, low confidence, disabled routing profiles, and manual review always mean no
+motion. No material claim is inferred from RGB alone.
 
 ## Safety and scope
 
