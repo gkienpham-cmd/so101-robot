@@ -1,6 +1,6 @@
 # HANDOFF.md — Project status and roadmap of record
 
-Written 2026-07-16 and updated 2026-07-18. This is the single
+Written 2026-07-16 and updated 2026-07-19. This is the single
 "where are we and what happens next" document. If it conflicts with an older doc, this one wins;
 if it conflicts with [AGENTS.md](../AGENTS.md) on safety or evidence rules, AGENTS.md wins.
 
@@ -8,7 +8,7 @@ if it conflicts with [AGENTS.md](../AGENTS.md) on safety or evidence rules, AGEN
 
 | Workstream | Status |
 |---|---|
-| **A. BeanSight VN flagship** | **Active.** Software layer complete: typed records, confidence-gated routing, unarmed-by-default controller, camera preflight/attestation, pinned dataset QA, gated ACT config generation, frozen eval protocol, Wilson-CI metrics, trial logging/comparison, 19 deterministic test modules, green CI. The 30-minute C920+C270 direct-port soak passed on Jul 16. **The physical arm has not arrived** (expected ~Jul 19–25, 2026). No physical success rate is claimed anywhere, deliberately. |
+| **A. BeanSight VN flagship** | **Active.** Software layer complete: typed records, confidence-gated routing, unarmed-by-default controller, camera preflight/attestation, C920-only perception capture, leakage-gated image-manifest QA, ROI-parity training with validation-only threshold selection, pinned manipulation-dataset QA, gated ACT config generation, frozen eval protocol, Wilson-CI metrics, and trial logging/comparison. The deterministic test suite is green. The 30-minute C920+C270 direct-port soak passed on Jul 16. **Capture rig frozen Jul 22:** floor station built ([capture_rig_setup.md](capture_rig_setup.md)), preflight PASSED (`results/camera_launch/PILOT_TRAIN/`), and the preflight→settings→capture pipeline proven end-to-end with 11 RIGTEST frames; next physical step is the sealed draw and the `PILOT_TRAIN` session. **The physical arm has not arrived** (expected ~Jul 19–25, 2026). No physical success rate is claimed anywhere, deliberately. |
 | **B. Camera & accessory sourcing** | **Complete.** C920 + C270 pair bought (~$88, in transit at handoff), Ulanzi LS08 boom arm, Orico PW7U powered hub, 25 wooden blocks. Peripherals ≈ 3,435,151₫ (~$132). Full research in [CAMERA-RESEARCH-REPORT.md](../CAMERA-RESEARCH-REPORT.md). Still open to buy: white tray + reject cups, spare M3 screws, high-CRI lamp (deferred to coffee phase). |
 | **C. Post-flagship caps and bottles** | **Software groundwork complete; physical work gated.** Named recording profiles, fail-still material routing/controller records, a grouped spectral-classifier evaluator, disabled local route profiles, ACT config gating, and a capped Isaac/Vast experiment contract are implemented. Execution starts only after the BeanSight frozen result. See [transfer_training_roadmap.md](transfer_training_roadmap.md). |
 | **D. Vietnam applications idea bank** | **Parked backlog.** 12 adversarially-scored concepts remain in [vietnam_applications.md](vietnam_applications.md). They do not alter the flagship schedule. |
@@ -54,7 +54,15 @@ pass before the next phase spends money or motion.
 2. Freeze workcell geometry: nest, lamp, cup, bins, five-position block grid, millimetre drawing.
 3. Roaster interview + obtain two Robusta lots with **blind labels** (≥50 visible rejects). Phone
    and in-store scripts are in [data_and_labeling.md](data_and_labeling.md).
-4. Train the color baseline and ResNet-18 perception model on captured bean images
+4. Run the three-session/two-lot 24-bean capture pilot in
+   [perception_collection.md](perception_collection.md), then smoke-test the validated, immutable
+   private dataset revision in Colab. **Status Jul 22: rig and camera configuration frozen**
+   (profile "coffee bean 1", brightness 90, zoom 208, focus 250, WB 4100, exposure hardware-auto;
+   reference frame RIGTEST_B011), capture pipeline proven end-to-end; remaining work is physical —
+   marks → sealed draw → `PILOT_TRAIN`/`PILOT_VAL`, then `LOT_B` + manifest + Colab smoke on SOUL
+   arrival. Kickoff prompt: [pilot_capture_kickoff_prompt.md](pilot_capture_kickoff_prompt.md). Scale to the final image collection only after the pilot passes
+   and the real gripper clears the frozen nest.
+5. Train the color baseline and ResNet-18 perception model on captured bean images
    (`beansight-train-perception`). Pre-arrival manipulation training is explicitly ruled out — no
    checkpoint trained before arrival can drive this arm (calibration/geometry/gripper missing).
 
@@ -72,7 +80,8 @@ pass before the next phase spends money or motion.
 
 ### Phase 3 — Coffee data and model week
 
-1. Capture 300–500 physical beans (≥50 visible rejects, ≥2 lots), one `bean_id` per bean; splits
+1. Capture 300–500 physical beans (≥50 visible rejects, ≥2 lots), excluding all pilot IDs; one
+   `bean_id` per bean; splits
    never share a bean or capture session; test lot never appears in training.
 2. Record 50–75 fixed-nest demonstrations with small controlled offsets.
 3. **GATE — `beansight-dataset-qa` passes** (all six action dims nonzero variance, no swapped

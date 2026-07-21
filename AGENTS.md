@@ -146,6 +146,7 @@ ruff check .
 ```
 
 CLI entry points installed by this package: `beansight-camera-preflight`, `beansight-dataset-qa`,
+`beansight-capture-perception`, `beansight-build-perception-manifest`,
 `beansight-build-record-config`, `beansight-compare`, `beansight-gripper-summary`,
 `beansight-train-perception`, `beansight-trial-summary`.
 

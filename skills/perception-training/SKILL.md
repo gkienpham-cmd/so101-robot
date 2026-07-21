@@ -13,7 +13,8 @@ splits, metrics, and frozen-threshold rule); implementation contract:
 ## 1. Freeze capture conditions first
 
 - Use the final C920 mount, inspection nest, matte surface, and fixed lamp.
-- Lock focus, exposure, and white balance before the first session.
+- Lock focus and white balance before the first session; exposure is hardware-auto on macOS
+  (AVFoundation re-enables C920 AE per open) and is declared `auto`/null in the settings JSON.
 - Start a new `session_id` if any fixture or lighting mark moves; never combine the sessions
   silently.
 - Use the existing top-camera stream. Do not open a second C920 process.
@@ -36,6 +37,11 @@ images/B001.jpg,acceptable,B001,LOT_A,S01,train
   training lot.
 - Record the blind human label before any model prediction; adjacent frames are not independent.
 
+Build the manifest with `beansight-build-perception-manifest`, not by hand. It joins C920 capture
+sidecars to blind labels and explicit split assignments, verifies beginning/ending reference frames
+and stable session provenance, checks full-frame RGB images and hashes, rejects C270/duplicates, and
+requires manual reasons for ROI near-duplicate false positives.
+
 ## 3. Calibrate the baseline honestly
 
 `configs/perception.json` contains placeholder luminance and reject-fraction values until the
@@ -49,13 +55,16 @@ Until then, do not invent a search command, promote the placeholders, or tune ag
 ```bash
 pip install -e '.[perception]'
 beansight-train-perception data/coffee/manifest.csv \
-  --architecture resnet18 \
+  --config configs/perception.json \
+  --dataset-revision FULL_IMMUTABLE_DATASET_REVISION \
   --epochs 10 \
   --output outputs/perception/resnet18
 ```
 
-The trainer validates files and split invariants, aborts on NaN/Inf, selects a checkpoint by
-validation macro-F1, and writes `model_state.pt`, `model.ts`, and `metrics.json`.
+The trainer expects full C920 frames, crops the config ROI before resize through the same deterministic
+function used at runtime, validates files and split invariants, aborts on NaN/Inf, selects a
+checkpoint by validation macro-F1, and writes `model_state.pt`, `model.ts`, `metrics.json`,
+`operating_threshold.json`, and `provenance.json`.
 
 ## 5. Select the threshold and evaluate
 
@@ -64,9 +73,17 @@ validation macro-F1, and writes `model_state.pt`, `model.ts`, and `metrics.json`
 - Never use `test.best_macro_f1_threshold` to set the threshold; that would tune on test data.
 - Freeze the chosen threshold before the frozen physical trial set and record it in the experiment
   manifest/configuration.
+- Pass the saved value explicitly as `TorchScriptClassifier(..., operating_threshold=value)`. The
+  controller's reject-confidence threshold is a separate motion gate.
 - Compare the calibrated baseline and ResNet-18 on the same held-out test split.
 - Report confusion matrix, per-class precision/recall/F1 and support, macro-F1, false-accept rate,
   false-reject rate, and agreement/disagreements with the blind label.
+- Run the background-dependence gate before any success claim: `beansight-background-probe` on the
+  plain-paper probe re-shoot with `--saliency 10`, per `docs/perception_collection.md` §8. The
+  pre-declared thresholds (≥15pp gap with disjoint Wilson CIs; >2/10 off-bean saliency maps) were
+  fixed on 2026-07-21 before any model existed and are never retuned. A flagged result means the
+  dataset is background-dependent: change the surface and recapture — do not publish the in-domain
+  number alone.
 
 ## 6. Meet the evidence standard
 

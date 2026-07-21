@@ -107,6 +107,20 @@ lerobot-find-port
 
 Use the observed `/dev/tty.*` paths for the current launch.
 
+### Pre-arm C920 perception collection
+
+The completed 30-minute soak qualifies throughput, not the current camera index, lamp, nest, or bean
+presentation. Before each perception session, run a fresh 10-second semantic probe and inspect its
+samples. Lock and record manual C920 focus and white balance with 50 Hz anti-flicker (exposure is
+hardware-auto on macOS and declared as such — see docs/perception_collection.md §2), then use
+`beansight-capture-perception` for beginning/ending neutral references and exactly one full-frame PNG
+per physical bean. Join the blind labels and explicit split assignments with
+`beansight-build-perception-manifest` before any model run.
+
+The decision-complete commands and the three-session/two-lot 24-bean pilot layout are in
+[perception_collection.md](perception_collection.md). The C270 never enters the perception manifest,
+and pre-arm C270 images cannot train ACT.
+
 ## 5. Assign motor IDs and calibrate
 
 Assign IDs with one motor connected at a time:
@@ -286,6 +300,11 @@ second process opens the C920. The controller remains unarmed until the explicit
 installed, the workspace is clear, and the operator is ready. One trigger permits one reject rollout,
 followed by verification and a `TrialRecord` append.
 
+Load the classifier operating threshold from the training run's `operating_threshold.json` and pass
+it explicitly to `TorchScriptClassifier`. That validation-selected classifier threshold is distinct
+from the controller's more conservative reject-confidence motion gate. Never derive either value
+from test predictions or physical trial outcomes.
+
 Run the complete frozen protocol before reading the aggregate:
 
 ```bash
@@ -430,6 +449,7 @@ dollar in `COSTS.md`, and preserve simulated evidence outside `results/`.
 - [ ] ffmpeg, LeRobot CLI, Hugging Face, and W&B verified
 - [ ] electrical and polarity inventory signed off
 - [ ] both semantic cameras pass the concurrent 30-minute soak
+- [ ] C920 perception manifest passes automated QA and full-size manual review
 - [ ] leader/follower ports and calibration IDs recorded; calibration backed up
 - [ ] 20-grasp physical gate passed
 - [ ] full dataset QA passed before GPU rental

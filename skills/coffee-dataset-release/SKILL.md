@@ -23,8 +23,9 @@ Do not make the dataset public until all of these are true:
 - Any business name or interview quotation has its own separate permission.
 - **TODO(owner): choose and record the dataset license.** Do not infer it from the code license or
   publish until it is compatible with the recorded permissions.
-- **TODO(owner): define the image-dataset Hugging Face repository ID and publishing procedure.**
-  The repo documents card and permission requirements but no image-dataset upload command.
+- **TODO(owner): choose the final image-dataset Hugging Face repository ID.** The private staging,
+  immutable upload, and fresh-revision QA procedure is in `docs/perception_collection.md`; do not
+  reuse its pilot repository as the public release without the remaining permission/license gates.
 
 Keep roaster contacts, signed permissions, seller messages, receipts, addresses, and tokens in
 gitignored private storage. Never copy them into a card, commit, model artifact, or video.
@@ -45,11 +46,15 @@ gitignored private storage. Never copy them into a card, commit, model artifact,
 Document:
 
 1. Purpose: supervised research on visible Vietnamese Robusta defects in a fixed workcell.
-2. Labels: `acceptable` and `visible_reject`; initial visible defect types are `black`, `broken`,
-   and `foreign_matter`.
+2. Labels: `acceptable` and `visible_reject`; visible defect types follow the eight-type
+   TCVN-4193-aligned vocabulary in `docs/data_and_labeling.md` (`black`, `broken`, `insect_damage`,
+   `dried_cherry`, `shell_husk`, `immature_faded`, `moldy`, `foreign_matter`).
 3. Exclusions: ambiguous mold, moisture, taste, internal insect damage, and cup-quality judgments.
-4. Acquisition: C920, final mount, fixed lamp, matte surface, locked focus/exposure/white balance,
-   inspection nest, and capture-session boundaries.
+4. Acquisition: C920, final mount, fixed lamp, locked focus/exposure/white balance, inspection
+   nest, and capture-session boundaries. State explicitly that the background is a **printed A1
+   cutting mat (back side, uniform grid)** — a documented deviation from a neutral surface — with
+   its known risks (green color spill, semi-gloss sheen, grid-as-scale-cue) per the amended
+   `docs/perception_collection.md` §2.
 5. Ground truth: blind roaster review, ambiguity handling, preserved disagreements, and separate
    publication permissions.
 6. Splits: bean/session isolation, held-out test lot, and no adjacent-frame independence claim.
@@ -65,6 +70,9 @@ the labels do not support.
 - Include an anonymized sample grid spanning both labels and lots only where photo permission exists.
 - Publish split counts and confusion/threshold figures without exposing private identities.
 - For every reported model or system rate, include numerator, denominator, and Wilson 95% interval.
+- Include the background-dependence probe outcome (`beansight-background-probe` report: probe vs
+  in-domain accuracy with both Wilson intervals, plus the saliency summary) whenever any classifier
+  rate is published. Probe numbers are diagnostics — never headline metrics.
 - For latency or cycle time, include sample count, median, and p95.
 - Give every failed physical trial exactly one frozen failure code and show failures beside successes.
 - Never write invented, simulated, or placeholder performance to `results/`.

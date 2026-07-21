@@ -9,8 +9,9 @@ The aim is not to certify food, imitate an industrial sorter, or remove a person
 is to find out, honestly and quantitatively, how far a low-cost arm can assist a repetitive inspection
 step that matters to Vietnam's higher-value coffee processing.
 
-> **Current status, July 18, 2026:** the BeanSight software contracts, safety gates, camera
-> preflight, dataset QA, training configs, and frozen evaluation code are implemented. The
+> **Current status, July 19, 2026:** the BeanSight software contracts, safety gates, camera
+> preflight, C920 perception capture, image-manifest QA, ROI-parity training, training configs, and
+> frozen evaluation code are implemented. The
 > post-flagship cap and plastic-bottle path now has typed fail-still routing, a leakage-safe spectral
 > evaluation tool, and disabled experiment configs. The arm has not arrived, so none of this is a
 > physical success claim.
@@ -85,6 +86,14 @@ ruff check .
 
 Perception training also needs the `perception` extra. Arm recording and policy training should run
 inside the pinned LeRobot environment in [docs/runbook.md](docs/runbook.md).
+
+The complete pre-arm image workflow, including the 24-bean pilot, is in
+[docs/perception_collection.md](docs/perception_collection.md). Its two data CLIs are:
+
+```bash
+beansight-capture-perception --help
+beansight-build-perception-manifest --help
+```
 
 The later plastic-material study uses a separate optional dependency:
 

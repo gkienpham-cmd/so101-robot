@@ -51,6 +51,19 @@ lerobot-find-port   # run before and after plugging each controller in
 Ports appear as `/dev/tty.usbmodem*` and can change between launches; use the currently observed
 paths only.
 
+## C920 perception stills before arm recording
+
+The 30-minute soak qualifies USB throughput. Before each still-image session, run a fresh 10-second
+semantic probe, inspect its samples, and use that report immediately with
+`beansight-capture-perception`. The still-image tool opens only the semantic C920 `top`, saves one
+full 640×480 lossless PNG per physical bean, and requires beginning/ending neutral references plus
+an operator-recorded settings snapshot. It never displays a prediction. The C270 must never enter
+the perception image manifest.
+
+Follow [docs/perception_collection.md](../../docs/perception_collection.md) for the exact capture and
+manifest commands. A settings SHA records what the operator entered; it does not prove the camera
+accepted the setting.
+
 ## 3. Generate the record config
 
 ```bash

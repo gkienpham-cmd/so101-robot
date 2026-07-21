@@ -16,10 +16,13 @@ the coffee perception baseline and use the already-proven simulation→Hub→409
 - **−5:** repository and LeRobot patch frozen; electrical inventory ready; seller asked to confirm
   the follower adapter specification.
 - **−4:** C920 and C270 tested separately, then together for 30 minutes at 640×480/30.
-- **−3:** nest, light, cup, bins, five-position block grid, schema, and failure codes frozen.
-- **−2:** roaster interview; two lots and blind labels obtained; first workcell images captured.
-- **−1:** color baseline and ResNet-18 trained. A 200–500-step SmolVLA installation smoke test is
-  optional; do not repeat a full ACT run on somebody else's workcell.
+- **−3:** provisional nest, fixed light, image schema, and failure codes frozen; 24-bean pilot roster
+  predeclared across three sessions and two lots.
+- **−2:** roaster interview; two lots and blind labels obtained; 24 full-frame C920 pilot images
+  captured and reviewed.
+- **−1:** the private immutable pilot revision passes a Colab loader/training-path smoke. Do not
+  publish pilot accuracy. Final 300–500-bean collection waits for real gripper-clearance confirmation
+  if the arm is imminent.
 
 ## Hardware week
 

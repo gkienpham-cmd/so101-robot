@@ -14,9 +14,10 @@ Frame this as a 20–30 minute research interview, not a request for an endorsem
 lamp, nest, sample bags, and a printed label sheet.
 
 Ask which defects are removed by eye, which are unmistakable in one top-down image, whether v1 can
-stay limited to clearly black, clearly broken, and agreed foreign matter, which examples are
-ambiguous, how the two lots differ, whether uncertain beans should be shown to a person, and what
-would make a low-cost prototype useful or useless.
+stay limited to the eight clearly visible defect types (black, broken, insect-damaged, dried
+cherry, shell/husk, immature/faded, moldy, foreign matter), which examples are ambiguous, how the
+two lots differ, whether uncertain beans should be shown to a person, and what would make a
+low-cost prototype useful or useless.
 
 Do not ask a photograph to establish food safety, chemistry, moisture, taste, cup quality, or
 internal insect damage. Preserve the roaster's wording instead of strengthening it.
@@ -53,7 +54,8 @@ B001,LOT_A,acceptable,,false,,2026-07-18
 ```
 
 - Allow only `acceptable` and `visible_reject` for v1 scored labels.
-- Use initial defect types `black`, `broken`, and `foreign_matter`.
+- Use the eight-type vocabulary from `docs/data_and_labeling.md`: `black`, `broken`,
+  `insect_damage`, `dried_cherry`, `shell_husk`, `immature_faded`, `moldy`, `foreign_matter`.
 - Give each physical bean one durable `bean_id`; record its lot and review date.
 - Preserve disagreements. Keep ambiguous samples outside the scored v1 set.
 - Record ground truth before any prediction; never relabel after viewing model output.
