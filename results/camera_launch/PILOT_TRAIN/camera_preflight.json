@@ -1,0 +1,70 @@
+{
+  "cameras": {
+    "top": {
+      "actual": {
+        "height": 480,
+        "reported_fps": 30.00003,
+        "width": 640
+      },
+      "attempted_reads": 300,
+      "device_name": "HD Pro Webcam C920",
+      "duration_s": 10.015949042048305,
+      "effective_fps": 29.952229063921905,
+      "estimated_dropped_frames": 0.4784712614491582,
+      "estimated_dropped_rate": 0.001592364535936539,
+      "failed_read_rate": 0.0,
+      "failed_reads": 0,
+      "index": 1,
+      "longest_frame_gap_s": 0.07033504091668874,
+      "mean_brightness": 142.40731879701966,
+      "passed": true,
+      "requested": {
+        "fourcc": "MJPG",
+        "fps": 30.0,
+        "height": 480,
+        "width": 640
+      },
+      "sample_image": "results/camera_launch/PILOT_TRAIN/top.jpg",
+      "semantic_name": "top",
+      "successful_reads": 300
+    },
+    "wrist": {
+      "actual": {
+        "height": 480,
+        "reported_fps": 30.0,
+        "width": 640
+      },
+      "attempted_reads": 296,
+      "device_name": "C270 HD WEBCAM",
+      "duration_s": 10.036582333035767,
+      "effective_fps": 29.492110977429586,
+      "estimated_dropped_frames": 5.097469991073012,
+      "estimated_dropped_rate": 0.016929634085680437,
+      "failed_read_rate": 0.0,
+      "failed_reads": 0,
+      "index": 2,
+      "longest_frame_gap_s": 0.08583774999715388,
+      "mean_brightness": 20.05812332474074,
+      "passed": true,
+      "requested": {
+        "fourcc": "MJPG",
+        "fps": 30.0,
+        "height": 480,
+        "width": 640
+      },
+      "sample_image": "results/camera_launch/PILOT_TRAIN/wrist.jpg",
+      "semantic_name": "wrist",
+      "successful_reads": 296
+    }
+  },
+  "completed_at": "2026-07-21T16:46:21.252503+00:00",
+  "passed": true,
+  "schema_version": "1.1",
+  "session_id": "b223f31c-3d0c-4605-9718-1c12f451f731",
+  "started_at": "2026-07-21T16:46:07.996365+00:00",
+  "thresholds": {
+    "max_estimated_dropped_rate": 0.1,
+    "max_failed_read_rate": 0.01,
+    "min_effective_fps": 27.0
+  }
+}
