@@ -1,0 +1,7 @@
+bean_id,split
+B001,train
+B002,train
+B003,val
+B004,val
+B005,test
+B006,test

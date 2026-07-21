@@ -1,0 +1,12 @@
+bean_id,lot_id,grader_label,visible_defect_type,ambiguous,grader_notes,reviewed_at
+B001,LOT_A,acceptable,,false,,2026-07-19
+B002,LOT_A,visible_reject,black,false,,2026-07-19
+B003,LOT_A,acceptable,,false,,2026-07-19
+B004,LOT_A,visible_reject,broken,false,,2026-07-19
+B005,LOT_B,acceptable,,false,,2026-07-19
+B006,LOT_B,visible_reject,foreign_matter,false,,2026-07-19
+B007,LOT_A,visible_reject,insect_damage,false,visible bore hole,2026-07-21
+B008,LOT_A,visible_reject,dried_cherry,false,unhulled cherry,2026-07-21
+B009,LOT_A,visible_reject,shell_husk,false,ear-shaped fragment,2026-07-21
+B010,LOT_A,visible_reject,immature_faded,false,pale surface,2026-07-21
+B011,LOT_B,visible_reject,moldy,false,,2026-07-21

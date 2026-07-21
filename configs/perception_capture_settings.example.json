@@ -1,0 +1,18 @@
+{
+  "focus": {
+    "mode": "manual",
+    "value": null
+  },
+  "exposure": {
+    "mode": "auto",
+    "value": null
+  },
+  "white_balance": {
+    "mode": "manual",
+    "value": null
+  },
+  "power_line_frequency": 50,
+  "controller": "CameraController",
+  "version": "REPLACE_WITH_EXACT_VERSION",
+  "notes": "Replace the focus/white_balance nulls and the version placeholder after locking the physical C920. Exposure stays mode auto with value null: macOS AVFoundation re-enables C920 auto-exposure on every stream open (verified 2026-07-21), so no operator exposure value can honestly be recorded. The capture tool records these operator-entered values but cannot verify that the camera accepted them."
+}
