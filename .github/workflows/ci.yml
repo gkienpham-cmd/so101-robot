@@ -16,6 +16,6 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: python -m pip install -e '.[dev]'
+      - run: python -m pip install -e '.[dev,materials]'
       - run: ruff check .
       - run: pytest
