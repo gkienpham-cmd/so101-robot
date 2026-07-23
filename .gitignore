@@ -25,3 +25,6 @@ wandb/
 private/
 CLAUDE.md
 AGENTS.local.md
+
+# Contact sheets are dataset imagery — local only, never in the public repo.
+results/**/contact_sheet_*.png
