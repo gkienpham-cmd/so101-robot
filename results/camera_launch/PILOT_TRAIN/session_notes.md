@@ -135,6 +135,35 @@ Resume checklist (next sitting — any time of day, no camera involved):
    switched to VAL.
 5. SOUL/LOT_B on arrival → PILOT_TEST → manifest → HF (on request) → Colab smoke.
 
+## §6 manual image gate — FAILED (2026-07-23 ~15:10), recapture ordered
+
+Blind-grade verification passed (20/20 rows, 12 acceptable / 8 reject / 1 ambiguous). Seven
+TRAIN reject images judged by grader:
+
+- PASS (defect visible): B006 moldy, B009 broken, B014 shell_husk, B015 black, B020 broken.
+- FAIL B002 insect_damage: bore holes on the underside — face-up recapture required (no
+  config implication).
+- FAIL B019 immature_faded: fadedness indistinguishable — bean bodies compress into the top
+  ~20 gray levels under the GEOM_02 lighting (B019 body 228.3 vs acceptable B001 214.1 /
+  B003 222.3; separation 6–14 levels). No hard clipping (p99 = 232 everywhere), but the
+  discriminative range for pale defects is crushed. Operator's "overexposed" report
+  vindicated by measurement.
+
+Ruling: evidence-backed lighting/config revision (re-freeze v3) before anything trains.
+Operator away (beach house) until ~2026-07-26/27; session runs the next night at home.
+Night-session plan:
+1. Session gates (marks, press-test by head sides, glare, screen away, apps closed).
+2. Config probes in cost order — (a) camera brightness offset one notch down (sanctioned §6
+   lever; may only relocate, not restore, separation), (b) ring brightness one step down,
+   (c) rings farther back. Each candidate measured with BOTH probes: pale-defect pair
+   (faded spare vs normal spare, body-brightness separation target ≥~30 levels and
+   human-visible) AND dark-defect probe (chromatic separation maintained). First config
+   passing both is frozen as v3 (new canonicals, new marks if geometry moved, DECISIONS row).
+3. Recapture ALL 16 TRAIN beans (new session, same bean_ids; old PILOT_TRAIN files archived
+   out of the canonical tree) + capture 4 VAL beans — whole pilot shares config v3.
+4. Materials needed: spare faded bean, spare normal bean, spare dark bean (all from supplier
+   spares, never P-bags).
+
 ## Rules reaffirmed for the rest of the pilot
 
 1. CameraController/Photo Booth do not open on capture days; ANY touch is announced
